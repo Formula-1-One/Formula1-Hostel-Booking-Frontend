@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/login_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import '../common_for_login/theme_helper.dart';
 import '../widget/header_widget.dart';

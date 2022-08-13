@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/login_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

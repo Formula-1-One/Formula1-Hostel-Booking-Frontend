@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/forgot_password_verification_page.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/login_page.dart';
-import 'package:hostel_booking_app_ui_f1/pages/widget/header_widget.dart';
-import 'package:hostel_booking_app_ui_f1/pages/common_for_login/theme_helper.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_verification_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);

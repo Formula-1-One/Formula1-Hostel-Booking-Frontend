@@ -1,9 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/create_password_page.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/login_page.dart';
-import 'package:hostel_booking_app_ui_f1/pages/common_for_login/theme_helper.dart';
-import 'package:hostel_booking_app_ui_f1/pages/widget/header_widget.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/create_password_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 

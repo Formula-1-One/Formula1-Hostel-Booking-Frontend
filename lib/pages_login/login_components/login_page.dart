@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/forgot_password_page.dart';
-import 'package:hostel_booking_app_ui_f1/pages/login_components/homescreen.dart';
-import 'package:hostel_booking_app_ui_f1/pages/widget/header_widget.dart';
-import 'package:hostel_booking_app_ui_f1/pages/common_for_login/theme_helper.dart';
+import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
 
 
 class LoginPage extends StatefulWidget{
@@ -110,7 +110,7 @@ class _LoginPageState extends State<LoginPage>{
                                         Navigator.pushReplacement(
                                             context, MaterialPageRoute(
                                             builder: (context) =>
-                                                const HomeScreen()));
+                                                const HomeScreenMain()));
                                       }
                                     },
                                 ),
