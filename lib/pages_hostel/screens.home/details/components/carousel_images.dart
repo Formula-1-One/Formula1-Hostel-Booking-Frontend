@@ -16,7 +16,7 @@ class _CarouselImagesState extends State<CarouselImages> {
   Widget build(BuildContext context) {
 
     Size size = MediaQuery.of(context).size;
-
+// this is a  container
     return Container(
       height: size.height * 0.35,
       child: Carousel(
