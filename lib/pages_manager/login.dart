@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 
 void main() => runApp(MaterialApp(
   home:LoginPage() ,
@@ -96,7 +97,9 @@ class _LoginPageState extends State<LoginPage> {
                             Align(
                               alignment: Alignment.topRight,
                               child: TextButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  Navigator.push( context, MaterialPageRoute( builder: (context) => ForgotPasswordPage()), );
+                                },
                                 child: Text('Forgot password?'),
                               ),
                             ),
