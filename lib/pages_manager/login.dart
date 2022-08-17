@@ -37,6 +37,18 @@ class LoginPage extends StatelessWidget {
                 ) ,
                 ),
 
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 35,vertical: 20),
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
+                  width: double.infinity,
+                  height: 450,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
+                  ),
+
+                ),
+
               ],
             ),
           ],
