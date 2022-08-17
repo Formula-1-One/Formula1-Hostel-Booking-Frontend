@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_import
 
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() => runApp(MaterialApp(
   home:LoginPage() ,
@@ -15,6 +16,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool hide = true;
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,51 +67,59 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: 30.0,),
 
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Username'
-                        ),
-                      ),
-                      SizedBox(height: 20.0,),
-
-                      TextField(
-                        obscureText: hide,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          suffixIcon: IconButton(
-                            onPressed: (){
-                              setState(() {
-                                hide = !hide;
-                              });
-                            },
-                            icon: hide? Icon(Icons.visibility_off):
-                            Icon(Icons.visibility),
-                          )
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: TextButton(
-                          onPressed: (){},
-                          child: Text('Forgot password?'),
-                        ),
-                      ),
-                      Center(
-                        child: ElevatedButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor: Colors.deepPurpleAccent,
-                            padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
-                          ),
-                          onPressed: (){},
-                          child: Text(
-                            'Log in',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Username'
+                              ),
                             ),
-                          ),
+                            SizedBox(height: 20.0,),
+
+                            TextField(
+                              obscureText: hide,
+                              decoration: InputDecoration(
+                                  hintText: 'Password',
+                                  suffixIcon: IconButton(
+                                    onPressed: (){
+                                      setState(() {
+                                        hide = !hide;
+                                      });
+                                    },
+                                    icon: hide? Icon(Icons.visibility_off):
+                                    Icon(Icons.visibility),
+                                  )
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topRight,
+                              child: TextButton(
+                                onPressed: (){},
+                                child: Text('Forgot password?'),
+                              ),
+                            ),
+                            Center(
+                              child: ElevatedButton(
+                                style: TextButton.styleFrom(
+                                    backgroundColor: Colors.deepPurpleAccent,
+                                    padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
+                                ),
+                                onPressed: (){},
+                                child: Text(
+                                  'Log in',
+                                  style: TextStyle(
+                                    fontSize: 20.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+
                     ],
                   ),
                 ),
