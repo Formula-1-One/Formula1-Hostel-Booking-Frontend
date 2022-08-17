@@ -93,6 +93,22 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text('Forgot password?'),
                         ),
                       ),
+                      Center(
+                        child: ElevatedButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor: Colors.deepPurpleAccent,
+                            padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
+                          ),
+                          onPressed: (){},
+                          child: Text(
+                            'Log in',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
