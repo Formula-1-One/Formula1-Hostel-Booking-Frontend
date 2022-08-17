@@ -86,6 +86,13 @@ class _LoginPageState extends State<LoginPage> {
                           )
                         ),
                       ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: TextButton(
+                          onPressed: (){},
+                          child: Text('Forgot password?'),
+                        ),
+                      ),
                     ],
                   ),
                 ),
