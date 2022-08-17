@@ -6,9 +6,15 @@ void main() => runApp(MaterialApp(
   home:LoginPage() ,
 ));
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool hide = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,12 +63,29 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 30.0,),
+
                       TextField(
                         decoration: InputDecoration(
                           hintText: 'Username'
                         ),
                       ),
-                      SizedBox(height: 20.0,)
+                      SizedBox(height: 20.0,),
+
+                      TextField(
+                        obscureText: hide,
+                        decoration: InputDecoration(
+                          hintText: 'Password',
+                          suffixIcon: IconButton(
+                            onPressed: (){
+                              setState(() {
+                                hide = !hide;
+                              });
+                            },
+                            icon: hide? Icon(Icons.visibility_off):
+                            Icon(Icons.visibility),
+                          )
+                        ),
+                      ),
                     ],
                   ),
                 ),
