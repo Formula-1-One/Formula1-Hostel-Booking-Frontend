@@ -11,6 +11,14 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.deepPurpleAccent,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.deepPurpleAccent,
+        title: Text("FORMULA 1 HOSTEL BOOKING"),
+        elevation: 10.0,
+      ),
+    );
   }
 }
