@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -23,7 +25,7 @@ class ThemeHelper{
   }
 
 
-  BoxDecoration inputBoxDecorationShaddow() {
+  BoxDecoration inputBoxDecorationShadow() {
     return BoxDecoration(boxShadow: [
       BoxShadow(
         color: Colors.black.withOpacity(0.1),
@@ -74,7 +76,7 @@ class ThemeHelper{
     );
   }
 
-  AlertDialog alartDialog(String title, String content, BuildContext context) {
+  AlertDialog alertDialog(String title, String content, BuildContext context) {
     return AlertDialog(
       title: Text(title),
       content: Text(content),

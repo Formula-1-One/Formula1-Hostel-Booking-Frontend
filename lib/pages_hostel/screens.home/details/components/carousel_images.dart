@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, sized_box_for_whitespace
+
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
