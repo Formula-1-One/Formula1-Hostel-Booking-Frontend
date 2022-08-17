@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -18,6 +18,29 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.deepPurpleAccent,
         title: Text("FORMULA 1 HOSTEL BOOKING"),
         elevation: 10.0,
+      ),
+
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Padding(
+                    padding: EdgeInsets.fromLTRB(80, 35, 40, 0),
+                child:Text(
+                  "MANAGER'S PAGE",
+                  style: TextStyle(
+                    fontSize: 40.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white
+                  ),
+                ) ,
+                ),
+
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
