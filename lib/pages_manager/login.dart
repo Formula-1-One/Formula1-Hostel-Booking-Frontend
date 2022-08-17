@@ -46,7 +46,25 @@ class LoginPage extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
                   ),
-
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Sign in",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 45
+                        ),
+                      ),
+                      SizedBox(height: 30.0,),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Username'
+                        ),
+                      ),
+                      SizedBox(height: 20.0,)
+                    ],
+                  ),
                 ),
 
               ],
