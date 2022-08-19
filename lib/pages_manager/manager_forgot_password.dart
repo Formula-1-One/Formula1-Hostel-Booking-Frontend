@@ -104,7 +104,7 @@ class ManagerForgotPassword extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Already have an account?" ,
+                  Text("Remember Password?" ,
                     style: TextStyle(fontSize: 18),
 
                   ),
