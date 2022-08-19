@@ -36,6 +36,28 @@ class ManagerCreatePassword extends StatelessWidget {
                             size: 100.0,),
                         ),
                       ),
+        Container(
+            padding: EdgeInsets.symmetric(horizontal: 15,vertical: 80),
+            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25),
+            width: double.infinity,
+            height: 600,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
+            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+            Text(
+            "Create New Password",
+            style: TextStyle(
+                fontWeight: FontWeight.normal,
+                fontSize: 30
+            ),
+          ),
+        ])
+        ),
+
                     ]),
               ]),
         )
