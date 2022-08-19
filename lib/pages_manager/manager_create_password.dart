@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
-  home:ManagerForgotPassword() ,
+  home:ManagerCreatePassword() ,
 ));
 
-class ManagerForgotPassword extends StatelessWidget {
-  const ManagerForgotPassword({Key? key}) : super(key: key);
+class ManagerCreatePassword extends StatelessWidget {
+  const ManagerCreatePassword({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

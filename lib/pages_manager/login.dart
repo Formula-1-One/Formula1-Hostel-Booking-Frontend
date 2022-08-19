@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_manager/manager_forgot_password.dart';
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -27,7 +27,10 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.deepPurpleAccent,
-        title: Text("FORMULA 1 HOSTEL BOOKING"),
+        title: Text("FORMULA 1 HOSTEL BOOKING",
+        style: TextStyle(
+          fontSize: 16
+        ),),
         elevation: 10.0,
       ),
 
@@ -99,7 +102,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                               alignment: Alignment.topRight,
                               child: TextButton(
                                 onPressed: (){
-                                  Navigator.push( context, MaterialPageRoute( builder: (context) => ForgotPasswordPage()), );
+                                  Navigator.push( context, MaterialPageRoute( builder: (context) => ManagerForgotPassword ()), );
                                 },
                                 child: Text('Forgot password?',
                                 style: TextStyle(
