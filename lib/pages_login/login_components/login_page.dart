@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_import
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
@@ -54,7 +56,7 @@ class _LoginPageState extends State<LoginPage>{
                             child: Column(
                               children: <Widget>[
                                 Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextFormField(
                                     decoration: ThemeHelper().textInputDecoration('User Name', 'Enter your user name'),
                                     validator: (val){
@@ -67,7 +69,7 @@ class _LoginPageState extends State<LoginPage>{
                                 ),
                                 const SizedBox(height: 30.0),
                                 Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextFormField(
                                     obscureText: true,
                                     decoration: ThemeHelper().textInputDecoration('Password', 'Enter your password'),

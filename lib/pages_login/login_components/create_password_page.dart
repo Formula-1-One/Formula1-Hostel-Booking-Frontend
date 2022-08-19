@@ -49,7 +49,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         child: Column(
                             children: <Widget>[
                               Container(
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                decoration: ThemeHelper().inputBoxDecorationShadow(),
                                 child: TextFormField(
                                   controller: _password,
                                   obscureText: true,
@@ -67,7 +67,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                               ),
                               const SizedBox(height: 20.0),
                               Container(
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                decoration: ThemeHelper().inputBoxDecorationShadow(),
                                 child: TextFormField(
                                   controller: _confirmPassword,
                                   obscureText: true,
