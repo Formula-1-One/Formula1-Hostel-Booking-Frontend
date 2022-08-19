@@ -9,11 +9,14 @@ final _house1 = House(
   isFav: false,
   moreImagesUrl: [
     'assets/images/house1.JPG',
-    'assets/images/indoor1.JPG',
-    'assets/images/indoor2.JPG',
     'assets/images/indoor3.JPG',
-    'assets/images/indoor4.JPG',
     'assets/images/indoor5.JPG',
+    'assets/images/indoor1.JPG',
+    'assets/images/indoor4.JPG',
+    'assets/images/indoor2.JPG',
+    'assets/images/res1.jpg',
+    'assets/images/court1.jpg',
+    'assets/images/pitch1.jpg',
   ]
 
 );
@@ -25,11 +28,14 @@ final _house2 = House(
     isFav: false,
     moreImagesUrl: [
       'assets/images/house2.JPG',
-      'assets/images/indoor1.JPG',
-      'assets/images/indoor2.JPG',
-      'assets/images/indoor3.JPG',
-      'assets/images/indoor4.JPG',
       'assets/images/indoor5.JPG',
+      'assets/images/indoor3.JPG',
+      'assets/images/indoor2.JPG',
+      'assets/images/indoor4.JPG',
+      'assets/images/indoor1.JPG',
+      'assets/images/res2.jpg',
+      'assets/images/court2.jpg',
+      'assets/images/pitch2.jpg',
     ]
 );
 
@@ -40,11 +46,14 @@ final _house3 = House(
     isFav: false,
     moreImagesUrl: [
       'assets/images/house3.JPG',
-      'assets/images/indoor1.JPG',
       'assets/images/indoor2.JPG',
+      'assets/images/indoor5.JPG',
       'assets/images/indoor3.JPG',
       'assets/images/indoor4.JPG',
-      'assets/images/indoor5.JPG',
+      'assets/images/indoor1.JPG',
+      'assets/images/res1.jpg',
+      'assets/images/court2.jpg',
+      'assets/images/pitch2.jpg',
     ]
 );
 
@@ -56,11 +65,14 @@ final _house4 = House(
 
     moreImagesUrl: [
       'assets/images/house4.JPG',
-      'assets/images/indoor1.JPG',
+      'assets/images/indoor5.JPG',
       'assets/images/indoor2.JPG',
       'assets/images/indoor3.JPG',
       'assets/images/indoor4.JPG',
-      'assets/images/indoor5.JPG',
+      'assets/images/indoor1.JPG',
+      'assets/images/res3.jpg',
+      'assets/images/court3.jpg',
+      'assets/images/pitch1.jpg',
     ]
 );
 
@@ -71,11 +83,14 @@ final _house5 = House(
     isFav: false,
     moreImagesUrl: [
       'assets/images/house5.JPG',
-      'assets/images/indoor1.JPG',
-      'assets/images/indoor2.JPG',
-      'assets/images/indoor3.JPG',
-      'assets/images/indoor4.JPG',
       'assets/images/indoor5.JPG',
+      'assets/images/indoor3.JPG',
+      'assets/images/indoor2.JPG',
+      'assets/images/indoor1.JPG',
+      'assets/images/indoor4.JPG',
+      'assets/images/res2.jpg',
+      'assets/images/court3.jpg',
+      'assets/images/pitch2.jpg',
     ]
 
 

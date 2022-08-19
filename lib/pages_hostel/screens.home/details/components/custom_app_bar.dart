@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget {
         right: appPadding,
         top: appPadding,
       ),
-      child: Container(
+      child: SizedBox(
         height: size.height * 0.1,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,17 +29,8 @@ class CustomAppBar extends StatelessWidget {
                   border: Border.all(color: white.withOpacity(0.4)),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: const Icon(Icons.arrow_back_rounded, color: Colors.black,),
+                child: const Icon(Icons.arrow_back_rounded, color: Colors.white,),
               ),
-            ),
-            Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                border: Border.all(color: white.withOpacity(0.4)),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: const Icon(Icons.favorite_border_rounded, color: Colors.black,),
             ),
           ],
         ),

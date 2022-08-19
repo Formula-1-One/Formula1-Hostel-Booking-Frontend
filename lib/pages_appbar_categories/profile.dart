@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/settings.dart';
-
+import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/logout.dart';
 import '../pages_hostel/screens.home/home_screen_main.dart';
 import 'feed.dart';
 
@@ -18,14 +17,14 @@ class _ProfileState extends State<Profile> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Feed",
+          title: const Text("Profile",
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),),
           centerTitle: true,
           leading: IconButton(
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.car_rental_outlined),
             onPressed: (){},
           ),
           actions: [
@@ -60,8 +59,8 @@ class _ProfileState extends State<Profile> {
               const Tab(icon: Icon(Icons.person), text: "Profile",),
               InkWell(
                   onTap: (){Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Settings()));},
-                  child: const Tab(icon: Icon(Icons.settings), text: "Settings",)),
+                      MaterialPageRoute(builder: (context) => const LogOUt()));},
+                  child: const Tab(icon: Icon(Icons.logout), text: "Log out",)),
             ],
           ),
         ),

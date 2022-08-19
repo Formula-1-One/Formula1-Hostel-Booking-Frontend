@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/logout.dart';
 import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/profile.dart';
-import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/settings.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 
 class Feed extends StatefulWidget {
@@ -24,7 +24,7 @@ class _FeedState extends State<Feed> {
             ),),
           centerTitle: true,
           leading: IconButton(
-            icon: const Icon(Icons.menu),
+            icon: const Icon(Icons.car_rental_outlined),
             onPressed: (){},
           ),
           actions: [
@@ -59,8 +59,8 @@ class _FeedState extends State<Feed> {
                   child: const Tab(icon: Icon(Icons.person), text: "Profile",)),
               InkWell(
                   onTap: (){Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Settings()));},
-                  child: const Tab(icon: Icon(Icons.settings), text: "Settings",)),
+                      MaterialPageRoute(builder: (context) => const LogOUt()));},
+                  child: const Tab(icon: Icon(Icons.logout), text: "Log out",)),
             ],
           ),
         ),

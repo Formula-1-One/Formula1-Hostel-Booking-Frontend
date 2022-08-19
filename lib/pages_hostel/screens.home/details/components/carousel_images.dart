@@ -22,7 +22,7 @@ class _CarouselImagesState extends State<CarouselImages> {
       child: Carousel(
         dotSize: 5,
         dotBgColor: Colors.transparent,
-        autoplay: false,
+        autoplay: true,
         images: [
           AssetImage(widget.imagesListUrl[0],),
           AssetImage(widget.imagesListUrl[1],),
@@ -30,6 +30,9 @@ class _CarouselImagesState extends State<CarouselImages> {
           AssetImage(widget.imagesListUrl[3],),
           AssetImage(widget.imagesListUrl[4],),
           AssetImage(widget.imagesListUrl[5],),
+          AssetImage(widget.imagesListUrl[6],),
+          AssetImage(widget.imagesListUrl[7],),
+          AssetImage(widget.imagesListUrl[8],),
         ],
       ),
     );

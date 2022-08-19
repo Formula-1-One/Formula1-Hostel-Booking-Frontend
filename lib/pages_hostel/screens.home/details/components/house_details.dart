@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/constants/constants.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/model/house.dart';
 
@@ -119,7 +120,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                         children: [
                           InkWell(
                             onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const FourInOne()));},
+                                MaterialPageRoute(builder: (context) => const StepperForm()));},
                             child: const Text(
                               '4 in a room',
                               style: TextStyle(
@@ -152,7 +153,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                         children: [
                           InkWell(
                             onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: ((context) => const ThreeInOne())));},
+                                MaterialPageRoute(builder: ((context) => const StepperForm())));},
                             child: const Text(
                               '3 in a room',
                               style: TextStyle(
@@ -185,7 +186,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                         children: [
                           InkWell(
                             onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const TwoInOne()));},
+                                MaterialPageRoute(builder: (context) => const StepperForm()));},
                             child: const Text(
                               '2 in a room',
                               style: TextStyle(
