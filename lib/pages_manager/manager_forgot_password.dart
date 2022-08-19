@@ -1,6 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:hostel_booking_app_ui_f1/pages_manager/manager_password_verification.dart';
+import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
+
+
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -29,15 +33,12 @@ class ManagerForgotPassword extends StatelessWidget {
         Stack(
         children: [
         Padding(
-        padding: EdgeInsets.fromLTRB(80, 35, 40, 0),
-        child:Text(
-          "MANAGER'S PAGE",
-          style: TextStyle(
-              fontSize: 40.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white
-          ),
-        ) ,
+        padding: EdgeInsets.fromLTRB(80, 60, 80, 0),
+        child:Center(
+          child: Icon(Icons.password_rounded,
+                        color: Colors.white,
+                         size: 100.0,),
+        ),
       ),
         Container(
             padding: EdgeInsets.symmetric(horizontal: 35,vertical: 40),
@@ -75,7 +76,47 @@ class ManagerForgotPassword extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40,),
+              TextField(
+                decoration: InputDecoration(
+                    hintText: 'E-mail'
+                ),
+              ),
+              SizedBox(height: 20,),
+              Center(
+                child: ElevatedButton(
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.deepPurpleAccent,
+                      padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
+                  ),
+                  onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder:(context) => ManagerPasswordVerification()));
+                  },
+                  child: Text(
+                    'Send',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Already have an account?" ,
+                    style: TextStyle(fontSize: 18),
 
+                  ),
+                  TextButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerLoginPage()));
+                  },
+                    child: Text("Log in",
+                      style: TextStyle(fontSize: 15,
+                      color: Colors.deepPurpleAccent),
+                    ),)
+                ],
+              ),
             ]
           )
         ),
