@@ -1,4 +1,5 @@
-// ignore_for_file: unnecessary_import
+// ignore_for_file: unnecessary_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_m
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
+import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
 
 
 class LoginPage extends StatefulWidget{
@@ -116,6 +118,22 @@ class _LoginPageState extends State<LoginPage>{
                                       }
                                     },
                                 ),
+                                ),
+                                SizedBox(height: 30,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(' Are you a Manager?',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 20.0
+                                      ),
+                                    ),
+                                    TextButton(onPressed: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerLoginPage()));
+                                    },
+                                        child:Text('click here') )
+                                  ],
                                 )
                             ]
                         ),

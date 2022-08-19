@@ -5,17 +5,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 
 void main() => runApp(MaterialApp(
-  home:LoginPage() ,
+  debugShowCheckedModeBanner: false,
+  home:ManagerLoginPage() ,
 ));
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ManagerLoginPage extends StatefulWidget {
+  const ManagerLoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ManagerLoginPage> createState() => _ManagerLoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ManagerLoginPageState extends State<ManagerLoginPage> {
   bool hide = true;
   final _formKey = GlobalKey<FormState>();
 
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.symmetric(horizontal: 35,vertical: 20),
                   margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
                   width: double.infinity,
-                  height: 450,
+                  height: 550,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
@@ -100,7 +101,10 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: (){
                                   Navigator.push( context, MaterialPageRoute( builder: (context) => ForgotPasswordPage()), );
                                 },
-                                child: Text('Forgot password?'),
+                                child: Text('Forgot password?',
+                                style: TextStyle(
+                                  color: Colors.deepPurpleAccent
+                                ),),
                               ),
                             ),
                             Center(
