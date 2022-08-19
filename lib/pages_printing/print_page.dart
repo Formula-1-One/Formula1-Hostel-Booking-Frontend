@@ -1,4 +1,6 @@
 
+// ignore_for_file: unnecessary_import, use_key_in_widget_constructors, unnecessary_brace_in_string_interps, prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
@@ -84,7 +86,7 @@ class PrintPage extends StatelessWidget {
                   },
                   child: Container(
                     height: 50,
-                    width: 50,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.black.withOpacity(0.4)),
                       borderRadius: BorderRadius.circular(15),
