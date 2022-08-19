@@ -20,10 +20,11 @@ class ManagerPasswordVerification extends StatefulWidget {
 }
 
 class _ManagerPasswordVerificationState extends State<ManagerPasswordVerification> {
+  final _formKey = GlobalKey<FormState>();
+  bool _pinSuccess = false;
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-    bool _pinSuccess = false;
+
     return Scaffold(
       backgroundColor: Colors.deepPurpleAccent,
       appBar: AppBar(
@@ -84,7 +85,7 @@ class _ManagerPasswordVerificationState extends State<ManagerPasswordVerificatio
                         OTPTextField(
                           length: 4,
                           width: 300,
-                          fieldWidth: 50,
+                          fieldWidth: 60,
                           style: const TextStyle(
                               fontSize: 30
                           ),

@@ -29,15 +29,12 @@ class ManagerCreatePassword extends StatelessWidget {
                 Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(80, 35, 40, 0),
-                        child:Text(
-                          "MANAGER'S PAGE",
-                          style: TextStyle(
-                              fontSize: 40.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white
-                          ),
-                        ) ,
+                        padding: EdgeInsets.fromLTRB(80, 60, 80, 0),
+                        child:Center(
+                          child: Icon(Icons.privacy_tip_outlined,
+                            color: Colors.white,
+                            size: 100.0,),
+                        ),
                       ),
                     ]),
               ]),
