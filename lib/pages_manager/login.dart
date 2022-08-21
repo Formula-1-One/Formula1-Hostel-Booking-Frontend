@@ -76,17 +76,25 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                         key: _formKey,
                         child: Column(
                           children: [
-                            TextField(
+                            TextFormField(
                               decoration: InputDecoration(
-                                hintText: 'Username'
+                                labelText: 'Username',
+                                hintText: 'enter your username'
                               ),
+                              validator: (val){
+                                if(val!.isEmpty){
+                                  return "Username can't be empty";
+                                }
+                                return null;
+                              },
                             ),
                             SizedBox(height: 20.0,),
 
-                            TextField(
+                            TextFormField(
                               obscureText: hide,
                               decoration: InputDecoration(
-                                  hintText: 'Password',
+                                  hintText: 'enter your password',
+                                  labelText: 'Password',
                                   suffixIcon: IconButton(
                                     onPressed: (){
                                       setState(() {
@@ -97,6 +105,12 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                                     Icon(Icons.visibility),
                                   )
                               ),
+                              validator: (val){
+                                if(val!.isEmpty){
+                                  return "Password can't be empty";
+                                }
+                                return null;
+                              },
                             ),
                             Align(
                               alignment: Alignment.topRight,
@@ -116,7 +130,9 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                                     backgroundColor: Colors.deepPurpleAccent,
                                     padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
                                 ),
-                                onPressed: (){},
+                                onPressed: (){
+                                 if(_formKey.currentState!.validate()) {
+                                }},
                                 child: Text(
                                   'Log in',
                                   style: TextStyle(
