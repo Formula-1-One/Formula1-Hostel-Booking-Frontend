@@ -20,6 +20,8 @@ class _ManagerCreatePasswordState extends State<ManagerCreatePassword> {
   bool hide = true;
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,88 +58,105 @@ class _ManagerCreatePasswordState extends State<ManagerCreatePassword> {
               color: Colors.white,
               borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
             ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-            Text(
-            "Create New Password",
-            style: TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 30
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+              Text(
+              "Create New Password",
+              style: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontSize: 30
+              ),
             ),
-          ),
-              SizedBox(height: 40.0,),
-              TextField(
-                controller: password,
-                obscureText: hide,
-                decoration: InputDecoration(
-                    hintText: 'Password',
-                    suffixIcon: IconButton(
-                      onPressed: (){
-                        setState(() {
-                          hide= !hide;
-                        });
-                      },
-                      icon:hide? Icon(Icons.visibility_off):
-                      Icon(Icons.visibility),
-                    )
-                ),
-              ),
-              SizedBox(height: 30.0,),
-              TextField(
-                controller: confirmPassword,
-                obscureText: hide,
-                decoration: InputDecoration(
-                    hintText: 'Confirm Password',
-                    suffixIcon: IconButton(
-                      onPressed: (){
-                        setState(() {
-                          hide= !hide;
-                        });
-                      },
-                      icon:hide? Icon(Icons.visibility_off):
-                      Icon(Icons.visibility),
-                    )
-                ),
-              ),
-              SizedBox(height: 10.0,),
-
-              TextButton(
-                onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerForgotPassword()));
-              },
-                child: Text(
-                  "back",
-                  style: TextStyle(fontSize: 15,
-                  color: Colors.blue),
-                ),),
-              SizedBox(height: 20.0,),
-              Center(
-                child: ElevatedButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.deepPurpleAccent,
-                    padding: EdgeInsets.symmetric(horizontal: 55,vertical: 20),
+                SizedBox(height: 40.0,),
+                TextField(
+                  controller: password,
+                  obscureText: hide,
+                  decoration: InputDecoration(
+                    hintText: 'enter your password',
+                      labelText: 'Password',
+                      suffixIcon: IconButton(
+                        onPressed: (){
+                          setState(() {
+                            hide= !hide;
+                          });
+                        },
+                        icon:hide? Icon(Icons.visibility_off):
+                        Icon(Icons.visibility),
+                      )
                   ),
+                ),
+                SizedBox(height: 30.0,),
+                TextFormField(
+                  controller: confirmPassword,
+                  obscureText: hide,
+                  decoration: InputDecoration(
+                    labelText: 'Confirm password',
+                      hintText: 'Confirm Password',
+                      suffixIcon: IconButton(
+                        onPressed: (){
+                          setState(() {
+                            hide= !hide;
+                          });
+                        },
+                        icon:hide? Icon(Icons.visibility_off):
+                        Icon(Icons.visibility),
+                      )
+                  ),
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return "can't be empty";
+                    }
+                    if(!RegExp(r"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$").hasMatch(value)){
+                      return "enter a strong password";
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 10.0,),
+
+                TextButton(
                   onPressed: (){
-                    if(password.text != confirmPassword.text){
-                      showDialog(context: context, builder: (context){
-                        return AlertDialog(
-                          title: Text('Alert!!!'),
-                          content: Text('Passwords do not match'),
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerForgotPassword()));
+                },
+                  child: Text(
+                    "back",
+                    style: TextStyle(fontSize: 15,
+                    color: Colors.blue),
+                  ),),
+                SizedBox(height: 20.0,),
+                Center(
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.deepPurpleAccent,
+                      padding: EdgeInsets.symmetric(horizontal: 55,vertical: 20),
+                    ),
+                    onPressed: (){
+                      if(password.text != confirmPassword.text){
+                        showDialog(context: context, builder: (context){
+                          return AlertDialog(
+                            title: Text('Alert!!!'),
+                            content: Text('Passwords do not match'),
+                          );
+                        }
                         );
                       }
-                      );}
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerLoginPage()));
-                  },
-                  child: Text(
-                    'Done',
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold
-                    ),
-                  ),),
-              ),
-        ])
+                      else if(_formKey.currentState!.validate()) {
+
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerLoginPage()));
+                    }},
+                    child: Text(
+                      'Done',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),),
+                ),
+        ]),
+          )
         ),
 
                     ]),
