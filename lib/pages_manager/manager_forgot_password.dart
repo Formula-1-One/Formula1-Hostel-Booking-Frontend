@@ -1,8 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
+
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_manager/manager_password_verification.dart';
 import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
+
 
 
 
@@ -11,8 +14,15 @@ void main() => runApp(MaterialApp(
   home:ManagerForgotPassword() ,
 ));
 
-class ManagerForgotPassword extends StatelessWidget {
+class ManagerForgotPassword extends StatefulWidget {
   const ManagerForgotPassword({Key? key}) : super(key: key);
+
+  @override
+  State<ManagerForgotPassword> createState() => _ManagerForgotPasswordState();
+}
+
+class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +52,9 @@ class ManagerForgotPassword extends StatelessWidget {
       ),
         Container(
             padding: EdgeInsets.symmetric(horizontal: 35,vertical: 40),
-            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
+            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25),
             width: double.infinity,
-            height: 550,
+            height: 600,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
@@ -68,20 +78,35 @@ class ManagerForgotPassword extends StatelessWidget {
                   color: Colors.black54
               ),
               ),
-              SizedBox(height: 15,),
+              SizedBox(height: 10,),
               Text('We will email you a verification code to check your authenticity.',
                 style: TextStyle(
                   color: Colors.black38,
                   fontSize: 18,
                 ),
               ),
-              SizedBox(height: 40,),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: 'E-mail'
-                ),
-              ),
-              SizedBox(height: 20,),
+              SizedBox(height: 30,),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                   TextFormField(
+                     decoration: InputDecoration(
+                       labelText: 'E-mail',
+                       hintText: 'Please enter your e-mail'
+                     ),
+                     validator: (value){
+                       if(value!.isEmpty){
+                         return "Email can't be empty";
+                       }
+                       else if(!RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(value)){
+                         return "Enter a valid email address";
+                       }
+                       return null;
+                     },
+                   ),
+
+              SizedBox(height: 15,),
               Center(
                 child: ElevatedButton(
                   style: TextButton.styleFrom(
@@ -89,10 +114,13 @@ class ManagerForgotPassword extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
                   ),
                   onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context) => ManagerPasswordVerification()));
-                  },
+                    if(_formKey.currentState!.validate()) {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => ManagerPasswordVerification()));
+                    }
+                      },
                   child: Text(
-                    'Send',
+                    'Send'.toUpperCase(),
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -100,7 +128,7 @@ class ManagerForgotPassword extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -116,6 +144,8 @@ class ManagerForgotPassword extends StatelessWidget {
                       color: Colors.deepPurpleAccent),
                     ),)
                 ],
+              ),
+             ])
               ),
             ]
           )
