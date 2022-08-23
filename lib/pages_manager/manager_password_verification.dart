@@ -51,7 +51,7 @@ class _ManagerPasswordVerificationState extends State<ManagerPasswordVerificatio
           ),
       Container(
           padding: EdgeInsets.symmetric(horizontal: 35,vertical: 40),
-          margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25),
+          margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.35),
           width: double.infinity,
           height: 600,
           decoration: BoxDecoration(

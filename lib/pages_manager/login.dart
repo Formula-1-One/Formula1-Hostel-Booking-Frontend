@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hostel_booking_app_ui_f1/pages_manager/manager_forgot_password.dart';
 
+
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
   home:ManagerLoginPage() ,
@@ -53,9 +54,9 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
 
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 35,vertical: 20),
-                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.35),
                   width: double.infinity,
-                  height: 550,
+                  height: 600,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
@@ -79,7 +80,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                             TextFormField(
                               decoration: InputDecoration(
                                 labelText: 'Username',
-                                hintText: 'enter your username'
+                                hintText: 'Enter your username'
                               ),
                               validator: (val){
                                 if(val!.isEmpty){
@@ -93,7 +94,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                             TextFormField(
                               obscureText: hide,
                               decoration: InputDecoration(
-                                  hintText: 'enter your password',
+                                  hintText: 'Enter your password',
                                   labelText: 'Password',
                                   suffixIcon: IconButton(
                                     onPressed: (){

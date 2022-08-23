@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
@@ -51,7 +51,7 @@ class _ManagerCreatePasswordState extends State<ManagerCreatePassword> {
                       ),
         Container(
             padding: EdgeInsets.symmetric(horizontal: 15,vertical: 80),
-            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.25),
+            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.35),
             width: double.infinity,
             height: 600,
             decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class _ManagerCreatePasswordState extends State<ManagerCreatePassword> {
                   controller: password,
                   obscureText: hide,
                   decoration: InputDecoration(
-                    hintText: 'enter your password',
+                    hintText: 'Enter your password',
                       labelText: 'Password',
                       suffixIcon: IconButton(
                         onPressed: (){
@@ -115,18 +115,7 @@ class _ManagerCreatePasswordState extends State<ManagerCreatePassword> {
                     return null;
                   },
                 ),
-                SizedBox(height: 10.0,),
-
-                TextButton(
-                  onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerForgotPassword()));
-                },
-                  child: Text(
-                    "back",
-                    style: TextStyle(fontSize: 15,
-                    color: Colors.blue),
-                  ),),
-                SizedBox(height: 20.0,),
+                SizedBox(height: 30.0,),
                 Center(
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
