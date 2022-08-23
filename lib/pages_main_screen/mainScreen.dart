@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
+import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
 
 void main () => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -37,7 +39,7 @@ class MainScreen extends StatelessWidget {
                 ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 35,vertical: 20),
-        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.45),
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.5),
         width: double.infinity,
         height: 600,
         decoration: BoxDecoration(
@@ -59,19 +61,33 @@ class MainScreen extends StatelessWidget {
                 ElevatedButton(
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
-                    padding: EdgeInsets.symmetric(vertical: 30, horizontal: 50)
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30)
                   ),
-                  onPressed: (){},
-                    child:Text('Student'),
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
+                    child:Text('Student >>',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20
+                      ),
+                    ),
                 ),
                 SizedBox(width: 40.0,),
                 ElevatedButton(
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.blueAccent,
-                      padding: EdgeInsets.symmetric(vertical: 30, horizontal: 50)
+                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30)
                   ),
-                  onPressed: (){},
-                    child: Text('Manager'),
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerLoginPage()));
+                  },
+                    child: Text('Manager >>',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20
+                      ),
+                    ),
                 ),
               ],
             ),

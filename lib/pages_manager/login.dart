@@ -24,10 +24,10 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.blueAccent,
         title: Text("FORMULA 1 HOSTEL BOOKING",
         style: TextStyle(
           fontSize: 16
@@ -121,15 +121,16 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                                 },
                                 child: Text('Forgot password?',
                                 style: TextStyle(
-                                  color: Colors.deepPurpleAccent
+                                  color: Colors.blueAccent
                                 ),),
                               ),
                             ),
+                            SizedBox(height: 20,),
                             Center(
                               child: ElevatedButton(
                                 style: TextButton.styleFrom(
-                                    backgroundColor: Colors.deepPurpleAccent,
-                                    padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
+                                    backgroundColor: Colors.blueAccent,
+                                    padding: EdgeInsets.symmetric(horizontal: 45,vertical: 20)
                                 ),
                                 onPressed: (){
                                  if(_formKey.currentState!.validate()) {

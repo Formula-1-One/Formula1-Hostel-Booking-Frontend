@@ -27,10 +27,10 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.blueAccent,
         title: Text("FORMULA 1 HOSTEL BOOKING",
           style: TextStyle(
               fontSize: 16
@@ -110,7 +110,7 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
               Center(
                 child: ElevatedButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.deepPurpleAccent,
+                      backgroundColor: Colors.blueAccent,
                       padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
                   ),
                   onPressed: (){
@@ -141,7 +141,7 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
                   },
                     child: Text("Log in",
                       style: TextStyle(fontSize: 15,
-                      color: Colors.deepPurpleAccent),
+                      color: Colors.blueAccent),
                     ),)
                 ],
               ),

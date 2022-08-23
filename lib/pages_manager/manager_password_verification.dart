@@ -26,10 +26,10 @@ class _ManagerPasswordVerificationState extends State<ManagerPasswordVerificatio
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: Colors.deepPurpleAccent,
+      backgroundColor: Colors.blueAccent,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.blueAccent,
         title: Text("FORMULA 1 HOSTEL BOOKING",
           style: TextStyle(
               fontSize: 16
@@ -122,7 +122,7 @@ class _ManagerPasswordVerificationState extends State<ManagerPasswordVerificatio
                                   },
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.deepPurpleAccent
+                                    color: Colors.blueAccent
                                 ),
                               ),
                             ],
@@ -133,7 +133,7 @@ class _ManagerPasswordVerificationState extends State<ManagerPasswordVerificatio
                           decoration: _pinSuccess ? ThemeHelper().buttonBoxDecoration(context):ThemeHelper().buttonBoxDecoration(context, "#AAAAAA","#757575"),
                           child: ElevatedButton(
                             style: TextButton.styleFrom(
-                                backgroundColor: Colors.deepPurpleAccent,
+                                backgroundColor: Colors.blueAccent,
                                 padding: EdgeInsets.symmetric(horizontal: 15,vertical: 5)
                             ),
                             onPressed: _pinSuccess ? () {

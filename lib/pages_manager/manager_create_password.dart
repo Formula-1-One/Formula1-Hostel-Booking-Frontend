@@ -26,10 +26,10 @@ class _ManagerCreatePasswordState extends State<ManagerCreatePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: Colors.blueAccent,
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.deepPurpleAccent,
+          backgroundColor: Colors.blueAccent,
           title: Text("FORMULA 1 HOSTEL BOOKING",
             style: TextStyle(
                 fontSize: 16
@@ -119,7 +119,7 @@ class _ManagerCreatePasswordState extends State<ManagerCreatePassword> {
                 Center(
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.deepPurpleAccent,
+                      backgroundColor: Colors.blueAccent,
                       padding: EdgeInsets.symmetric(horizontal: 55,vertical: 20),
                     ),
                     onPressed: (){
