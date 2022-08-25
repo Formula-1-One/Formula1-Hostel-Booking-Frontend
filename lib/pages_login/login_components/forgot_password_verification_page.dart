@@ -5,6 +5,7 @@ import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_help
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:email_auth/email_auth.dart';
 
 class ForgotPasswordVerificationPage extends StatefulWidget {
   const ForgotPasswordVerificationPage({Key? key}) : super(key: key);
@@ -16,6 +17,32 @@ class ForgotPasswordVerificationPage extends StatefulWidget {
 class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificationPage> {
   final _formKey = GlobalKey<FormState>();
   bool _pinSuccess = false;
+
+  late EmailAuth emailAuth;
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _otpController = TextEditingController();
+
+  void sendOtp() async {
+    emailAuth.sessionName = 'Test Session';
+    var res = await emailAuth.sendOtp(recipientMail: _emailController.text);
+    if(res){
+      print("OTP sent");
+    }
+    else{
+      print("we could not send OTP");
+    }
+  }
+
+  void verifyOtp() {
+    var res = emailAuth.validateOtp(recipientMail: _emailController.text, userOtp: _otpController.text);
+    if(res){
+      print("OTP verified");
+    }
+    else{
+      print("Invalid OTP");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +98,7 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                         child: Column(
                           children: <Widget>[
                             OTPTextField(
-                              length: 4,
+                              length: 6,
                               width: 300,
                               fieldWidth: 50,
                               style: const TextStyle(
@@ -121,14 +148,14 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                               decoration: _pinSuccess ? ThemeHelper().buttonBoxDecoration(context):ThemeHelper().buttonBoxDecoration(context, "#AAAAAA","#757575"),
                               child: ElevatedButton(
                                 style: ThemeHelper().buttonStyle(),
-                                onPressed: _pinSuccess ? () {
-                                  Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                          builder: (context) => const CreatePasswordPage()
-                                      ),
-                                          (Route<dynamic> route) => false
-                                  );
-                                } : null,
+                                onPressed: () => verifyOtp(), // _pinSuccess ? () {
+                                  //Navigator.of(context).pushAndRemoveUntil(
+                                    //  MaterialPageRoute(
+                                      //    builder: (context) => const CreatePasswordPage()
+                                      //),
+                                        //  (Route<dynamic> route) => false
+                                  //);
+                                //} : null,
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       40, 10, 40, 10),

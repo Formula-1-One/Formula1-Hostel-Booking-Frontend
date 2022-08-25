@@ -29,9 +29,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http:
+  http: ^0.13.4
   shared_preferences:
   printing: ^5.9.0
+  modal_progress_hud_nsn: ^0.1.0-nullsafety-1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -42,6 +43,7 @@ dependencies:
   carousel_pro: ^1.0.0
   get:
   email_auth:
+  flip_card: ^0.6.0
 
 dev_dependencies:
   flutter_test:

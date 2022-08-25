@@ -5,7 +5,6 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/components/ca
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/components/houses.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/components/search_filter.dart';
 import '../../pages_appbar_categories/feed.dart';
-import '../../pages_appbar_categories/profile.dart';
 
 class HomeScreenMain extends StatefulWidget {
   const HomeScreenMain({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
             title: const Text("Welcome",
@@ -57,11 +56,6 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                     context,
                   MaterialPageRoute(builder: (context) => const Feed()));},
                   child: const Tab(icon: Icon(Icons.list_alt), text: "Feed",)),
-              InkWell(
-                onTap: (){Navigator.push(
-                    context,
-                  MaterialPageRoute(builder: (context) => const Profile()));},
-                  child: const Tab(icon: Icon(Icons.person), text: "Profile",)),
               InkWell(
                   onTap: (){Navigator.push(
                       context,

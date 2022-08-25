@@ -5,7 +5,7 @@ import '../model/house.dart';
 final _house1 = House(
   imageUrl: 'assets/images/house1.JPG',
   address: 'Capital View',
-  description: 'Hotel is a superior building meant for accommodating 100 or more students temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
+  description: 'Hostel is a superior building meant for accommodating 100 or more students temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
   isFav: false,
   moreImagesUrl: [
     'assets/images/house1.JPG',
@@ -24,7 +24,7 @@ final _house1 = House(
 final _house2 = House(
     imageUrl: 'assets/images/house2.JPG',
     address: 'Total Two',
-    description: 'Hotel is a superior building meant for accommodating 100 or more students temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
+    description: 'Hostel is a superior building meant for accommodating 100 or more students temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
     isFav: false,
     moreImagesUrl: [
       'assets/images/house2.JPG',
@@ -42,7 +42,7 @@ final _house2 = House(
 final _house3 = House(
     imageUrl: 'assets/images/house3.JPG',
     address: 'Eastern Premier',
-    description: 'Hotel is a superior building meant for accommodating 100 or more strangers temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
+    description: 'Hostel is a superior building meant for accommodating 100 or more strangers temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
     isFav: false,
     moreImagesUrl: [
       'assets/images/house3.JPG',
@@ -60,7 +60,7 @@ final _house3 = House(
 final _house4 = House(
     imageUrl: 'assets/images/house4.JPG',
     address: 'Casland City',
-    description: 'Hotel is a superior building meant for accommodating 100 or more students temporarily for at least one academic year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
+    description: 'Hostel is a superior building meant for accommodating 100 or more students temporarily for at least one academic year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
     isFav: false,
 
     moreImagesUrl: [
@@ -79,7 +79,7 @@ final _house4 = House(
 final _house5 = House(
     imageUrl: 'assets/images/house5.JPG',
     address: 'Brunei',
-    description: 'Hotel is a superior building meant for accommodating 100 or more students temporarily for few days. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
+    description: 'Hostel is a superior building meant for accommodating 100 or more students temporarily for few days. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
     isFav: false,
     moreImagesUrl: [
       'assets/images/house5.JPG',

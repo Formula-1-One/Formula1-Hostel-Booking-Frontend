@@ -1,5 +1,4 @@
 
-
 import 'data2.dart';
 
 class DataHome {

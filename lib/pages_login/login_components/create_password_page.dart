@@ -91,9 +91,6 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                                   onTap: () {
                                   Navigator.push( context, MaterialPageRoute( builder: (context) => const ForgotPasswordPage()), );
                                 },
-                                  child: const Text( " Back ",
-                                  style: TextStyle( color: Colors.blue, ),
-                                ),
                               ),
                               ),
                               const SizedBox(height: 45.0),

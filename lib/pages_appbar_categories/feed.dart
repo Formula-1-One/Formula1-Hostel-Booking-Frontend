@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/logout.dart';
-import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/profile.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
+import 'package:http/http.dart' as http;
+
+
 
 class Feed extends StatefulWidget {
   const Feed({Key? key}) : super(key: key);
@@ -10,11 +14,13 @@ class Feed extends StatefulWidget {
   State<Feed> createState() => _FeedState();
 }
 
+
 class _FeedState extends State<Feed> {
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Feed",
@@ -53,10 +59,6 @@ class _FeedState extends State<Feed> {
                   MaterialPageRoute(builder: (context) => const HomeScreenMain()));},
                   child: const Tab(icon: Icon(Icons.home), text: "Home",)),
               const Tab(icon: Icon(Icons.list_alt), text: "Feed",),
-              InkWell(
-                  onTap: (){Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Profile()));},
-                  child: const Tab(icon: Icon(Icons.person), text: "Profile",)),
               InkWell(
                   onTap: (){Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LogOUt()));},

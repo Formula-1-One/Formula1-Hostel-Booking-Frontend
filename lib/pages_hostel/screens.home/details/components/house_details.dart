@@ -6,8 +6,6 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/model/house.dart';
 
 import '../../../../pages_booking/four_in_one.dart';
 import '../../../../pages_booking/one_in_one.dart';
-import '../../../../pages_booking/three_in_one.dart';
-import '../../../../pages_booking/two_in_one.dart';
 
 class HouseDetails extends StatefulWidget {
 
@@ -186,7 +184,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                         children: [
                           InkWell(
                             onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const StepperForm()));},
+                                MaterialPageRoute(builder: (context) => const FourInOne()));},
                             child: const Text(
                               '2 in a room',
                               style: TextStyle(

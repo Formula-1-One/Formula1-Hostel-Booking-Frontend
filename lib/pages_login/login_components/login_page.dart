@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class LoginPage extends StatefulWidget{
@@ -17,6 +22,37 @@ class _LoginPageState extends State<LoginPage>{
   final double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController =  TextEditingController();
+
+  LogIn(String email, password) async {
+    try{
+      Response response = await post(
+        // Machele i want your url
+        Uri.parse('https://reqres.in/api/login'),
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+      if(response.statusCode == 200)
+        {
+          var data = jsonDecode(response.body.toString());
+          print(data['token']);
+        print('Login successful');
+        setState(() {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreenMain()));
+        });
+        }
+      else{
+          print('failed');
+      }
+    }
+    catch(e){
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -24,7 +60,7 @@ class _LoginPageState extends State<LoginPage>{
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
-          children: [
+          children: <Widget>[
             SizedBox(
               height: _headerHeight,
               child: HeaderWidget(_headerHeight, true, Icons.login_rounded), // header widget common to login
@@ -56,6 +92,7 @@ class _LoginPageState extends State<LoginPage>{
                                 Container(
                                   decoration: ThemeHelper().inputBoxDecorationShaddow(),
                                   child: TextFormField(
+                                    controller: emailController,
                                     decoration: ThemeHelper().textInputDecoration('User Name', 'Enter your user name'),
                                     validator: (val){
                                       if(val!.isEmpty){
@@ -69,6 +106,7 @@ class _LoginPageState extends State<LoginPage>{
                                 Container(
                                   decoration: ThemeHelper().inputBoxDecorationShaddow(),
                                   child: TextFormField(
+                                    controller: passwordController,
                                     obscureText: true,
                                     decoration: ThemeHelper().textInputDecoration('Password', 'Enter your password'),
                                     validator: (val){
@@ -92,6 +130,7 @@ class _LoginPageState extends State<LoginPage>{
                                     ),
                                   ),
                                 ),
+
                                 Container(
                                   decoration: ThemeHelper().buttonBoxDecoration(context),
                                   child: ElevatedButton(
@@ -106,11 +145,16 @@ class _LoginPageState extends State<LoginPage>{
                                       ),
                                     ),
                                     onPressed: () {
+                                      setState(() {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => const HomeScreenMain()));
+                                      });
+                                      LogIn(emailController.text, passwordController.text);
                                       if(_formKey.currentState!.validate()) {
-                                        Navigator.pushReplacement(
-                                            context, MaterialPageRoute(
-                                            builder: (context) =>
-                                                const HomeScreenMain()));
+                                       // Navigator.pushReplacement(
+                                         //   context, MaterialPageRoute(
+                                           // builder: (context) =>
+                                             //   const HomeScreenMain()));
                                       }
                                     },
                                 ),

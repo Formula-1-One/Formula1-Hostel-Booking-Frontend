@@ -4,16 +4,43 @@ import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_pas
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
-
+import 'package:email_auth/email_auth.dart';
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
 
   @override
   _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
+
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
+
+  late EmailAuth emailAuth;
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _otpController = TextEditingController();
+
+  void sendOtp() async {
+    emailAuth.sessionName = 'Test Session';
+    var res = await emailAuth.sendOtp(recipientMail: _emailController.text);
+    if(res){
+      print("OTP sent");
+    }
+    else{
+      print("we could not send OTP");
+    }
+  }
+
+  void verifyOtp() {
+    var res = emailAuth.validateOtp(recipientMail: _emailController.text, userOtp: _otpController.text);
+    if(res){
+      print("OTP verified");
+    }
+    else{
+      print("Invalid OTP");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +103,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                             Container(
                               decoration: ThemeHelper().inputBoxDecorationShaddow(),
                               child: TextFormField(
+                                controller: _emailController,
                                 decoration: ThemeHelper().textInputDecoration("Email", "Enter your email"),
                                 validator: (val){
                                   if(val!.isEmpty){
@@ -105,15 +133,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                     ),
                                   ),
                                 ),
-                                onPressed: () {
-                                  if(_formKey.currentState!.validate()) {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => const ForgotPasswordVerificationPage()),
-                                    );
-                                  }
-                                },
+                                onPressed: () => sendOtp() //{
+                                  //if(_formKey.currentState!.validate()) {
+                                    //Navigator.pushReplacement(
+                                      //context,
+                                      //MaterialPageRoute(
+                                        //  builder: (context) => const ForgotPasswordVerificationPage()),
+                                    //);
+                                  //}
+                                //},
                               ),
                             ),
                             const SizedBox(height: 20.0),
