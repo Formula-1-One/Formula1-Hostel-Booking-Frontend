@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, sized_box_for_whitespace
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/create_password_page.dart';
@@ -129,7 +131,7 @@ class _ForgotPasswordVerificationPageState extends State<ForgotPasswordVerificat
                                         showDialog(
                                           context: context,
                                           builder: (BuildContext context) {
-                                            return ThemeHelper().alartDialog("Successful",
+                                            return ThemeHelper().alertDialog("Successful",
                                                 "Verification code resend successful.",
                                                 context);
                                           },

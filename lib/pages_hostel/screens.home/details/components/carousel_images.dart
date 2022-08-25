@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors_in_immutables, use_key_in_widget_constructors, sized_box_for_whitespace
+
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +18,7 @@ class _CarouselImagesState extends State<CarouselImages> {
   Widget build(BuildContext context) {
 
     Size size = MediaQuery.of(context).size;
-
+// this is a  container
     return Container(
       height: size.height * 0.35,
       child: Carousel(

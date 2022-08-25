@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_verification_page.dart';
@@ -101,7 +103,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         child: Column(
                           children: <Widget>[
                             Container(
-                              decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                              decoration: ThemeHelper().inputBoxDecorationShadow(),
                               child: TextFormField(
                                 controller: _emailController,
                                 decoration: ThemeHelper().textInputDecoration("Email", "Enter your email"),
