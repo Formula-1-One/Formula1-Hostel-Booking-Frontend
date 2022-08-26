@@ -39,19 +39,21 @@ class MainScreen extends StatelessWidget {
                 ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 35,vertical: 20),
-        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.5),
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.6),
         width: double.infinity,
-        height: 600,
+        height: 400,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.only(topRight: Radius.elliptical(50, 50), topLeft: Radius.elliptical(50, 50)),
         ),
         child: Column(
           children: [
-            Text('Welcome!!!',
+            Text('WELCOME',
             style: TextStyle(
-              fontSize: 45,
-              fontWeight: FontWeight.bold
+              fontSize: 55,
+              fontWeight: FontWeight.w400,
+              color: Colors.blueAccent,
+              fontStyle: FontStyle.italic,
             ),
             ),
             SizedBox(height: 70.0,),
@@ -60,32 +62,39 @@ class MainScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30)
+                    backgroundColor: Colors.redAccent[100],
+                    padding: EdgeInsets.symmetric(vertical: 25, horizontal: 45),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40))
                   ),
+
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
                   },
-                    child:Text('Student >>',
+
+                    child:Text('Student',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 20
+                          fontSize: 20,
+                        color: Colors.blueAccent
                       ),
                     ),
                 ),
                 SizedBox(width: 40.0,),
                 ElevatedButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30)
+                      backgroundColor: Colors.yellowAccent[100],
+                      padding: EdgeInsets.symmetric(vertical: 25, horizontal: 45),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+
                   ),
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) => ManagerLoginPage()));
                   },
-                    child: Text('Manager >>',
+                    child: Text('Manager',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20
+                        fontSize: 20,
+                        color: Colors.blueAccent
                       ),
                     ),
                 ),

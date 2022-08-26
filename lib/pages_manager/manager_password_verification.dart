@@ -56,7 +56,7 @@ class _ManagerPasswordVerificationState extends State<ManagerPasswordVerificatio
           height: 600,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
+            borderRadius: BorderRadius.only(topRight: Radius.elliptical(50, 50), topLeft: Radius.elliptical(50, 50)),
           ),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -134,7 +134,8 @@ class _ManagerPasswordVerificationState extends State<ManagerPasswordVerificatio
                           child: ElevatedButton(
                             style: TextButton.styleFrom(
                                 backgroundColor: Colors.blueAccent,
-                                padding: EdgeInsets.symmetric(horizontal: 15,vertical: 5)
+                                padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
                             ),
                             onPressed: _pinSuccess ? () {
                               Navigator.of(context).pushAndRemoveUntil(

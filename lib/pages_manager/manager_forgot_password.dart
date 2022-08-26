@@ -57,7 +57,7 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
             height: 600,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
+              borderRadius: BorderRadius.only(topRight: Radius.elliptical(50, 50), topLeft: Radius.elliptical(50, 50)),
             ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,12 +106,13 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
                      },
                    ),
 
-              SizedBox(height: 15,),
+              SizedBox(height: 25,),
               Center(
                 child: ElevatedButton(
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.blueAccent,
-                      padding: EdgeInsets.symmetric(horizontal: 45,vertical: 10)
+                      padding: EdgeInsets.symmetric(horizontal: 55,vertical: 15),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
                   ),
                   onPressed: (){
                     if(_formKey.currentState!.validate()) {

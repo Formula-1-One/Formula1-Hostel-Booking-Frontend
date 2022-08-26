@@ -59,7 +59,7 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                   height: 600,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(topRight: Radius.elliptical(100, 100), topLeft: Radius.elliptical(100, 100)),
+                    borderRadius: BorderRadius.only(topRight: Radius.elliptical(50, 50), topLeft: Radius.elliptical(50, 50)),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,7 +130,8 @@ class _ManagerLoginPageState extends State<ManagerLoginPage> {
                               child: ElevatedButton(
                                 style: TextButton.styleFrom(
                                     backgroundColor: Colors.blueAccent,
-                                    padding: EdgeInsets.symmetric(horizontal: 45,vertical: 20)
+                                    padding: EdgeInsets.symmetric(horizontal: 55,vertical: 25),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
                                 ),
                                 onPressed: (){
                                  if(_formKey.currentState!.validate()) {
