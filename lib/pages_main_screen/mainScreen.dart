@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 void main () => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -19,50 +22,107 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blueAccent,
       appBar: AppBar(
-        centerTitle: true,
+        elevation: 0.0,
         backgroundColor: Colors.blueAccent,
-        title: Text("FORMULA 1 HOSTEL BOOKING",
-          style: TextStyle(
-              fontSize: 16
-          ),),
-        elevation: 10.0,
       ),
 
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Stack(
               children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(80, 35, 40, 0),
-
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 90, 0, 0),
+                          child: Image.asset('assets/images/F1-LOGO.png',
+                          scale: 4,),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'F',
+                              style: TextStyle(
+                                fontSize: 80,
+                                color: Colors.grey[200],
+                                fontWeight: FontWeight.w700,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                            Text(
+                              'ORMULA ',
+                              style: TextStyle(
+                                fontSize: 50,
+                                color: Colors.grey[200],
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                            Text(
+                              '1',
+                              style: TextStyle(
+                                fontSize: 80,
+                                color: Colors.grey[200],
+                                fontWeight: FontWeight.w700,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
+                          child: Text(
+                            'HOSTEL BOOKING ',
+                            style: GoogleFonts.pacifico(color: Colors.grey[200],
+                            fontSize: 20),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
       Container(
-        padding: EdgeInsets.symmetric(horizontal: 35,vertical: 20),
-        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.6),
+        padding: EdgeInsets.symmetric(horizontal: 30,vertical: 70),
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.5),
         width: double.infinity,
-        height: 400,
+        height:450,
         decoration: BoxDecoration(
           color: Colors.grey[200],
           borderRadius: BorderRadius.only(topRight: Radius.elliptical(50, 50), topLeft: Radius.elliptical(50, 50)),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('WELCOME',
+            Text('Welcome',
             style: TextStyle(
-              fontSize: 55,
-              fontWeight: FontWeight.w400,
+              fontSize: 45,
+              fontWeight: FontWeight.normal,
               color: Colors.blueAccent,
-              fontStyle: FontStyle.italic,
             ),
             ),
-            SizedBox(height: 70.0,),
+            SizedBox(height: 10.0,),
+            Text(
+              'Relax and book your favorite hostel online.\n'
+                  'Live in the elegant comfort we have for you.\n'
+                  'Only blissful satisfaction when you stay with us',
+              style: TextStyle(
+                fontSize: 16
+              ),
+            ),
+            SizedBox(height: 60.0,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.redAccent[100],
+                    backgroundColor: Colors.grey[200],
                     padding: EdgeInsets.symmetric(vertical: 25, horizontal: 45),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40))
                   ),
@@ -82,7 +142,7 @@ class MainScreen extends StatelessWidget {
                 SizedBox(width: 40.0,),
                 ElevatedButton(
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.yellowAccent[100],
+                      backgroundColor: Colors.blueAccent,
                       padding: EdgeInsets.symmetric(vertical: 25, horizontal: 45),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
 
@@ -94,7 +154,7 @@ class MainScreen extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.blueAccent
+                        color: Colors.grey[200]
                       ),
                     ),
                 ),

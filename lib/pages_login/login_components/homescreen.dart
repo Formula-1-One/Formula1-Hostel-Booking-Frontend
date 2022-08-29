@@ -49,26 +49,13 @@ class _HomeScreenState extends State<HomeScreen> {
         opacity: _isVisible ? 1.0 : 0,
         duration: const Duration(milliseconds: 1200),
         child: Center(
-          child: Container(
-            height: 140.0,
-            width: 140.0,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    blurRadius: 2.0,
-                    offset: const Offset(5.0, 3.0),
-                    spreadRadius: 2.0,
-                  )
-                ]
-            ),
-            child:  const Center(
-              child: ClipOval(
-                child: Icon(Icons.hotel_sharp, size: 128,), //put your logo here
-              ),
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/F1-LOGO.png',
+              scale: 4,),
+
+            ],
           ),
         ),
       ),
