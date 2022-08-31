@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
@@ -6,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 
 void main () => runApp(MaterialApp(
@@ -35,14 +33,13 @@ class MainScreen extends StatelessWidget {
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 90, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
                           child: Image.asset('assets/images/F1-LOGO.png',
-                          scale: 4,),
+                          scale: 5,),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +47,7 @@ class MainScreen extends StatelessWidget {
                             Text(
                               'F',
                               style: TextStyle(
-                                fontSize: 80,
+                                fontSize: 70,
                                 color: Colors.grey[200],
                                 fontWeight: FontWeight.w700,
                                 fontStyle: FontStyle.italic,
@@ -59,7 +56,7 @@ class MainScreen extends StatelessWidget {
                             Text(
                               'ORMULA ',
                               style: TextStyle(
-                                fontSize: 50,
+                                fontSize: 40,
                                 color: Colors.grey[200],
                                 fontWeight: FontWeight.w500,
                                 fontStyle: FontStyle.italic,
@@ -68,7 +65,7 @@ class MainScreen extends StatelessWidget {
                             Text(
                               '1',
                               style: TextStyle(
-                                fontSize: 80,
+                                fontSize: 70,
                                 color: Colors.grey[200],
                                 fontWeight: FontWeight.w700,
                                 fontStyle: FontStyle.italic,
@@ -80,17 +77,21 @@ class MainScreen extends StatelessWidget {
                           padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
                           child: Text(
                             'HOSTEL BOOKING ',
-                            style: GoogleFonts.pacifico(color: Colors.grey[200],
-                            fontSize: 20),
+                            style:TextStyle(
+                              fontSize: 20.0,
+                              fontStyle: FontStyle.italic,
+                              color: Colors.grey[200]
+                            ),
                           ),
-                        ),
+                          ),
+                        ]),
                       ],
                     ),
                   ],
                 ),
       Container(
-        padding: EdgeInsets.symmetric(horizontal: 30,vertical: 70),
-        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.5),
+        padding: EdgeInsets.symmetric(horizontal: 30,vertical: 50),
+        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.2),
         width: double.infinity,
         height:450,
         decoration: BoxDecoration(
@@ -107,7 +108,7 @@ class MainScreen extends StatelessWidget {
               color: Colors.blueAccent,
             ),
             ),
-            SizedBox(height: 10.0,),
+            SizedBox(height: 5.0,),
             Text(
               'Relax and book your favorite hostel online.\n'
                   'Live in the elegant comfort we have for you.\n'
@@ -165,9 +166,8 @@ class MainScreen extends StatelessWidget {
       ),
               ],
             ),
-          ],
+
         ),
-      ),
     );
   }
 }
