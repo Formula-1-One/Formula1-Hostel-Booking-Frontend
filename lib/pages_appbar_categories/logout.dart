@@ -78,11 +78,12 @@ class _LogOUtState extends State<LogOUt> {
             )
           ),
           child: Center(
-            child: RaisedButton(onPressed: () async {
+            child: ElevatedButton(onPressed: () async {
               final action = await AlertDialogs.yesCancelDialog(context, 'Logout', 'are you sure ? ');
             },
-              color: Colors.blue,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              style: TextButton.styleFrom(
+              backgroundColor: Colors.blue,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
             child: const Text("Log out",
               style: TextStyle(
                 fontSize: 40,

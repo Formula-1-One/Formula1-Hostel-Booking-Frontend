@@ -19,16 +19,16 @@ class AlertDialogs{
             fontSize: 20,
           ),),
           content: const Text("Are you sure you want to log out ? ", style: TextStyle(
-            fontSize: 20,
+            fontSize: 15,
           ),),
           actions: <Widget>[
-            FlatButton(
-                onPressed: () => {Navigator.of(context).pop(DialogAction.cancel)},
+            GestureDetector(
+                onTap: () => {Navigator.of(context).pop(DialogAction.cancel)},
                 child: const Text("Cancel",style: TextStyle(
                   fontSize: 20,
                 ),)),
-            FlatButton(
-                onPressed: () => {Navigator.of(context).pop(DialogAction.yes)},
+            GestureDetector(
+                onTap: () => {Navigator.of(context).pop(DialogAction.yes)},
                 child: InkWell(
                   onTap: (){Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LoginPage()));},
