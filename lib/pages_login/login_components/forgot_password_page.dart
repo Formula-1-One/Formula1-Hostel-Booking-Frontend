@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
+// ignore_for_file: no_leading_underscores_for_local_identifiers, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
@@ -134,7 +134,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           Navigator.push( context, MaterialPageRoute( builder: (context) => const LoginPage()), );
                         },
                         child: const Text( "Remember password ?  Login",
-                          style: TextStyle( color: Colors.grey, ),
+                          style: TextStyle( color: Colors.blue, ),
                         ),
                       ),
                     ),
