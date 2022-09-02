@@ -1,10 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import, avoid_print
 
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages_manager/manager_password_verification.dart';
+import 'package:hostel_booking_app_ui_f1/pages_manager/manager_create_password.dart';
 import 'package:hostel_booking_app_ui_f1/pages_manager/login.dart';
+import 'package:email_auth/email_auth.dart';
+
 
 
 
@@ -23,6 +25,35 @@ class ManagerForgotPassword extends StatefulWidget {
 
 class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
   final _formKey = GlobalKey<FormState>();
+
+  EmailAuth emailAuth = EmailAuth(sessionName: "Enter this verification code");
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _otpController = TextEditingController();
+
+  void sendOtp() async {
+    var res = await emailAuth.sendOtp(recipientMail: _emailController.text);
+    if(res){
+      print("OTP sent");
+    }
+    else{
+      print("we could not send OTP");
+    }
+  }
+
+  void verifyOtp() {
+    var res = emailAuth.validateOtp(
+        recipientMail: _emailController.text, userOtp: _otpController.text);
+    if (res) {
+      print("OTP verified");
+      setState(() {
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePasswordPage()));
+      });
+    }
+    else {
+      print("Invalid OTP");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +83,9 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
       ),
         Container(
             padding: EdgeInsets.symmetric(horizontal: 35,vertical: 40),
-            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.35),
+            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.3),
             width: double.infinity,
-            height: 600,
+            height: 650,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(topRight: Radius.elliptical(50, 50), topLeft: Radius.elliptical(50, 50)),
@@ -90,20 +121,47 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
                 key: _formKey,
                 child: Column(
                   children: [
-                   TextFormField(
-                     decoration: InputDecoration(
-                       labelText: 'E-mail',
-                       hintText: 'Please enter your e-mail'
+                   SafeArea(
+                     child: Column(
+                       children: [
+                         TextFormField(
+                           controller: _emailController,
+                           keyboardType: TextInputType.emailAddress,
+                           decoration: InputDecoration(
+                             prefixIcon: Icon(Icons.email_outlined),
+                             suffixIcon: TextButton(
+                               child: const Text('Send'),
+                               onPressed: ()=> sendOtp(),
+                             ),
+                             labelText: 'E-mail',
+                             hintText: 'Please enter your e-mail'
+                           ),
+                           validator: (value){
+                             if(value!.isEmpty){
+                               return "Email can't be empty";
+                             }
+                             else if(!RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(value)){
+                               return "Enter a valid email address";
+                             }
+                             return null;
+                           },
+                         ),
+                         TextFormField(
+                           controller: _otpController,
+                           keyboardType: TextInputType.number,
+                           decoration: InputDecoration(
+                               prefixIcon: const Icon(Icons.domain_verification),
+                               hintText: 'Enter Verification Code',
+                               labelText: 'Verification',
+                               suffixIcon: TextButton(
+                                 child: const Text('Verify'),
+                                 onPressed: ()=> verifyOtp(),
+                               )
+                           ),
+                         ),
+                       ],
                      ),
-                     validator: (value){
-                       if(value!.isEmpty){
-                         return "Email can't be empty";
-                       }
-                       else if(!RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$").hasMatch(value)){
-                         return "Enter a valid email address";
-                       }
-                       return null;
-                     },
+
                    ),
 
               SizedBox(height: 25,),
@@ -117,11 +175,11 @@ class _ManagerForgotPasswordState extends State<ManagerForgotPassword> {
                   onPressed: (){
                     if(_formKey.currentState!.validate()) {
                       Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => ManagerPasswordVerification()));
+                          builder: (context) => ManagerCreatePassword()));
                     }
                       },
                   child: Text(
-                    'Send'.toUpperCase(),
+                    'Next'.toUpperCase(),
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
