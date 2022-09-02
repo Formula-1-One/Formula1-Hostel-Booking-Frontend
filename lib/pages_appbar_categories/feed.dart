@@ -1,10 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/logout.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 import 'package:http/http.dart' as http;
-
+import 'GetSampleApi.dart';
 
 
 class Feed extends StatefulWidget {
@@ -16,6 +15,14 @@ class Feed extends StatefulWidget {
 
 
 class _FeedState extends State<Feed> {
+
+  List<GetSampleApi>? apiList;
+
+  @override
+  void initState(){
+    super.initState();
+    getApiData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +73,40 @@ class _FeedState extends State<Feed> {
             ],
           ),
         ),
+        body: Column(
+          children: [
+            if(apiList != null)
+            getList()
+          ],
+        ),
       ),
     );
+  }
+ Widget getList(){
+     return Expanded(
+      child: ListView.builder(
+          itemCount: apiList!.length,
+          itemBuilder: (BuildContext context, int index){
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Card(
+              elevation: 5,
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
+                child: Text('${apiList![index].body}'),
+              ),
+            )
+          ],
+        );
+      }),
+    );
+  }
+  Future<void> getApiData() async {
+    String url = "https://jsonplaceholder.typicode.com/posts/1/comments";
+    var result = await http.get(Uri.parse(url));
+    apiList = jsonDecode(result.body).
+    map((item) => GetSampleApi.fromJson(item)).toList().cast<GetSampleApi>();
   }
 }

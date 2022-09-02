@@ -6,9 +6,7 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_m
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
-import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 class LoginPage extends StatefulWidget{
@@ -90,7 +88,7 @@ class _LoginPageState extends State<LoginPage>{
                             child: Column(
                               children: <Widget>[
                                 Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextFormField(
                                     controller: emailController,
                                     decoration: ThemeHelper().textInputDecoration('User Name', 'Enter your user name'),
@@ -104,7 +102,7 @@ class _LoginPageState extends State<LoginPage>{
                                 ),
                                 const SizedBox(height: 30.0),
                                 Container(
-                                  decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                                  decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextFormField(
                                     controller: passwordController,
                                     obscureText: true,
@@ -146,15 +144,15 @@ class _LoginPageState extends State<LoginPage>{
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                          Navigator.push(context,
-                                              MaterialPageRoute(builder: (context) => const HomeScreenMain()));
+                                         // Navigator.push(context,
+                                           //   MaterialPageRoute(builder: (context) => const HomeScreenMain()));
                                       });
                                       LogIn(emailController.text, passwordController.text);
                                       if(_formKey.currentState!.validate()) {
-                                       // Navigator.pushReplacement(
-                                         //   context, MaterialPageRoute(
-                                           // builder: (context) =>
-                                             //   const HomeScreenMain()));
+                                        Navigator.pushReplacement(
+                                            context, MaterialPageRoute(
+                                            builder: (context) =>
+                                                const HomeScreenMain()));
                                       }
                                     },
                                 ),

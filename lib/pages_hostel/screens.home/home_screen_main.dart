@@ -31,8 +31,9 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
             onPressed: (){},
           ),
           actions: [
-            IconButton(onPressed: (){},
-                icon: const Icon(Icons.notifications_none))
+            IconButton(onPressed: (){Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SearchFilter()));},
+                icon: const Icon(Icons.search_outlined))
           ],
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -72,7 +73,6 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                 const SizedBox(
                   height: 20,
                 ),
-                const SearchFilter(),
                 const SizedBox(
                   height: 15,
                 ),

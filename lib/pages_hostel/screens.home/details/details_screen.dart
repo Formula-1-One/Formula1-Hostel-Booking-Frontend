@@ -5,6 +5,7 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/compo
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/components/custom_app_bar.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/components/house_details.dart';
 
+
 class DetailsScreen extends StatefulWidget {
 
   final House house;
