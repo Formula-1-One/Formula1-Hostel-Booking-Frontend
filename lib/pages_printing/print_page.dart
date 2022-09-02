@@ -1,4 +1,6 @@
 
+// ignore_for_file: unnecessary_import, use_key_in_widget_constructors, unnecessary_brace_in_string_interps, prefer_const_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
@@ -74,54 +76,56 @@ class PrintPage extends StatelessWidget {
         ),
         child: Row(
           children:  [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                InkWell(
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black.withOpacity(0.4)),
-                      borderRadius: BorderRadius.circular(15),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  InkWell(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 460,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black.withOpacity(0.4)),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Icon(Icons.arrow_back_rounded, color: Colors.black,),
                     ),
-                    child: const Icon(Icons.arrow_back_rounded, color: Colors.black,),
                   ),
-                ),
-                const SizedBox(height: 30,),
-                const Text('Kindly come along with this\nform to the hostel',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-                const SizedBox(height: 25,),
-                Text('Name: ${surName}', style: const TextStyle( fontSize: 20),),
-                const SizedBox(height: 25,),
-                Text('Last Name(s): ${otherName}', style: const TextStyle( fontSize: 20)),
-                const SizedBox(height: 25,),
-                Text('Email: ${email}', style: const TextStyle( fontSize: 20)),
-                const SizedBox(height: 25,),
-                Text('Phone Number: ${phoneNumber}', style: const TextStyle( fontSize: 20)),
-                const SizedBox(height: 25,),
-                Text('Guardian Name: ${guardianName}', style: const TextStyle( fontSize: 20)),
-                const SizedBox(height: 25,),
-                Text('Guardian Address: ${address}', style: const TextStyle( fontSize: 20)),
-                const SizedBox(height: 25,),
-                Text('Guardian Phone Number: ${guardianPhoneNumber}', style: const TextStyle( fontSize: 20)),
-                const SizedBox(height: 25,),
-                Text('Selected Hostel: ${hostel}', style: const TextStyle( fontSize: 20)),
-                const SizedBox( height: 50,),
-                const Text('Formula One Hostel Booking '),
-                const SizedBox(height: 25),
-                Padding(
-                  padding: const EdgeInsets.only(left: 85),
-                  child: ElevatedButton(
-                    onPressed: () => _createPdf(),
-                    child: const Text('CREATE & PRINT PDF'),
+                  const SizedBox(height: 30,),
+                  const Text('Kindly come along with this\nform to the hostel',
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                  const SizedBox(height: 25,),
+                  Text('Name: ${surName}', style: const TextStyle( fontSize: 20),),
+                  const SizedBox(height: 25,),
+                  Text('Last Name(s): ${otherName}', style: const TextStyle( fontSize: 20)),
+                  const SizedBox(height: 25,),
+                  Text('Email: ${email}', style: const TextStyle( fontSize: 20)),
+                  const SizedBox(height: 25,),
+                  Text('Phone Number: ${phoneNumber}', style: const TextStyle( fontSize: 20)),
+                  const SizedBox(height: 25,),
+                  Text('Guardian Name: ${guardianName}', style: const TextStyle( fontSize: 20)),
+                  const SizedBox(height: 25,),
+                  Text('Guardian Address: ${address}', style: const TextStyle( fontSize: 20)),
+                  const SizedBox(height: 25,),
+                  Text('Guardian Phone Number: ${guardianPhoneNumber}', style: const TextStyle( fontSize: 20)),
+                  const SizedBox(height: 25,),
+                  Text('Selected Hostel: ${hostel}', style: const TextStyle( fontSize: 20)),
+                  const SizedBox( height: 50,),
+                  const Text('Formula One Hostel Booking '),
+                  const SizedBox(height: 25),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 85),
+                    child: ElevatedButton(
+                      onPressed: () => _createPdf(),
+                      child: const Text('CREATE & PRINT PDF'),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

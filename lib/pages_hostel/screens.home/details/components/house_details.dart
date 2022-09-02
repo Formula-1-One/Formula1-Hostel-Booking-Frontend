@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, unused_local_variable, unnecessary_import, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
@@ -45,26 +47,26 @@ class _HouseDetailsState extends State<HouseDetails> {
                          Text(
                           'Best of accommodation',
                           style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(width: 18,),
+                        SizedBox(width: 15,),
                            Icon(Icons.star,
                              color: Colors.orange,
                              size: 30,
                            ),
                             Icon(Icons.star,
                               color: Colors.orange,
-                              size: 30,
+                              size: 25,
                             ),
                             Icon(Icons.star,
                               color: Colors.orange,
-                              size: 30,
+                              size: 25,
                             ),
                             Icon(Icons.star,
                               color: Colors.orange,
-                              size: 30,
+                              size: 25,
                             )
                         ]
                       ),
