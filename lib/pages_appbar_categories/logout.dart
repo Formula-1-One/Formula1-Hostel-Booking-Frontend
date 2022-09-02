@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/profile.dart';
 import '../pages_hostel/screens.home/home_screen_main.dart';
 import 'alert_dialog.dart';
 import 'feed.dart';
@@ -15,7 +14,7 @@ class _LogOUtState extends State<LogOUt> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Log out",
@@ -57,10 +56,6 @@ class _LogOUtState extends State<LogOUt> {
                 onTap: (){Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const Feed()));},
                   child: const Tab(icon: Icon(Icons.list_alt), text: "Feed",)),
-              InkWell(
-                  onTap: (){Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Profile()));},
-                  child: const Tab(icon: Icon(Icons.person), text: "Profile",)),
               InkWell(
                   onTap: (){Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LogOUt()));},

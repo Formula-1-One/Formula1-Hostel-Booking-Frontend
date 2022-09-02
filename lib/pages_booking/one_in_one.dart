@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:hostel_booking_app_ui_f1/pages_booking/control_room.dart';
 
 class OneInOne extends StatefulWidget {
   const OneInOne({Key? key}) : super(key: key);
@@ -9,6 +12,9 @@ class OneInOne extends StatefulWidget {
 }
 
 class _OneInOneState extends State<OneInOne> {
+
+  RoomController controller = Get.put(RoomController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,42 +145,65 @@ class _OneInOneState extends State<OneInOne> {
                             color: Colors.white,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
-                            child: Column(
+                            child: Obx(() => Column(
                               children: List.generate(
-                                    6,
-                                    (index) =>Container(
+                                    controller.gerbong.length,
+                                    (index) =>GestureDetector(
+                                      onTap: () => controller.gaintGerbong(index),
+                                      child: Container(
                                   margin: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.blue,
+                                      border: Border.all(
+                                        color: Colors.black,
+                                      ),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: controller.indexGerbong.value ==
+                                          index ? Colors.blue : Colors.white,
                                   ),
                                   height: 150,
                                   child: Center(
-                                      child: Text('${index + 1}'))), ),
-
+                                        child: Text('${index + 1}')
+                                  ),
+                                      ),
+                                    ),
+                              ),
                             ),
                           ),
                         ),
+                        ),
+
                         const SizedBox(width: 20,),
                         Expanded(child: Container(
                           color: Colors.white,
-                          child: GridView.count(crossAxisCount: 5,
-                          padding: EdgeInsets.all(10),
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                          children: List.generate(75, (index) => Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.black38
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                          child: Obx(() =>
+                              GridView.builder(
+                                  padding: const EdgeInsets.all(10),
+                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10,
+                                    crossAxisCount: 5,),
+                                  itemCount:  controller.gerbong[controller.indexGerbong.value].length,
+                                  itemBuilder: (context, index) => GestureDetector(
+                                    onTap: () => controller.selectKursi(index),
+                                    child: Container(
+                                      width: 50,
+                                      height: 50,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Colors.black38
+                                        ),
+                                        color : (controller.gerbong[controller.indexGerbong.value]
+                                        [index]['status'] == "available"
+                                            ? Colors.white : controller.gerbong[controller.indexGerbong.value]
+                                        [index]['status'] == "filled" ? Colors.amber : Colors.blue),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
 
-                          )),
-                          ),
-                          height: 400,))
+                                    ),
+                                  )),
+                          )
+                        )
+                        ),
                       ],
                     ),
                     ),
