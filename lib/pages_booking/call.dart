@@ -88,20 +88,26 @@ class _CallState extends State<Call> {
                 onTap: (){
                   Navigator.pop(context);
                 },
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: white.withOpacity(0.4)),
-                        borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    left: 55,
+                    top: 70,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: black),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: const Icon(Icons.arrow_back_ios_outlined, color: Colors.black,
+                        size: 50,),
                       ),
-                      child: const Icon(Icons.arrow_back_ios_outlined, color: Colors.black,
-                      size: 50,),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               )
             ],
