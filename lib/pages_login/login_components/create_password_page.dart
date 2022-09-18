@@ -8,6 +8,7 @@ import '../widget/header_widget.dart';
 import 'package:http/http.dart' as http;
 
 class CreatePasswordPage extends StatefulWidget {
+  //Map<String, dynamic> user;
   const CreatePasswordPage({Key? key}) : super(key: key);
 
   @override
@@ -21,6 +22,10 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
 
+ // initState(){
+   // _password.text = widget.user["password"];
+   // _confirmPassword.text = widget.user["confirmPassword"];
+  //}
 
   @override
   Widget build(BuildContext context) {
@@ -111,6 +116,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         ),
                         onPressed: () {
                           if(_formKey.currentState!.validate()) {
+                            //updatePassword(id: widget.user["id"]);
                             Navigator.pushReplacement(
                                 context, MaterialPageRoute(
                                 builder: (context) =>
@@ -127,6 +133,14 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
         ),
       ),
     );
-
+  }
+  void updatePassword ({required int id}) async {
+    var url = Uri.parse("https://jsonplaceholder.typicode.com/users/$id");
+    var response = await http.put(url);
+    if(response.statusCode == 200){
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("New Password created successfully",style: TextStyle(fontSize: 25)),
+            backgroundColor: Colors.blue,));
+    }
   }
 }

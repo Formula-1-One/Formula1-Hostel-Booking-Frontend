@@ -16,6 +16,7 @@ class _LogOUtState extends State<LogOUt> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: const Text("Log out",
             style: TextStyle(
@@ -63,29 +64,86 @@ class _LogOUtState extends State<LogOUt> {
             ],
           ),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/ba.JPG'
-              ),
-              fit: BoxFit.cover,
-            )
-          ),
-          child: Center(
-            child: ElevatedButton(onPressed: () async {
-              final action = await AlertDialogs.yesCancelDialog(context, 'Logout', 'are you sure ? ');
-            },
-              style: TextButton.styleFrom(
-              backgroundColor: Colors.blue,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-            child: const Text("Log out",
-              style: TextStyle(
-                fontSize: 40,
-                color: Colors.white,
-              ),),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Stack(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+                            child: Image.asset('assets/images/F1-LOGO.png',
+                              scale: 5,),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                'F',
+                                style: TextStyle(
+                                  fontSize: 70,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                              Text(
+                                'ORMULA ',
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                              Text(
+                                '1',
+                                style: TextStyle(
+                                  fontSize: 70,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              )
+                            ],
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                            child: Text(
+                              'HOSTEL BOOKING ',
+                              style:TextStyle(
+                                  fontSize: 20.0,
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ]),
+                  ],
+                ),
+                Center(
+                  child: ElevatedButton(onPressed: () async {
+                    final action = await AlertDialogs.yesCancelDialog(context, 'Logout', 'are you sure ? ');
+                  },
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.blue.shade400,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                    child: const Text("Log out",
+                      style: TextStyle(
+                        fontSize: 50,
+                        color: Colors.white,
+                      ),),
+                  ),
+                ),
+              ],
             ),
-          ),
+
+          ],
         ),
       ),
     );

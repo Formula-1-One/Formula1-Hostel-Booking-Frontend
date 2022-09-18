@@ -1,12 +1,15 @@
 // ignore_for_file: unnecessary_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
+import 'package:http/http.dart';
 
 void main() => runApp(MaterialApp(
   home: LoginPage(),
@@ -23,6 +26,37 @@ class LoginPage extends StatefulWidget{
 class _LoginPageState extends State<LoginPage>{
   final double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  
+  void login(String email, password) async {
+    try{
+      Response response = await post(
+        Uri.parse("https://reqres.in/api/login"),
+        body: {
+          'email': email,
+          'password' : password,
+      }
+      );
+
+      if(response.statusCode == 200){
+        var data = jsonDecode(response.body.toString());
+        print(data["token"]);
+        print("Login successful");
+
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreenMain()));
+
+      }else{
+        print("Login failed");
+        await ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Check your credentials again",style: TextStyle(fontSize: 25),),
+              backgroundColor: Colors.redAccent,));
+      }
+    }catch(e){
+      print(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +97,7 @@ class _LoginPageState extends State<LoginPage>{
                                 Container(
                                   decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextFormField(
+                                    controller: emailController,
                                     decoration: ThemeHelper().textInputDecoration('User Name', 'Enter your user name'),
                                     validator: (val){
                                       if(val!.isEmpty){
@@ -76,6 +111,7 @@ class _LoginPageState extends State<LoginPage>{
                                 Container(
                                   decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextFormField(
+                                    controller: passwordController,
                                     obscureText: true,
                                     decoration: ThemeHelper().textInputDecoration('Password', 'Enter your password'),
                                     validator: (val){
@@ -113,11 +149,12 @@ class _LoginPageState extends State<LoginPage>{
                                       ),
                                     ),
                                     onPressed: () {
+                                      login(emailController.text.toString(), passwordController.text.toString());
                                       if(_formKey.currentState!.validate()) {
-                                        Navigator.pushReplacement(
-                                            context, MaterialPageRoute(
-                                            builder: (context) =>
-                                                const HomeScreenMain()));
+                                        //Navigator.pushReplacement(
+                                           // context, MaterialPageRoute(
+                                           // builder: (context) =>
+                                              //  const HomeScreenMain()));
                                       }
                                     },
                                 ),

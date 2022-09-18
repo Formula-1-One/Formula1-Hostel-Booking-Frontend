@@ -87,7 +87,7 @@ class PrintPage extends StatelessWidget {
                     },
                     child: Container(
                       height: 50,
-                      width: 460,
+                      width: 50,
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.black.withOpacity(0.4)),
                         borderRadius: BorderRadius.circular(15),

@@ -1,8 +1,7 @@
+import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:hostel_booking_app_ui_f1/pages_booking/control_room.dart';
+import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
 
 class OneInOne extends StatefulWidget {
   const OneInOne({Key? key}) : super(key: key);
@@ -13,248 +12,141 @@ class OneInOne extends StatefulWidget {
 
 class _OneInOneState extends State<OneInOne> {
 
-  RoomController controller = Get.put(RoomController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              const SizedBox(height:40),
-              Container(
-                height: 100,
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+      appBar: AppBar(
+        title: const Text('Available bed spaces ',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),
+        centerTitle: true,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [
+                    Colors.blue.shade900, Colors.blue
+                  ],
+                  begin: Alignment.bottomRight,
+                  end: Alignment.bottomLeft
+              )
+          ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Click on the card to switch between gender",
+              style: TextStyle(fontSize: 22),),
+            const SizedBox(height: 20,),
+            FlipCard(
+              front: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.blue.shade600,
+                ),
+                padding: const EdgeInsets.only(
+                  top: 20,
+                  left: 90,
+                ),
+                alignment: Alignment.center,
+                width: 400,
+                height: 400,
+                child: Column(
                   children: [
-                    InkWell(
-                      onTap: (){
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: const Icon(Icons.arrow_back_rounded, color: Colors.black,),
+                    Center(
+                      heightFactor: 6,
+                      child: Row(
+                        children: const [
+                          Text('Type',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                            ),),
+                          SizedBox(width: 50,),
+                          Text('Males',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                            ),),
+                        ],
                       ),
                     ),
-                    Text('Select your\nroom',
-                      style: TextStyle(
-                        fontSize: 25,
-                      ),),
-                    Text(' Line {A}\n 1-3A',
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.grey
-                      ),)
-                  ],
-                ),
-              ),
-              Container(
-                height: 50,
-                color: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    // Extracted widget
-                    itemStatus(
-                      status: "Available",
-                      color: Colors.grey,
-                    ),
-                    // Extracted widget
-                    itemStatus(
-                      status: "Filled",
-                      color: Colors.amber,
-                    ),
-                    // Extracted widget
-                    itemStatus(
-                      status: "Selected",
-                      color: Colors.blue,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 10,),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.5),
-                    borderRadius: const BorderRadius.only(
-                      topLeft:Radius.circular(25),
-                      topRight: Radius.circular(25),
-                    )
-                  ),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 20,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text('Unity',
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold),),
-                            Expanded(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: const [
-                                  Text('A',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),),
-                                  Text('B',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),),
-                                  Text('C',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),),
-                                  Text('D',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),),
-                                  Text('E',
-                                    style: TextStyle(
-                                        fontSize: 25, fontWeight: FontWeight.bold),),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 60,
-                            height: 400,
+                    Row(crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('1 in 1',
+                          style: TextStyle(
                             color: Colors.white,
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
-                            child: Obx(() => Column(
-                              children: List.generate(
-                                    controller.gerbong.length,
-                                    (index) =>GestureDetector(
-                                      onTap: () => controller.gaintGerbong(index),
-                                      child: Container(
-                                  margin: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.black,
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: controller.indexGerbong.value ==
-                                          index ? Colors.blue : Colors.white,
-                                  ),
-                                  height: 150,
-                                  child: Center(
-                                        child: Text('${index + 1}')
-                                  ),
-                                      ),
-                                    ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        ),
-
-                        const SizedBox(width: 20,),
-                        Expanded(child: Container(
-                          color: Colors.white,
-                          child: Obx(() =>
-                              GridView.builder(
-                                  padding: const EdgeInsets.all(10),
-                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                    mainAxisSpacing: 10,
-                                    crossAxisSpacing: 10,
-                                    crossAxisCount: 5,),
-                                  itemCount:  controller.gerbong[controller.indexGerbong.value].length,
-                                  itemBuilder: (context, index) => GestureDetector(
-                                    onTap: () => controller.selectKursi(index),
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: Colors.black38
-                                        ),
-                                        color : (controller.gerbong[controller.indexGerbong.value]
-                                        [index]['status'] == "available"
-                                            ? Colors.white : controller.gerbong[controller.indexGerbong.value]
-                                        [index]['status'] == "filled" ? Colors.amber : Colors.blue),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-
-                                    ),
-                                  )),
-                          )
-                        )
-                        ),
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('92',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
                       ],
                     ),
+                  ],
+                ),
+              ), back: Container(
+              padding: const EdgeInsets.only(
+                  top: 20,
+                  left: 90
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.blue,
+              ),
+              width: 400,
+              height: 400,
+              child: Column(
+                children: [
+                  Center(
+                    heightFactor: 6,
+                    child: Row(
+                      children: const [
+                        Text('Type',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('Females',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                      ],
                     ),
                   ),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text('1 in 1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),),
+                      SizedBox(width: 50,),
+                      Text('09',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),),
                     ],
                   ),
-                ),
+                ],
               ),
-              const SizedBox(height: 4,),
-              Container(
-                height: 50,
-                color: Colors.blue,
-                child: ElevatedButton(onPressed: (){}, child: Text('Select Your Room'),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
-                  fixedSize: Size( 300, 10 ),
-                ),),
-              ),
-              const SizedBox(height: 20,)
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class itemStatus extends StatelessWidget {
-  const itemStatus({
-    Key? key,
-    required this.status,
-    required this.color,
-  }) : super(key: key);
-
-  final String status;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          height: 35,
-          width: 35,
-          color: color,
+            ),
+            ),
+            const SizedBox(height: 20,),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) =>  StepperForm()));
+            }, child: const Text('BOOK',
+              style: TextStyle(fontSize: 30),)),
+          ],
         ),
-        Text(status,
-          style: const TextStyle(
-          fontSize: 18,
-        ),)
-      ],
+      ),
     );
   }
 }

@@ -3,7 +3,6 @@ import 'package:hostel_booking_app_ui_f1/pages_login/login_components/homescreen
 import 'package:responsive_framework/responsive_framework.dart';
 
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -14,8 +13,7 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of the application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context) {    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hostel Booking ',
       theme: ThemeData(

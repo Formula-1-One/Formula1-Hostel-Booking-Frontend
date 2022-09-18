@@ -134,7 +134,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           Navigator.push( context, MaterialPageRoute( builder: (context) => const LoginPage()), );
                         },
                         child: const Text( "Remember password ?  Login",
-                          style: TextStyle( color: Colors.grey, ),
+                          style: TextStyle( color: Colors.blue, ),
                         ),
                       ),
                     ),

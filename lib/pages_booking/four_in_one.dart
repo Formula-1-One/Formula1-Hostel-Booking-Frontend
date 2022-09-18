@@ -15,7 +15,8 @@ class _FourInOneState extends State<FourInOne> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Available bed spaces '),
+        title: const Text('Available bed spaces ',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
@@ -33,43 +34,105 @@ class _FourInOneState extends State<FourInOne> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Text("Click on the card to switch between gender",
+            style: TextStyle(fontSize: 22),),
+            const SizedBox(height: 20,),
             FlipCard(
               front: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Colors.red,
+                  color: Colors.blue.shade600,
+                ),
+                padding: const EdgeInsets.only(
+                    top: 20,
+                    left: 90,
                 ),
               alignment: Alignment.center,
-              width: 300,
+              width: 400,
               height: 400,
-              child: Text('Flutter',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                ),),
+              child: Column(
+                children: [
+                  Center(
+                    heightFactor: 6,
+                    child: Row(
+                      children: const [
+                        Text('Type',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('Males',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                      ],
+                    ),
+                  ),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text('4 in 1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),),
+                      SizedBox(width: 50,),
+                      Text('45',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),),
+                    ],
+                  ),
+                ],
+              ),
             ), back: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
               top: 20,
-              left: 30
+              left: 90
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.blue,
               ),
-              width: 300,
+              width: 400,
               height: 400,
               child: Column(
                 children: [
-                  Text('Type: Males  Female',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),),
-                  Text('4 in 1: 25  50',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),),
+                  Center(
+                    heightFactor: 6,
+                    child: Row(
+                      children: const [
+                        Text('Type',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('Females',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                      ],
+                    ),
+                  ),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text('4 in 1',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),),
+                      SizedBox(width: 50,),
+                      Text('20',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                        ),),
+                    ],
+                  ),
                 ],
               ),
             ),

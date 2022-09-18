@@ -3,6 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
+import 'package:hostel_booking_app_ui_f1/pages_booking/three_in_one.dart';
+import 'package:hostel_booking_app_ui_f1/pages_booking/two_in_one.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/constants/constants.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/model/house.dart';
 
@@ -120,9 +122,9 @@ class _HouseDetailsState extends State<HouseDetails> {
                         children: [
                           InkWell(
                             onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const StepperForm()));},
+                                MaterialPageRoute(builder: (context) => const FourInOne()));},
                             child: const Text(
-                              '4 in a room',
+                              '4 in 1',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
@@ -153,9 +155,9 @@ class _HouseDetailsState extends State<HouseDetails> {
                         children: [
                           InkWell(
                             onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: ((context) => const StepperForm())));},
+                                MaterialPageRoute(builder: ((context) => const ThreeInOne())));},
                             child: const Text(
-                              '3 in a room',
+                              '3 in 1',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
@@ -186,9 +188,9 @@ class _HouseDetailsState extends State<HouseDetails> {
                         children: [
                           InkWell(
                             onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const FourInOne()));},
+                                MaterialPageRoute(builder: (context) => const TwoInOne()));},
                             child: const Text(
-                              '2 in a room',
+                              '2 in 1',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
@@ -221,7 +223,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                             onTap: (){Navigator.push(context,
                                 MaterialPageRoute(builder: (context) => const OneInOne()));},
                             child: const Text(
-                              '1 in a room',
+                              '1 in 1',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,

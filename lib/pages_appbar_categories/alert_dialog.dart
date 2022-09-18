@@ -26,7 +26,8 @@ class AlertDialogs{
                 onTap: () => {Navigator.of(context).pop(DialogAction.cancel)},
                 child: const Text("Cancel",style: TextStyle(
                   fontSize: 20,
-                ),)),
+                ),)
+            ),
             GestureDetector(
                 onTap: () => {Navigator.of(context).pop(DialogAction.yes)},
                 child: InkWell(
