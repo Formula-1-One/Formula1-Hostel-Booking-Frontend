@@ -2,6 +2,8 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
 
+import '../pages_login/common_for_login/theme_helper.dart';
+
 class TwoInOne extends StatefulWidget {
   const TwoInOne({Key? key}) : super(key: key);
 
@@ -137,10 +139,24 @@ class _TwoInOneState extends State<TwoInOne> {
             ),
             ),
             const SizedBox(height: 20,),
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  StepperForm()));
-            }, child: const Text('BOOK',
-              style: TextStyle(fontSize: 30),)),
+            Container(
+              decoration: ThemeHelper().buttonBoxDecoration(context),
+              child: ElevatedButton(
+                  style: ThemeHelper().buttonStyle(),
+                  child: const Padding(
+                    padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                    child: Text('Book Now',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const StepperForm()));
+                  }
+              ),
+            ),
           ],
         ),
       ),

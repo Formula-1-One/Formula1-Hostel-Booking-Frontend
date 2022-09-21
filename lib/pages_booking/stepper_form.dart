@@ -17,8 +17,8 @@ class _StepperFormState extends State<StepperForm> {
 
 
 
-  final surName = TextEditingController();
-  final otherName = TextEditingController();
+  final firstName = TextEditingController();
+  final lastName = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
   final guardianName = TextEditingController();
@@ -48,14 +48,14 @@ class _StepperFormState extends State<StepperForm> {
       content: Column(
         children: <Widget>[
           TextFormField(
-            controller: surName,
+            controller: firstName,
             decoration: const InputDecoration(
-                labelText:  " Surname"),
+                labelText:  " First Name"),
           ),
           TextFormField(
-            controller: otherName,
+            controller: lastName,
             decoration: const InputDecoration(
-                labelText: "Other Name(s)"),
+                labelText: "Last Name(s)"),
           ),
           TextFormField(
             controller: email,
@@ -125,9 +125,9 @@ class _StepperFormState extends State<StepperForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text('Name: ${surName.text}', style: const TextStyle( fontSize: 20),),
+          Text('Name: ${firstName.text}', style: const TextStyle( fontSize: 20),),
           const SizedBox(height: 25,),
-          Text('Last Name(s): ${otherName.text}', style: const TextStyle( fontSize: 20)),
+          Text('Last Name(s): ${lastName.text}', style: const TextStyle( fontSize: 20)),
           const SizedBox(height: 25,),
           Text('Email: ${email.text}', style: const TextStyle( fontSize: 20)),
           const SizedBox(height: 25,),
@@ -203,7 +203,7 @@ class _StepperFormState extends State<StepperForm> {
                 child: ElevatedButton(
                     onPressed: () { Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => PrintPage(
-                            surName: surName.text, otherName: otherName.text,email: email.text,
+                            firstName: firstName.text, lastName: lastName.text,email: email.text,
                             phoneNumber: phoneNumber.text,guardianName: guardianName.text,
                             address: address.text, guardianPhoneNumber: guardianPhoneNumber.text,
                             hostel: hostel.text))); },

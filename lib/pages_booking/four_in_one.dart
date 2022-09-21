@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
 
+import '../pages_login/common_for_login/theme_helper.dart';
+
 class FourInOne extends StatefulWidget {
   const FourInOne({Key? key}) : super(key: key);
 
@@ -36,8 +38,11 @@ class _FourInOneState extends State<FourInOne> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Click on the card to switch between gender",
-            style: TextStyle(fontSize: 22),),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: const Text("Click card to select gender",
+              style: TextStyle(fontSize: 25),),
+            ),
             const SizedBox(height: 20,),
             FlipCard(
               front: Container(
@@ -140,10 +145,24 @@ class _FourInOneState extends State<FourInOne> {
             ),
             ),
             const SizedBox(height: 20,),
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) =>  StepperForm()));
-            }, child: const Text('BOOK',
-              style: TextStyle(fontSize: 30),)),
+            Container(
+              decoration: ThemeHelper().buttonBoxDecoration(context),
+              child: ElevatedButton(
+                style: ThemeHelper().buttonStyle(),
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                  child: Text('Book Now',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const StepperForm()));
+                  }
+              ),
+            ),
           ],
         ),
       ),
