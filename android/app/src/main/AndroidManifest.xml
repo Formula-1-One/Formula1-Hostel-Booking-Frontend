@@ -2,9 +2,9 @@
     package="com.example.hostel_booking_app_ui_f1">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="hostel_booking_app_ui_f1"
+        android:label="F1 Hostel Booking"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
