@@ -58,74 +58,88 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                 ],
               ),
             ),
+            SizedBox(height: 30,),
             SafeArea(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    TextFormField(
-                     controller: _password,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.remove_red_eye_outlined),
-                          hintText: 'Enter new password',
-                          labelText: 'New password',
-                      ),
-                      validator: (val){
-                        if(val!.isEmpty){
-                          return "can't be empty";
-                        }
-                        if(!RegExp(r"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$").hasMatch(val)){
-                          return "weak password";
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _confirmPassword,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.remove_red_eye_outlined),
-                          hintText: 'Enter new password',
-                          labelText: 'Confirm new password',
-                      ),
-                      validator: (val){
-                        if(val!.isEmpty){
-                          return "can't be empty";
-                        }
-                        if(_password.text != _confirmPassword.text){
-                          return "password do not match";
-                        }
-                        return null;
-                      },
-                    ),
-                    const SizedBox(height: 30,),
-                    Container(
-                      decoration: ThemeHelper().buttonBoxDecoration(context),
-                      child: ElevatedButton(
-                        style: ThemeHelper().buttonStyle(),
-                        child: const Padding(
-                          padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
-                          child: Text('Done',
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.normal,
-                            ),
+              child: Container(
+                padding:  const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                margin: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      TextFormField(
+                       controller: _password,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25)
                           ),
+                            prefixIcon: Icon(Icons.remove_red_eye_outlined),
+                            hintText: 'Enter new password',
+                            labelText: 'New password',
                         ),
-                        onPressed: () {
-                          if(_formKey.currentState!.validate()) {
-                            //updatePassword(id: widget.user["id"]);
-                            Navigator.pushReplacement(
-                                context, MaterialPageRoute(
-                                builder: (context) =>
-                                const LoginPage()));
+                        validator: (val){
+                          if(val!.isEmpty){
+                            return "can't be empty";
                           }
+                          if(!RegExp(r"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$").hasMatch(val)){
+                            return "weak password";
+                          }
+                          return null;
                         },
                       ),
-                    )
-                  ],
+                      SizedBox(height: 30,),
+                      TextFormField(
+                        controller: _confirmPassword,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25)
+                          ),
+                            prefixIcon: Icon(Icons.remove_red_eye_outlined),
+                            hintText: 'Enter new password',
+                            labelText: 'Confirm new password',
+                        ),
+                        validator: (val){
+                          if(val!.isEmpty){
+                            return "can't be empty";
+                          }
+                          if(_password.text != _confirmPassword.text){
+                            return "password do not match";
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 30,),
+                      Container(
+                        decoration: ThemeHelper().buttonBoxDecoration(context),
+                        child: ElevatedButton(
+                          style: ThemeHelper().buttonStyle(),
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                            child: Text('Done',
+                              style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            if(_formKey.currentState!.validate()) {
+                              //updatePassword(id: widget.user["id"]);
+                              Navigator.pushReplacement(
+                                  context, MaterialPageRoute(
+                                  builder: (context) =>
+                                  const LoginPage()));
+                            }
+                          },
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
