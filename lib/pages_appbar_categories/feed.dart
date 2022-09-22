@@ -95,7 +95,7 @@ class _FeedState extends State<Feed> {
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.fromLTRB(5, 10, 0, 10),
-                child: Text('${apiList![index].body}'),
+                child: Text('${apiList![index].name}'),
               ),
             )
           ],
