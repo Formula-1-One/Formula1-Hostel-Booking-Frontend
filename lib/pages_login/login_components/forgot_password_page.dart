@@ -36,16 +36,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     }
   }
 
-  void verifyOtp() {
+  Future<void> verifyOtp() async {
     var res = emailAuth.validateOtp(recipientMail: _emailController.text, userOtp: _otpController.text);
     if(res){
       print("OTP verified");
-      setState(() {
-       // Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePasswordPage()));
-      });
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Successful verification",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.blueAccent,));
     }
     else{
       print("Invalid OTP");
+       await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Check verification code",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.redAccent,));
     }
   }
 
@@ -181,6 +184,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 style: ThemeHelper().buttonStyle(),
                 onPressed: () => {
                   if(_formKey.currentState!.validate()){
+
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePasswordPage()))
                   }
                   },
