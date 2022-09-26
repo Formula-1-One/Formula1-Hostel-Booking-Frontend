@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_printing/print_page.dart';
+import 'package:http/http.dart' as http;
 
 class StepperForm extends StatefulWidget {
   const StepperForm({Key? key}) : super(key: key);
@@ -29,12 +32,11 @@ class _StepperFormState extends State<StepperForm> {
   final hostel = TextEditingController();
   final roomType = TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
 
   bool isComplete = false;
   int currentStep = 0;
 
-  final items = ['Luxury Hostel','Elite Hostel','Cassandra Hostel','Lion Hostel','Unity Hostel'];
+  final items = ['none','Luxury Hostel','Elite Hostel','Cassandra Hostel','Lion Hostel','Unity Hostel'];
   String ? _selectedVal = '';
 
   DropdownMenuItem<String>buildMenuItem(String item) =>
@@ -49,42 +51,39 @@ class _StepperFormState extends State<StepperForm> {
       state: currentStep > 0 ? StepState.complete : StepState.indexed,
       isActive: currentStep >= 0,
       title: const Text("Personal Info"),
-      content: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            TextFormField(
-              controller: firstName,
-              decoration: const InputDecoration(
-                  labelText:  " First Name"),
-            ),
-            TextFormField(
-              controller: lastName,
-              decoration: const InputDecoration(
-                  labelText: "Last Name(s)"),
-            ),
-            TextFormField(
-              controller: gender,
-              decoration: const InputDecoration(
-                  labelText: "Gender"),
-            ),
-            TextFormField(
-              controller: email,
-              decoration: const InputDecoration(
-                  labelText: "Email"),
-            ),
-            TextFormField(
-              controller: programme,
-              decoration: const InputDecoration(
-                  labelText: "Programme of study"),
-            ),
-            TextFormField(
-              controller: phoneNumber,
-              decoration: const InputDecoration(
-                  labelText: "Phone Number"),
-            )
-          ],
-        ),
+      content: Column(
+        children: <Widget>[
+          TextFormField(
+            controller: firstName,
+            decoration: const InputDecoration(
+                labelText:  " First Name"),
+          ),
+          TextFormField(
+            controller: lastName,
+            decoration: const InputDecoration(
+                labelText: "Last Name(s)"),
+          ),
+          TextFormField(
+            controller: gender,
+            decoration: const InputDecoration(
+                labelText: "Gender"),
+                      ),
+          TextFormField(
+            controller: email,
+            decoration: const InputDecoration(
+                labelText: "Email"),
+          ),
+          TextFormField(
+            controller: programme,
+            decoration: const InputDecoration(
+                labelText: "Programme of study"),
+          ),
+          TextFormField(
+            controller: phoneNumber,
+            decoration: const InputDecoration(
+                labelText: "Phone Number"),
+          )
+        ],
       ),
     ),
     Step(
@@ -107,7 +106,8 @@ class _StepperFormState extends State<StepperForm> {
             controller: guardianPhoneNumber,
             decoration: const InputDecoration(
                 labelText: "Guardian's Phone Number"),
-          ),TextFormField(
+          ),
+          TextFormField(
             controller: hostel,
             decoration: const InputDecoration(
                 labelText: "Type in the name of preferred hostel"),
@@ -178,71 +178,112 @@ class _StepperFormState extends State<StepperForm> {
       appBar: AppBar(
         title: const Text('Kindly fill the form and print it out', style: TextStyle( fontSize: 20)),
       ),
-      body: Stepper(
-        type: StepperType.vertical,
-        steps: getSteps(),
-        currentStep: currentStep,
-        onStepContinue: (){
-          final isLastStep = currentStep == getSteps().length -1;
-          if(isLastStep){
-            setState(() => isComplete = true);
-          }
+      body: SingleChildScrollView(
+        child: Stepper(
+          type: StepperType.vertical,
+          steps: getSteps(),
+          currentStep: currentStep,
+          onStepContinue: (){
+            final isLastStep = currentStep == getSteps().length -1;
+            if(isLastStep){
+              setState(() => isComplete = true);
+            }
 
-          if(currentStep <(getSteps().length - 1)){
-            currentStep += 1;
-          }
-          setState(() {
+            if(currentStep <(getSteps().length - 1)){
+              currentStep += 1;
+            }
+            setState(() {
 
-          });
-        },
-        onStepTapped: (step) => setState(() => currentStep = step),
-        onStepCancel: (){
-          if(currentStep == 0){
-            return;
-          }
-          currentStep -= 1;
-          setState(() {
+            });
+          },
+          onStepTapped: (step) => setState(() => currentStep = step),
+          onStepCancel: (){
+            if(currentStep == 0){
+              return;
+            }
+            currentStep -= 1;
+            setState(() {
 
-          });
-        },
-        controlsBuilder:
-            (BuildContext context, ControlsDetails details) {
-          final isLastStep = currentStep == getSteps().length -1;
-          return Row(
-            children:  [
-              if(currentStep != 2)
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: details.onStepContinue,
-                  child: Text(isLastStep ? 'CONFIRM' : 'NEXT'),
+            });
+          },
+          controlsBuilder:
+              (BuildContext context, ControlsDetails details) {
+            final isLastStep = currentStep == getSteps().length -1;
+            return Row(
+              children:  [
+                if(currentStep != 2)
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: details.onStepContinue,
+                    child: Text(isLastStep ? 'CONFIRM' : 'NEXT'),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 30,),
-              if(currentStep != 0)
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: details.onStepCancel,
-                  child: const Text('BACK'),
+                const SizedBox(width: 30,),
+                if(currentStep != 0)
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: details.onStepCancel,
+                    child: const Text('BACK'),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 30,),
-              if(currentStep != 0 && currentStep != 1)
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () { Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => PrintPage(
-                            firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
-                            programme: programme.text, phoneNumber: phoneNumber.text,guardianName: guardianName.text,
-                            address: address.text, guardianPhoneNumber: guardianPhoneNumber.text,
-                            hostel: hostel.text, roomType: roomType.text))); },
-                    child: const Text('PRINT')
+                const SizedBox(width: 30,),
+                if(currentStep != 0 && currentStep != 1)
+                Expanded(
+                  child: ElevatedButton(
+                      onPressed: () => RegistrationUser(),
+                      child: const Text('SUBMIT')
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
+                const SizedBox(width: 30,),
+                if(currentStep != 0 && currentStep != 1)
+                Expanded(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        RegistrationUser();
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => PrintPage(
+                                firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
+                                programme: programme.text, phoneNumber: phoneNumber.text,guardianName: guardianName.text,
+                                address: address.text, guardianPhoneNumber: guardianPhoneNumber.text,
+                                hostel: hostel.text, roomType: roomType.text))); },
+                      child: const Text('PRINT')
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
+  }
+  Future<void> RegistrationUser() async{
+    var apiUrl = "";
+    Map mappedData = {
+      'firstName': firstName.text,
+      'lastName': lastName.text,
+      'gender': gender.text,
+      'email': email.text,
+      'programme': programme.text,
+      'phoneNumber': phoneNumber.text,
+      'guardianName': guardianName.text,
+      'guardianAddress': address.text,
+      'guardianPhoneNumber': guardianPhoneNumber.text,
+      'selectedHostel': hostel.text,
+      'roomType': roomType.text,
+    };
+    print("Json Data: ${mappedData}");
+
+    http.Response response = await http.post(Uri.parse(apiUrl), body: mappedData);
+
+    var data = jsonDecode(response.body);
+
+    print("Data: ${data}");
+
+    if(response.statusCode == 200){
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Submitted successfully",style: TextStyle(fontSize: 25)),
+            backgroundColor: Colors.blue,));
+    }
   }
 
 }

@@ -2,14 +2,14 @@
 
 
 import 'dart:convert';
-
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
-import 'package:http/http.dart';
+
 
 void main() => runApp(MaterialApp(
   home: LoginPage(),
@@ -27,34 +27,41 @@ class _LoginPageState extends State<LoginPage>{
   final double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
 
-  TextEditingController emailController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   
-  void login(String email, password) async {
-    try{
-      Response response = await post(
-        Uri.parse("https://reqres.in/api/login"),
-        body: {
-          'email': email,
-          'password' : password,
-      }
-      );
+  
+  static const Map<String, String> header = {
+    'Content-type': 'application/json',
+    'Accept': 'application/json',
+  };
 
-      if(response.statusCode == 200){
-        var data = jsonDecode(response.body.toString());
-        print(data["token"]);
-        print("Login successful");
+   void login(String username, password) async {
+    var body =
+    {
+      "username": username,
+      "password": password,
+    };
 
-        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreenMain()));
+    HttpClient httpClient = new HttpClient();
+    HttpClientRequest request = await httpClient.postUrl(
+        Uri.parse("http://hostelhub.herokuapp.com/login/student"));
+    request.headers.set('Content-type', 'application/json');
+    request.add(utf8.encode(json.encode(body)));
+    HttpClientResponse response = await request.close();
+    String reply = await response.transform(utf8.decoder).join();
+    var jsonReply = json.decode(reply);
+    httpClient.close();
 
-      }else{
-        print("Login failed");
-        await ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Check your credentials again",style: TextStyle(fontSize: 25),),
-              backgroundColor: Colors.redAccent,));
-      }
-    }catch(e){
-      print(e.toString());
+    if(response.statusCode == 200){
+      print("Login successful");
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreenMain()));
+    }
+    else{
+      print("Login failed");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Invalid credentials ",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.redAccent,));
     }
   }
 
@@ -97,7 +104,7 @@ class _LoginPageState extends State<LoginPage>{
                                 Container(
                                   decoration: ThemeHelper().inputBoxDecorationShadow(),
                                   child: TextFormField(
-                                    controller: emailController,
+                                    controller: usernameController,
                                     decoration: ThemeHelper().textInputDecoration('User Name', 'Enter your user name'),
                                     validator: (val){
                                       if(val!.isEmpty){
@@ -149,7 +156,7 @@ class _LoginPageState extends State<LoginPage>{
                                       ),
                                     ),
                                     onPressed: () {
-                                      login(emailController.text.toString(), passwordController.text.toString());
+                                      login(usernameController.text.toString(), passwordController.text.toString());
                                       if(_formKey.currentState!.validate()) {
                                         //Navigator.pushReplacement(
                                            // context, MaterialPageRoute(
