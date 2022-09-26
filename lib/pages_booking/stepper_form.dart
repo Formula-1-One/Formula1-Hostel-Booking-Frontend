@@ -19,13 +19,17 @@ class _StepperFormState extends State<StepperForm> {
 
   final firstName = TextEditingController();
   final lastName = TextEditingController();
+  final gender = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
+  final programme = TextEditingController();
   final guardianName = TextEditingController();
   final address = TextEditingController();
   final guardianPhoneNumber = TextEditingController();
   final hostel = TextEditingController();
+  final roomType = TextEditingController();
 
+  final _formKey = GlobalKey<FormState>();
 
   bool isComplete = false;
   int currentStep = 0;
@@ -45,31 +49,43 @@ class _StepperFormState extends State<StepperForm> {
       state: currentStep > 0 ? StepState.complete : StepState.indexed,
       isActive: currentStep >= 0,
       title: const Text("Personal Info"),
-      content: Column(
-        children: <Widget>[
-          TextFormField(
-            controller: firstName,
-            decoration: const InputDecoration(
-                labelText:  " First Name"),
-          ),
-          TextFormField(
-            controller: lastName,
-            decoration: const InputDecoration(
-                labelText: "Last Name(s)"),
-          ),
-          TextFormField(
-            controller: email,
-            decoration: const InputDecoration(
-                labelText: "Email"),
-          ),
-          TextFormField(
-            controller: phoneNumber,
-            decoration: const InputDecoration(
-                labelText: "Phone Number"),
-          )
-        ],
+      content: Form(
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
+            TextFormField(
+              controller: firstName,
+              decoration: const InputDecoration(
+                  labelText:  " First Name"),
+            ),
+            TextFormField(
+              controller: lastName,
+              decoration: const InputDecoration(
+                  labelText: "Last Name(s)"),
+            ),
+            TextFormField(
+              controller: gender,
+              decoration: const InputDecoration(
+                  labelText: "Gender"),
+            ),
+            TextFormField(
+              controller: email,
+              decoration: const InputDecoration(
+                  labelText: "Email"),
+            ),
+            TextFormField(
+              controller: programme,
+              decoration: const InputDecoration(
+                  labelText: "Programme of study"),
+            ),
+            TextFormField(
+              controller: phoneNumber,
+              decoration: const InputDecoration(
+                  labelText: "Phone Number"),
+            )
+          ],
+        ),
       ),
-
     ),
     Step(
       state: currentStep > 1 ? StepState.complete : StepState.indexed,
@@ -112,7 +128,12 @@ class _StepperFormState extends State<StepperForm> {
               Icons.arrow_drop_down_sharp,
               color: Colors.blue,
             ),
-          )
+          ),
+          TextFormField(
+            controller: roomType,
+            decoration: const InputDecoration(
+                labelText:  " Type of room (eg: 4 in 1)"),
+          ),
         ],
       ),
 
@@ -125,11 +146,15 @@ class _StepperFormState extends State<StepperForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text('Name: ${firstName.text}', style: const TextStyle( fontSize: 20),),
+          Text('First Name: ${firstName.text}', style: const TextStyle( fontSize: 20),),
           const SizedBox(height: 25,),
           Text('Last Name(s): ${lastName.text}', style: const TextStyle( fontSize: 20)),
           const SizedBox(height: 25,),
+          Text('Gender: ${gender.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 25,),
           Text('Email: ${email.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 25,),
+          Text('Programme: ${programme.text}', style: const TextStyle( fontSize: 20)),
           const SizedBox(height: 25,),
           Text('Phone Number: ${phoneNumber.text}', style: const TextStyle( fontSize: 20)),
           const SizedBox(height: 25,),
@@ -140,6 +165,9 @@ class _StepperFormState extends State<StepperForm> {
           Text('Guardian Phone Number: ${guardianPhoneNumber.text}', style: const TextStyle( fontSize: 20)),
           const SizedBox(height: 25,),
           Text('Selected Hostel: ${hostel.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 25,),
+          Text('Type of room: ${roomType.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 25,),
         ],
       ),
     )
@@ -203,10 +231,10 @@ class _StepperFormState extends State<StepperForm> {
                 child: ElevatedButton(
                     onPressed: () { Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => PrintPage(
-                            firstName: firstName.text, lastName: lastName.text,email: email.text,
-                            phoneNumber: phoneNumber.text,guardianName: guardianName.text,
+                            firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
+                            programme: programme.text, phoneNumber: phoneNumber.text,guardianName: guardianName.text,
                             address: address.text, guardianPhoneNumber: guardianPhoneNumber.text,
-                            hostel: hostel.text))); },
+                            hostel: hostel.text, roomType: roomType.text))); },
                     child: const Text('PRINT')
                 ),
               ),
