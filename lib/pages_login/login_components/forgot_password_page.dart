@@ -43,6 +43,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       await ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Successful verification",style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.blueAccent,));
+      //Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePasswordPage()));
     }
     else{
       print("Invalid OTP");

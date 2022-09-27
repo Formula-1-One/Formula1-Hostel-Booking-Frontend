@@ -107,9 +107,8 @@ final _house5 = House(
 
 
 List<String> categoryList = [
-  '4500.00 ',
-  'For Sale',
+  '4 in 1',
   '3 in 1',
   '2 in 1',
-  'Modular kitchen'
+  '1 in 1'
 ];

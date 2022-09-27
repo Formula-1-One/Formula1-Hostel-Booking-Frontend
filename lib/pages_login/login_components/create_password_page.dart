@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_import
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +10,6 @@ import '../widget/header_widget.dart';
 import 'package:http/http.dart' as http;
 
 class CreatePasswordPage extends StatefulWidget {
-  //Map<String, dynamic> user;
   const CreatePasswordPage({Key? key}) : super(key: key);
 
   @override
@@ -22,10 +23,6 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
   final TextEditingController _password = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
 
- // initState(){
-   // _password.text = widget.user["password"];
-   // _confirmPassword.text = widget.user["confirmPassword"];
-  //}
 
   @override
   Widget build(BuildContext context) {
@@ -127,15 +124,14 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                               ),
                             ),
                           ),
-                          onPressed: () {
-                            if(_formKey.currentState!.validate()) {
-                              //updatePassword(id: widget.user["id"]);
-                              Navigator.pushReplacement(
-                                  context, MaterialPageRoute(
-                                  builder: (context) =>
-                                  const LoginPage()));
-                            }
-                          },
+                          onPressed: () => newUserCredentials() //{
+                            //if(_formKey.currentState!.validate()) {
+                              //Navigator.pushReplacement(
+                                //  context, MaterialPageRoute(
+                                  //builder: (context) =>
+                                  //const LoginPage()));
+                            //}
+                          //},
                         ),
                       )
                     ],
@@ -148,13 +144,35 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
       ),
     );
   }
-  void updatePassword ({required int id}) async {
-    var url = Uri.parse("https://jsonplaceholder.typicode.com/users/$id");
-    var response = await http.put(url);
-    if(response.statusCode == 200){
-      await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("New Password created successfully",style: TextStyle(fontSize: 25)),
-            backgroundColor: Colors.blue,));
-    }
-  }
+ Future<void> newUserCredentials() async{
+
+   if(_formKey.currentState!.validate()){
+
+   }
+
+   var apiUrl = "";
+   Map mappedData = {
+     'password': _password.text,
+   };
+
+   print("Json Data: ${mappedData}");
+
+   http.Response response = await http.post(Uri.parse(apiUrl), body: mappedData);
+
+   var data = jsonDecode(response.body);
+
+   print("Data: ${data}");
+
+   if(response.statusCode == 200){
+     await ScaffoldMessenger.of(context).showSnackBar(
+         SnackBar(content: Text("Password created successfully",style: TextStyle(fontSize: 25)),
+           backgroundColor: Colors.blue,));
+
+       Navigator.push(
+           context, MaterialPageRoute(
+           builder: (context) =>
+           const LoginPage()));
+   }
+
+ }
 }
