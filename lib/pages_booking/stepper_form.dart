@@ -211,19 +211,20 @@ class _StepperFormState extends State<StepperForm> {
             final isLastStep = currentStep == getSteps().length -1;
             return Row(
               children:  [
+
+                if(currentStep != 0)
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: details.onStepCancel,
+                      child: const Text('BACK'),
+                    ),
+                  ),
+                const SizedBox(width: 30,),
                 if(currentStep != 2)
                 Expanded(
                   child: ElevatedButton(
                     onPressed: details.onStepContinue,
                     child: Text(isLastStep ? 'CONFIRM' : 'NEXT'),
-                  ),
-                ),
-                const SizedBox(width: 30,),
-                if(currentStep != 0)
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: details.onStepCancel,
-                    child: const Text('BACK'),
                   ),
                 ),
                 const SizedBox(width: 30,),

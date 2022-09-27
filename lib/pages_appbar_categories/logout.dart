@@ -1,4 +1,7 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../pages_hostel/screens.home/home_screen_main.dart';
 import 'alert_dialog.dart';
 import 'feed.dart';
@@ -18,11 +21,13 @@ class _LogOUtState extends State<LogOUt> {
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
-          title: const Text("Log out",
-            style: TextStyle(
+          title: Text("Log out",
+            style:GoogleFonts.gothicA1(
+            textStyle:
+            TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-            ),),
+            ),),),
           centerTitle: true,
           leading: IconButton(
             icon: const Icon(Icons.car_rental_outlined),
@@ -133,12 +138,14 @@ class _LogOUtState extends State<LogOUt> {
                     style: TextButton.styleFrom(
                         backgroundColor: Colors.blue.shade400,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    child: const Text("Log out",
-                      style: TextStyle(
+                    child:Text("Log out".toUpperCase(),
+                      style: GoogleFonts.gothicA1(
+                        textStyle:
+                      TextStyle(
                         fontSize: 50,
                         color: Colors.white,
                       ),),
-                  ),
+                  ),)
                 ),
               ],
             ),
