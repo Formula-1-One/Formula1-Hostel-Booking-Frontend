@@ -28,10 +28,6 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                 fontWeight: FontWeight.bold,
               ),),
             centerTitle: true,
-          leading: IconButton(
-            icon: const Icon(Icons.car_rental_outlined),
-            onPressed: (){},
-          ),
           actions: [
             IconButton(onPressed: (){Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const SearchFilter()));},
@@ -58,7 +54,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                 onTap: (){Navigator.push(
                     context,
                   MaterialPageRoute(builder: (context) => const Feed()));},
-                  child: const Tab(icon: Icon(Icons.list_alt), text: "Feed",)),
+                  child: const Tab(icon: Icon(Icons.info), text: "About",)),
               InkWell(
                   onTap: (){Navigator.push(
                       context,

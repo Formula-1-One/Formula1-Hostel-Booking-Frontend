@@ -19,24 +19,16 @@ class _LogOUtState extends State<LogOUt> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.grey[300],
         appBar: AppBar(
           title: Text("Log out",
             style:GoogleFonts.gothicA1(
             textStyle:
             TextStyle(
-              fontSize: 30,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),),),
           centerTitle: true,
-          leading: IconButton(
-            icon: const Icon(Icons.car_rental_outlined),
-            onPressed: (){},
-          ),
-          actions: [
-            IconButton(onPressed: (){},
-                icon: const Icon(Icons.notifications_none))
-          ],
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -61,7 +53,7 @@ class _LogOUtState extends State<LogOUt> {
               InkWell(
                 onTap: (){Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const Feed()));},
-                  child: const Tab(icon: Icon(Icons.list_alt), text: "Feed",)),
+                  child: const Tab(icon: Icon(Icons.info), text: "About",)),
               InkWell(
                   onTap: (){Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LogOUt()));},
@@ -92,7 +84,7 @@ class _LogOUtState extends State<LogOUt> {
                                 'F',
                                 style: TextStyle(
                                   fontSize: 70,
-                                  color: Colors.black,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.w700,
                                   fontStyle: FontStyle.italic,
                                 ),
@@ -101,7 +93,7 @@ class _LogOUtState extends State<LogOUt> {
                                 'ORMULA ',
                                 style: TextStyle(
                                   fontSize: 40,
-                                  color: Colors.black,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.w500,
                                   fontStyle: FontStyle.italic,
                                 ),
@@ -110,7 +102,7 @@ class _LogOUtState extends State<LogOUt> {
                                 '1',
                                 style: TextStyle(
                                   fontSize: 70,
-                                  color: Colors.black,
+                                  color: Colors.blueAccent,
                                   fontWeight: FontWeight.w700,
                                   fontStyle: FontStyle.italic,
                                 ),
@@ -124,7 +116,7 @@ class _LogOUtState extends State<LogOUt> {
                               style:TextStyle(
                                   fontSize: 20.0,
                                   fontStyle: FontStyle.italic,
-                                  color: Colors.black,
+                                  color: Colors.blueAccent,
                               ),
                             ),
                           ),
@@ -138,14 +130,17 @@ class _LogOUtState extends State<LogOUt> {
                     style: TextButton.styleFrom(
                         backgroundColor: Colors.blue.shade400,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                    child:Text("Log out".toUpperCase(),
-                      style: GoogleFonts.gothicA1(
-                        textStyle:
-                      TextStyle(
-                        fontSize: 50,
-                        color: Colors.white,
-                      ),),
-                  ),)
+                    child:Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text("Log out",
+                        style: GoogleFonts.gothicA1(
+                          textStyle:
+                        TextStyle(
+                          fontSize: 50,
+                          color: Colors.white,
+                        ),),
+                  ),
+                    ),)
                 ),
               ],
             ),

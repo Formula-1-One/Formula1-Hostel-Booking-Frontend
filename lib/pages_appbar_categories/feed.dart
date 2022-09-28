@@ -19,20 +19,12 @@ class _FeedState extends State<Feed> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Feed",
+          title: const Text("About",
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),),
           centerTitle: true,
-          leading: IconButton(
-            icon: const Icon(Icons.car_rental_outlined),
-            onPressed: (){},
-          ),
-          actions: [
-            IconButton(onPressed: (){},
-                icon: const Icon(Icons.notifications_none))
-          ],
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -54,7 +46,7 @@ class _FeedState extends State<Feed> {
                   context,
                   MaterialPageRoute(builder: (context) => const HomeScreenMain()));},
                   child: const Tab(icon: Icon(Icons.home), text: "Home",)),
-              const Tab(icon: Icon(Icons.list_alt), text: "Feed",),
+              const Tab(icon: Icon(Icons.info), text: "About",),
               InkWell(
                   onTap: (){Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LogOUt()));},
