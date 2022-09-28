@@ -34,7 +34,6 @@ class AlertDialogs{
                     child:Text("CANCEL",style:GoogleFonts.poppins(
                      textStyle: TextStyle(
                       fontSize: 20,
-                      color: Colors.red
                     ),),)
                 ),
 

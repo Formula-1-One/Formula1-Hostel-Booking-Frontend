@@ -57,7 +57,7 @@ class _OneInOneState extends State<OneInOne> {
                 child: Column(
                   children: [
                     Center(
-                      heightFactor: 6,
+                      heightFactor: 4,
                       child: Row(
                         children: const [
                           Text('Type',
@@ -89,6 +89,24 @@ class _OneInOneState extends State<OneInOne> {
                           ),),
                       ],
                     ),
+                    Center(
+                      heightFactor: 4,
+                      child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text('Price',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                            ),),
+                          SizedBox(width: 50,),
+                          Text('8000 cedis',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                            ),),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ), back: Container(
@@ -105,7 +123,7 @@ class _OneInOneState extends State<OneInOne> {
               child: Column(
                 children: [
                   Center(
-                    heightFactor: 6,
+                    heightFactor: 4,
                     child: Row(
                       children: const [
                         Text('Type',
@@ -136,6 +154,24 @@ class _OneInOneState extends State<OneInOne> {
                           fontSize: 30,
                         ),),
                     ],
+                  ),
+                  Center(
+                    heightFactor: 4,
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Price',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('8000 cedis',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                      ],
+                    ),
                   ),
                 ],
               ),

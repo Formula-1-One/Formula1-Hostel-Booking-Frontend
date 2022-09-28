@@ -54,7 +54,7 @@ class _ThreeInOneState extends State<ThreeInOne> {
                 child: Column(
                   children: [
                     Center(
-                      heightFactor: 6,
+                      heightFactor: 4,
                       child: Row(
                         children: const [
                           Text('Type',
@@ -86,6 +86,24 @@ class _ThreeInOneState extends State<ThreeInOne> {
                           ),),
                       ],
                     ),
+                    Center(
+                      heightFactor: 4,
+                      child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text('Price',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                            ),),
+                          SizedBox(width: 50,),
+                          Text('4800 cedis',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                            ),),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ), back: Container(
@@ -102,7 +120,7 @@ class _ThreeInOneState extends State<ThreeInOne> {
               child: Column(
                 children: [
                   Center(
-                    heightFactor: 6,
+                    heightFactor: 4,
                     child: Row(
                       children: const [
                         Text('Type',
@@ -133,6 +151,24 @@ class _ThreeInOneState extends State<ThreeInOne> {
                           fontSize: 30,
                         ),),
                     ],
+                  ),
+                  Center(
+                    heightFactor: 4,
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Price',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('4800 cedis',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                      ],
+                    ),
                   ),
                 ],
               ),
