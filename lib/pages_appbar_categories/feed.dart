@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/logout.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 
@@ -55,6 +56,27 @@ class _FeedState extends State<Feed> {
           ),
         ),
 
+          body: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.blue,
+                  child: Text('F 1',
+                      style:GoogleFonts.lobster(
+                        textStyle:
+                        TextStyle(
+                            fontSize: 40,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic
+
+                        ),)),
+                  radius: 40,
+                ),
+              ],
+            ),
+          ),
       ),
     );
   }
