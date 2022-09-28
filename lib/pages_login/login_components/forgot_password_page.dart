@@ -43,7 +43,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       await ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Successful verification",style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.blueAccent,));
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePasswordPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePasswordPage()));
     }
     else{
       print("Invalid OTP");
@@ -150,10 +150,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                               prefixIcon: const Icon(Icons.domain_verification),
                               hintText: 'Enter Verification Code',
                               labelText: 'Verification',
-                              suffixIcon: TextButton(
-                                child: const Text('Verify'),
-                                onPressed: ()=> verifyOtp(),
-                              )
+                             // suffixIcon: TextButton(
+                               // child: const Text('Verify'),
+                                //onPressed: ()=> verifyOtp(),
+                              //)
                           ),
                           validator: (val){
                             if(val!.isEmpty){
@@ -185,15 +185,14 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 style: ThemeHelper().buttonStyle(),
                 onPressed: () => {
                   if(_formKey.currentState!.validate()){
-
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const CreatePasswordPage()))
+                    verifyOtp(),
                   }
                   },
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
                       40, 10, 40, 10),
                   child: Text(
-                    "Next".toUpperCase(),
+                    "Verify".toUpperCase(),
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

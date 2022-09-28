@@ -29,12 +29,7 @@ class _LoginPageState extends State<LoginPage>{
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  
-  
-  static const Map<String, String> header = {
-    'Content-type': 'application/json',
-    'Accept': 'application/json',
-  };
+
 
    void login(String username, password) async {
     var body =
@@ -50,14 +45,17 @@ class _LoginPageState extends State<LoginPage>{
     request.add(utf8.encode(json.encode(body)));
     HttpClientResponse response = await request.close();
     String reply = await response.transform(utf8.decoder).join();
-    var jsonReply = json.decode(reply);
+    var data = json.decode(reply);
     httpClient.close();
 
     if(response.statusCode == 200){
+      print(data);
+      print(response.statusCode);
       print("Login successful");
       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreenMain()));
     }
     else{
+      print(response.statusCode);
       print("Login failed");
       await ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Invalid credentials ",style: TextStyle(fontSize: 25),),
@@ -159,9 +157,9 @@ class _LoginPageState extends State<LoginPage>{
                                       login(usernameController.text.toString(), passwordController.text.toString());
                                       if(_formKey.currentState!.validate()) {
                                         //Navigator.pushReplacement(
-                                           // context, MaterialPageRoute(
-                                           // builder: (context) =>
-                                              //  const HomeScreenMain()));
+                                            //context, MaterialPageRoute(
+                                            //builder: (context) =>
+                                               // const HomeScreenMain()));
                                       }
                                     },
                                 ),
