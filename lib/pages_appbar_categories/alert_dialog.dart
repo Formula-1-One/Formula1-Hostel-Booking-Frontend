@@ -15,27 +15,28 @@ class AlertDialogs{
         barrierDismissible: false,
         builder: (BuildContext context){
       return AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title:  Text("Formula 1", style:GoogleFonts.poppins(
+            textStyle: TextStyle(
+            fontSize: 20,
+          ),),),
           content:Text("Are you sure you want to log out? ", style:GoogleFonts.poppins(
           textStyle:
           TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.bold,
           ),),),
           actions: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(width: 120),
                 GestureDetector(
                     onTap: () => {Navigator.of(context).pop(DialogAction.cancel)},
                     child:Text("CANCEL",style:GoogleFonts.poppins(
                      textStyle: TextStyle(
-                      fontSize: 15,
-                      color: Colors.red
+                      fontSize: 20,
                     ),),)
                 ),
-                SizedBox(width: 30,),
+
                 GestureDetector(
                     onTap: () => {Navigator.of(context).pop(DialogAction.yes)},
                     child: InkWell(
@@ -44,7 +45,7 @@ class AlertDialogs{
                       child:Text("LOG OUT",style: GoogleFonts.poppins(
                         textStyle:
                       TextStyle(
-                          fontSize: 15,
+                          fontSize: 20,
                           color: Colors.red
                       ),),)
                     ))

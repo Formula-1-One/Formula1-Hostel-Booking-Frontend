@@ -1,13 +1,9 @@
 // ignore_for_file: unnecessary_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
-
 import '../pages_login/common_for_login/theme_helper.dart';
 
 class FourInOne extends StatefulWidget {
@@ -19,51 +15,6 @@ class FourInOne extends StatefulWidget {
 
 class _FourInOneState extends State<FourInOne> {
 
-
-  TextEditingController room_type_id = TextEditingController();
-  TextEditingController reference_number = TextEditingController();
-
-
-  static const Map<String, String> header = {
-    'Content-type': 'application/json',
-    'Accept': 'application/json',
-  };
-
-  void Booking(int room_type_id, String reference_number) async {
-    var body =
-    {
-      "room_type_id": room_type_id,
-      "reference_number": reference_number,
-    };
-
-    HttpClient httpClient = new HttpClient();
-    HttpClientRequest request = await httpClient.postUrl(
-        Uri.parse("http://hostelhub.herokuapp.com/booking"));
-    request.headers.set('Content-type', 'application/json');
-    request.add(utf8.encode(json.encode(body)));
-    HttpClientResponse response = await request.close();
-    String reply = await response.transform(utf8.decoder).join();
-    var data = json.decode(reply);
-    httpClient.close();
-
-    if(response.statusCode == 200){
-      print(response.statusCode);
-      print("Booking successful");
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const StepperForm()));
-
-      await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Booking successful ",style: TextStyle(fontSize: 25),),
-            backgroundColor: Colors.blueAccent,));
-
-    }
-    else{
-      print(response.statusCode);
-      print("Booking failed");
-      await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Booking failed ",style: TextStyle(fontSize: 25),),
-            backgroundColor: Colors.redAccent,));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +61,7 @@ class _FourInOneState extends State<FourInOne> {
               child: Column(
                 children: [
                   Center(
-                    heightFactor: 6,
+                    heightFactor: 4,
                     child: Row(
                       children: const [
                         Text('Type',
@@ -135,12 +86,30 @@ class _FourInOneState extends State<FourInOne> {
                           fontSize: 30,
                         ),),
                       SizedBox(width: 50,),
-                      Text('45',
+                      Text('20',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                         ),),
                     ],
+                  ),
+                  Center(
+                    heightFactor: 4,
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Price',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('4000 cedis',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -158,7 +127,7 @@ class _FourInOneState extends State<FourInOne> {
               child: Column(
                 children: [
                   Center(
-                    heightFactor: 6,
+                    heightFactor: 4,
                     child: Row(
                       children: const [
                         Text('Type',
@@ -190,6 +159,24 @@ class _FourInOneState extends State<FourInOne> {
                         ),),
                     ],
                   ),
+                  Center(
+                    heightFactor: 4,
+                    child: Row(crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('Price',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                        SizedBox(width: 50,),
+                        Text('4000 cedis',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                          ),),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -209,7 +196,7 @@ class _FourInOneState extends State<FourInOne> {
                   ),
                 ),
                 onPressed: () {
-                  Booking(room_type_id.text.hashCode, reference_number.text.toString());
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => StepperForm()));
                   }
               ),
             ),

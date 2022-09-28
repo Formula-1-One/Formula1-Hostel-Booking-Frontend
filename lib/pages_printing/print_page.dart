@@ -11,13 +11,13 @@ import 'package:printing/printing.dart';
 
 class PrintPage extends StatelessWidget {
 
-  late String firstName,lastName,gender,email, programme, phoneNumber,guardianName,address,
-      guardianPhoneNumber, hostel, roomType;
+  late String firstName,lastName,gender,email, programme, phoneNumber, reference_number, guardianName,
+      guardianPhoneNumber, hostel, roomType, room_type_id;
 
   PrintPage ({required this.firstName, required this.lastName,required this.gender,
-    required this.email, required this.programme, required this.phoneNumber,
-    required this.guardianName,required this.address,required this.guardianPhoneNumber,
-    required this.hostel, required this.roomType});
+    required this.email, required this.programme, required this.phoneNumber, required this.reference_number,
+    required this.guardianName,required this.guardianPhoneNumber,
+    required this.hostel, required this.roomType, required this.room_type_id});
 
    Future<void> _createPdf() async {
     final doc = pw.Document();
@@ -47,17 +47,21 @@ class PrintPage extends StatelessWidget {
                     pw.SizedBox(height: 15,),
                     pw.Text('Phone Number :  ${phoneNumber} ', style:  pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
-                    pw.Text('Guardian Name : ${guardianName}', style:  pw.TextStyle( fontSize: 20)),
+                    pw.Text('Phone Number :  ${reference_number} ', style:  pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
-                    pw.Text('Guardian Address : ${address}', style:  pw.TextStyle( fontSize: 20)),
+                    pw.Text('Guardian Name : ${guardianName}', style:  pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
                     pw.Text('Guardian Phone Number : ${guardianPhoneNumber} ', style:  pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
                     pw.Text('Selected Hostel : ${hostel}', style:  pw.TextStyle( fontSize: 20)),
                     pw.SizedBox( height: 15,),
                     pw.Text('Type of room : ${roomType}', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox( height: 50,),
-                    pw.Text('Formula One Hostel Booking ', style:  pw.TextStyle(fontSize: 20, fontWeight:  pw.FontWeight.bold),),
+                    pw.SizedBox( height: 15,),
+                    pw.Text('Room id : ${room_type_id}', style:  pw.TextStyle( fontSize: 20)),
+                    pw.SizedBox( height: 30,),
+                    pw.Text('Make payment at ANY BRANCH OF GHANA COMMERCIAL BANK\n'
+                            ' into this bank account (40100112309748).    ',
+                      style:  pw.TextStyle(fontSize: 30, fontWeight:  pw.FontWeight.bold),),
 
                   ]
               ),
@@ -106,31 +110,31 @@ class PrintPage extends StatelessWidget {
                     const SizedBox(height: 30,),
                     const Text('Kindly come along with this\nform to the hostel',
                       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('First Name: ${firstName}', style: const TextStyle( fontSize: 20),),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('Last Name(s): ${lastName}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('Last Name(s): ${gender}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('Email: ${email}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('Programme: ${programme}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('Phone Number: ${phoneNumber}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
+                    Text('Phone Number: ${reference_number}', style: const TextStyle( fontSize: 20)),
+                    const SizedBox(height: 20,),
                     Text('Guardian Name: ${guardianName}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
-                    Text('Guardian Address: ${address}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('Guardian Phone Number: ${guardianPhoneNumber}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 25,),
+                    const SizedBox(height: 20,),
                     Text('Selected Hostel: ${hostel}', style: const TextStyle( fontSize: 20)),
                     const SizedBox( height: 20,),
                     Text('Type of room: ${roomType}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 50,),
-                    const Text('Formula One Hostel Booking '),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 20,),
+                    Text('Room id: ${room_type_id}', style: const TextStyle( fontSize: 20)),
+                    const SizedBox(height: 40,),
                     Padding(
                       padding: const EdgeInsets.only(left: 120),
                       child: ElevatedButton(
