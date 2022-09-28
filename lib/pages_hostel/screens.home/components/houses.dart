@@ -4,6 +4,7 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/data/data.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/data/data_home.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/model/house.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/details_screen.dart';
+import 'package:like_button/like_button.dart';
 
 class Houses extends StatefulWidget {
   const Houses({Key? key}) : super(key: key);
@@ -56,22 +57,9 @@ class _HousesState extends State<Houses> {
                         color: white,
                         borderRadius: BorderRadius.circular(15)
                       ),
-                      child: IconButton(
-                        icon: house.isFav ? 
-                        const Icon(
-                          Icons.favorite_rounded,
-                          color: red,
-                        ):
-                        const Icon(
-                          Icons.favorite_border_rounded,
-                          color: black,
-                        ),
-                        onPressed: (){
-                          setState(() {
-                            house.isFav =! house.isFav;
-                          });
-                        },
-                      ),
+                      child: LikeButton(
+                        size: 40,
+                      )
                     ),
                   ),
                 ],

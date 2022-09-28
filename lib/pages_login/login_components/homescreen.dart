@@ -1,9 +1,9 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, prefer_const_constructors
 
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages_main_screen/mainScreen.dart';
+import 'package:hostel_booking_app_ui_f1/welcomeScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Timer(const Duration(milliseconds: 2000), (){
       setState(() {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const MainScreen()), (route) => false);
+            MaterialPageRoute(builder: (context) => MainScreen()), (route) => false);
       });
     });
 

@@ -5,7 +5,7 @@ import '../model/house.dart';
 final _house1 = House(
   imageUrl: 'assets/images/house1.JPG',
   address: 'Cassandra Hostel',
-  description: 'Hostel is a superior building meant for accommodating 100 or more students temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was in drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
+  description: 'Hostel is a superior building meant for accommodating 100 or more students temporarily for at least a year. Students are charged according to the nature & period of accommodation. Hotel provides both lodging (temporary habitation) & boarding facilities. This particular hostel was built in 2010 by the government of Ghana to aid accommodate students since they realized the population of the university was increasing drastically. Most great noble men in country were once here. We wish to offer you the best of services all the time, this has being the success of this wonderful hostel and for that matter many students always opt to accommodated here.',
   isFav: false,
   moreImagesUrl: [
     'assets/images/house1.JPG',
@@ -107,9 +107,8 @@ final _house5 = House(
 
 
 List<String> categoryList = [
-  '4500.00 ',
-  'For Sale',
+  '4 in 1',
   '3 in 1',
   '2 in 1',
-  'Modular kitchen'
+  '1 in 1'
 ];

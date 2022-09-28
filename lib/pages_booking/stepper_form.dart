@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_printing/print_page.dart';
+import 'package:http/http.dart' as http;
 
 class StepperForm extends StatefulWidget {
   const StepperForm({Key? key}) : super(key: key);
@@ -11,24 +15,61 @@ class StepperForm extends StatefulWidget {
 
 class _StepperFormState extends State<StepperForm> {
 
+  void Booking(int room_type_id, String reference_number) async {
+    var body =
+    {
+      "room_type_id": 1,
+      "reference_number": reference_number,
+    };
+
+    HttpClient httpClient = new HttpClient();
+    HttpClientRequest request = await httpClient.postUrl(
+        Uri.parse("http://hostelhub.herokuapp.com/booking"));
+    request.headers.set('Content-type', 'application/json');
+    request.add(utf8.encode(json.encode(body)));
+    HttpClientResponse response = await request.close();
+    String reply = await response.transform(utf8.decoder).join();
+    var data = json.decode(reply);
+    httpClient.close();
+
+    if(response.statusCode == 200){
+      print(data);
+      print(response.statusCode);
+      print("Booking successful, you have maximum of 3 days from now to make payment ");
+    }
+    else {
+      print(response.statusCode);
+      print("Booking failed");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Booking fail",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.redAccent,));
+    }
+  }
+
   _StepperFormState(){
     _selectedVal = items[0];
   }
 
-  final surName = TextEditingController();
-  final otherName = TextEditingController();
+
+
+  final firstName = TextEditingController();
+  final lastName = TextEditingController();
+  final gender = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
+  final programme = TextEditingController();
+  final reference_number = TextEditingController();
+  final room_type_id = TextEditingController();
   final guardianName = TextEditingController();
-  final address = TextEditingController();
   final guardianPhoneNumber = TextEditingController();
   final hostel = TextEditingController();
+  final roomType = TextEditingController();
 
 
   bool isComplete = false;
   int currentStep = 0;
 
-  final items = ['Luxury Hostel','Elite Hostel','Cassandra Hostel','Lion Hostel','Unity Hostel'];
+  final items = ['none','Luxury Hostel','Elite Hostel','Cassandra Hostel','Lion Hostel','Unity Hostel'];
   String ? _selectedVal = '';
 
   DropdownMenuItem<String>buildMenuItem(String item) =>
@@ -46,28 +87,42 @@ class _StepperFormState extends State<StepperForm> {
       content: Column(
         children: <Widget>[
           TextFormField(
-            controller: surName,
+            controller: firstName,
             decoration: const InputDecoration(
-                labelText:  " Surname"),
+                labelText:  " First Name"),
           ),
           TextFormField(
-            controller: otherName,
+            controller: lastName,
             decoration: const InputDecoration(
-                labelText: "Other Name(s)"),
+                labelText: "Last Name(s)"),
           ),
+          TextFormField(
+            controller: gender,
+            decoration: const InputDecoration(
+                labelText: "Gender"),
+                      ),
           TextFormField(
             controller: email,
             decoration: const InputDecoration(
                 labelText: "Email"),
           ),
           TextFormField(
+            controller: programme,
+            decoration: const InputDecoration(
+                labelText: "Programme of study"),
+          ),
+          TextFormField(
             controller: phoneNumber,
             decoration: const InputDecoration(
                 labelText: "Phone Number"),
+          ),
+          TextFormField(
+            controller: reference_number,
+            decoration: const InputDecoration(
+                labelText: "Reference Number"),
           )
         ],
       ),
-
     ),
     Step(
       state: currentStep > 1 ? StepState.complete : StepState.indexed,
@@ -81,15 +136,11 @@ class _StepperFormState extends State<StepperForm> {
                 labelText: "Guardian's Name"),
           ),
           TextFormField(
-            controller: address,
-            decoration: const InputDecoration(
-                labelText: "Guardian's address"),
-          ),
-          TextFormField(
             controller: guardianPhoneNumber,
             decoration: const InputDecoration(
                 labelText: "Guardian's Phone Number"),
-          ),TextFormField(
+          ),
+          TextFormField(
             controller: hostel,
             decoration: const InputDecoration(
                 labelText: "Type in the name of preferred hostel"),
@@ -110,7 +161,17 @@ class _StepperFormState extends State<StepperForm> {
               Icons.arrow_drop_down_sharp,
               color: Colors.blue,
             ),
-          )
+          ),
+          TextFormField(
+            controller: roomType,
+            decoration: const InputDecoration(
+                labelText:  " Type of room (eg: 4 in 1)"),
+          ),
+          TextFormField(
+            controller: room_type_id,
+            decoration: const InputDecoration(
+                labelText:  " Type in a number (between 1 - 5)"),
+          ),
         ],
       ),
 
@@ -123,21 +184,30 @@ class _StepperFormState extends State<StepperForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text('Name: ${surName.text}', style: const TextStyle( fontSize: 20),),
-          const SizedBox(height: 25,),
-          Text('Last Name(s): ${otherName.text}', style: const TextStyle( fontSize: 20)),
-          const SizedBox(height: 25,),
+          Text('First Name: ${firstName.text}', style: const TextStyle( fontSize: 20),),
+          const SizedBox(height: 15,),
+          Text('Last Name: ${lastName.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 15,),
+          Text('Gender: ${gender.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 15,),
           Text('Email: ${email.text}', style: const TextStyle( fontSize: 20)),
-          const SizedBox(height: 25,),
+          const SizedBox(height: 15,),
+          Text('Programme: ${programme.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 15,),
           Text('Phone Number: ${phoneNumber.text}', style: const TextStyle( fontSize: 20)),
-          const SizedBox(height: 25,),
+          const SizedBox(height: 15,),
+          Text('Reference Number: ${reference_number.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 15,),
           Text('Guardian Name: ${guardianName.text}', style: const TextStyle( fontSize: 20)),
-          const SizedBox(height: 25,),
-          Text('Guardian Address: ${address.text}', style: const TextStyle( fontSize: 20)),
-          const SizedBox(height: 25,),
+          const SizedBox(height: 15,),
           Text('Guardian Phone Number: ${guardianPhoneNumber.text}', style: const TextStyle( fontSize: 20)),
-          const SizedBox(height: 25,),
+          const SizedBox(height: 15,),
           Text('Selected Hostel: ${hostel.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 15,),
+          Text('Type of room: ${roomType.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 15,),
+          Text('Room id : ${room_type_id.text}', style: const TextStyle( fontSize: 20)),
+          const SizedBox(height: 15,),
         ],
       ),
     )
@@ -146,71 +216,83 @@ class _StepperFormState extends State<StepperForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kindly fill the form and print it out', style: TextStyle( fontSize: 20)),
+        title: const Text('Kindly fill this form completely and print it out', style: TextStyle( fontSize: 20)),
       ),
-      body: Stepper(
-        type: StepperType.vertical,
-        steps: getSteps(),
-        currentStep: currentStep,
-        onStepContinue: (){
-          final isLastStep = currentStep == getSteps().length -1;
-          if(isLastStep){
-            setState(() => isComplete = true);
-          }
+      body: SingleChildScrollView(
+        child: Stepper(
+          type: StepperType.vertical,
+          steps: getSteps(),
+          currentStep: currentStep,
+          onStepContinue: (){
+            final isLastStep = currentStep == getSteps().length -1;
+            if(isLastStep){
+              setState(() => isComplete = true);
+            }
 
-          if(currentStep <(getSteps().length - 1)){
-            currentStep += 1;
-          }
-          setState(() {
+            if(currentStep <(getSteps().length - 1)){
+              currentStep += 1;
+            }
+            setState(() {
 
-          });
-        },
-        onStepTapped: (step) => setState(() => currentStep = step),
-        onStepCancel: (){
-          if(currentStep == 0){
-            return;
-          }
-          currentStep -= 1;
-          setState(() {
+            });
+          },
+          onStepTapped: (step) => setState(() => currentStep = step),
+          onStepCancel: (){
+            if(currentStep == 0){
+              return;
+            }
+            currentStep -= 1;
+            setState(() {
 
-          });
-        },
-        controlsBuilder:
-            (BuildContext context, ControlsDetails details) {
-          final isLastStep = currentStep == getSteps().length -1;
-          return Row(
-            children:  [
-              if(currentStep != 2)
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: details.onStepContinue,
-                  child: Text(isLastStep ? 'CONFIRM' : 'NEXT'),
+            });
+          },
+          controlsBuilder:
+              (BuildContext context, ControlsDetails details) {
+            final isLastStep = currentStep == getSteps().length -1;
+            return Row(
+              children:  [
+
+                if(currentStep != 0)
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: details.onStepCancel,
+                      child: const Text('BACK'),
+                    ),
+                  ),
+                const SizedBox(width: 30,),
+                if(currentStep != 2)
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: details.onStepContinue,
+                    child: Text(isLastStep ? 'CONFIRM' : 'NEXT'),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 30,),
-              if(currentStep != 0)
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: details.onStepCancel,
-                  child: const Text('BACK'),
+                const SizedBox(width: 30,),
+                if(currentStep != 0 && currentStep != 1)
+                Expanded(
+                  child: ElevatedButton(
+                      onPressed: () => Booking(room_type_id.text.length, reference_number.text.toString()),
+                      child: const Text('Confirm Booking')
+                  ),
                 ),
-              ),
-              const SizedBox(width: 30,),
-              if(currentStep != 0 && currentStep != 1)
-              Expanded(
-                child: ElevatedButton(
-                    onPressed: () { Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => PrintPage(
-                            surName: surName.text, otherName: otherName.text,email: email.text,
-                            phoneNumber: phoneNumber.text,guardianName: guardianName.text,
-                            address: address.text, guardianPhoneNumber: guardianPhoneNumber.text,
-                            hostel: hostel.text))); },
-                    child: const Text('PRINT')
+                const SizedBox(width: 30,),
+                if(currentStep != 0 && currentStep != 1)
+                Expanded(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => PrintPage(
+                                firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
+                                programme: programme.text, phoneNumber: phoneNumber.text, reference_number: reference_number.text,
+                                room_type_id: room_type_id.text,guardianName: guardianName.text, guardianPhoneNumber: guardianPhoneNumber.text,
+                                hostel: hostel.text, roomType: roomType.text))); },
+                      child: const Text('PRINT')
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
+              ],
+            );
+          },
+        ),
       ),
     );
   }
