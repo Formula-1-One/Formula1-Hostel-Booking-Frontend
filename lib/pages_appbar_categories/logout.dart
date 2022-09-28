@@ -128,7 +128,7 @@ class _LogOUtState extends State<LogOUt> {
                     final action = await AlertDialogs.yesCancelDialog(context, 'Logout', 'are you sure ? ');
                   },
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.blue.shade400,
+                        backgroundColor: Colors.blueAccent,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
                     child:Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -136,7 +136,7 @@ class _LogOUtState extends State<LogOUt> {
                         style: GoogleFonts.gothicA1(
                           textStyle:
                         TextStyle(
-                          fontSize: 50,
+                          fontSize: 40,
                           color: Colors.white,
                         ),),
                   ),
