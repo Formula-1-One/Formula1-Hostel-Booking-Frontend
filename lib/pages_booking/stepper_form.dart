@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_printing/print_page.dart';
-import 'package:http/http.dart' as http;
 
 class StepperForm extends StatefulWidget {
   const StepperForm({Key? key}) : super(key: key);
@@ -39,9 +38,9 @@ class _StepperFormState extends State<StepperForm> {
     }
     else {
       print(response.statusCode);
-      print("Booking failed");
+      print("You have already booked. Go and make payment");
       await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Booking fail",style: TextStyle(fontSize: 25),),
+          SnackBar(content: Text("You have already booked. Go and make payment",style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.redAccent,));
     }
   }
