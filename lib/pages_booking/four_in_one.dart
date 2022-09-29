@@ -86,7 +86,7 @@ class _FourInOneState extends State<FourInOne> {
                           fontSize: 30,
                         ),),
                       SizedBox(width: 50,),
-                      Text('20',
+                      Text('30',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,

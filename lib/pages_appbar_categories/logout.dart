@@ -29,6 +29,7 @@ class _LogOUtState extends State<LogOUt> {
               fontWeight: FontWeight.bold,
             ),),),
           centerTitle: true,
+          automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -73,54 +74,11 @@ class _LogOUtState extends State<LogOUt> {
                     Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
                             child: Image.asset('assets/images/F1-LOGO.png',
                               scale: 5,),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                'F',
-                                style: TextStyle(
-                                  fontSize: 70,
-                                  color: Colors.blueAccent,
-                                  fontWeight: FontWeight.w700,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                              Text(
-                                'ORMULA ',
-                                style: TextStyle(
-                                  fontSize: 40,
-                                  color: Colors.blueAccent,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                              Text(
-                                '1',
-                                style: TextStyle(
-                                  fontSize: 70,
-                                  color: Colors.blueAccent,
-                                  fontWeight: FontWeight.w700,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              )
-                            ],
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
-                            child: Text(
-                              'HOSTEL BOOKING ',
-                              style:TextStyle(
-                                  fontSize: 20.0,
-                                  fontStyle: FontStyle.italic,
-                                  color: Colors.blueAccent,
-                              ),
-                            ),
-                          ),
-                        ]),
+
                   ],
                 ),
                 Center(
@@ -147,7 +105,7 @@ class _LogOUtState extends State<LogOUt> {
 
           ],
         ),
-      ),
+    ])),
     );
   }
 }
