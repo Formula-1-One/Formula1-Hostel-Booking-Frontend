@@ -32,7 +32,7 @@ class _SearchFilterState extends State<SearchFilter> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Welcome",
@@ -41,10 +41,7 @@ class _SearchFilterState extends State<SearchFilter> {
               fontWeight: FontWeight.bold,
             ),),
           centerTitle: true,
-          leading: IconButton(
-            icon: const Icon(Icons.car_rental_outlined),
-            onPressed: (){},
-          ),
+         automaticallyImplyLeading: false,
           actions: [
             IconButton(onPressed: (){},
                 icon: const Icon(Icons.search_outlined))
@@ -70,7 +67,6 @@ class _SearchFilterState extends State<SearchFilter> {
                       context,
                       MaterialPageRoute(builder: (context) => const HomeScreenMain()));},
                   child: const Tab(icon: Icon(Icons.home), text: "Home",)),
-              const Tab(icon: Icon(Icons.list_alt), text: "Feed",),
               InkWell(
                   onTap: (){Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const LogOUt()));},
