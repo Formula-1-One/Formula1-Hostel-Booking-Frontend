@@ -47,28 +47,28 @@ class _HouseDetailsState extends State<HouseDetails> {
                       Row(
                           children: const [
                          Text(
-                          'Best of accommodation',
+                          'Ratings',
                           style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(width: 15,),
                            Icon(Icons.star,
-                             color: Colors.orange,
+                             color: Colors.deepOrangeAccent,
                              size: 30,
                            ),
                             Icon(Icons.star,
-                              color: Colors.orange,
-                              size: 25,
+                              color: Colors.deepOrangeAccent,
+                              size: 30,
                             ),
                             Icon(Icons.star,
-                              color: Colors.orange,
-                              size: 25,
+                              color: Colors.deepOrangeAccent,
+                              size: 30,
                             ),
                             Icon(Icons.star,
-                              color: Colors.orange,
-                              size: 25,
+                              color: Colors.deepOrangeAccent,
+                              size: 30,
                             )
                         ]
                       ),
