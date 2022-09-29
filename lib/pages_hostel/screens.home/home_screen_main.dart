@@ -28,6 +28,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                 fontWeight: FontWeight.bold,
               ),),
             centerTitle: true,
+          automaticallyImplyLeading: false,
           actions: [
             IconButton(onPressed: (){Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const SearchFilter()));},

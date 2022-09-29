@@ -29,6 +29,7 @@ class _LogOUtState extends State<LogOUt> {
               fontWeight: FontWeight.bold,
             ),),),
           centerTitle: true,
+          automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
