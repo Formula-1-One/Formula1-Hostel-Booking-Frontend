@@ -46,8 +46,6 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
             ),
           ),
           bottom: TabBar(
-            indicatorColor: Colors.white,
-            indicatorWeight: 5,
             // isScrollable: true,
             tabs: [
               const Tab(icon: Icon(Icons.home), text: "Home",),

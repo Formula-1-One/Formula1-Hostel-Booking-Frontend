@@ -41,9 +41,9 @@ class _StepperFormState extends State<StepperForm> {
     }
     else {
       print(response.statusCode);
-      print("You have already booked. Go and make payment");
+      print("You have already booked. Kindly go and make payment");
       await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("You have already booked. Go and make payment",style: TextStyle(fontSize: 25),),
+          SnackBar(content: Text("You have already booked. Kindly go and make payment",style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.blueAccent,));
     }
   }
