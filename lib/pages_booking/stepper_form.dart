@@ -15,10 +15,10 @@ class StepperForm extends StatefulWidget {
 
 class _StepperFormState extends State<StepperForm> {
 
-  void Booking(int room_type_id, String reference_number) async {
+  void Booking(String room_type_id, reference_number) async {
     var body =
     {
-      "room_type_id": 1,
+      "room_type_id": room_type_id,
       "reference_number": reference_number,
     };
 
@@ -271,7 +271,7 @@ class _StepperFormState extends State<StepperForm> {
                 if(currentStep != 0 && currentStep != 1)
                 Expanded(
                   child: ElevatedButton(
-                      onPressed: () => Booking(room_type_id.text.length, reference_number.text.toString()),
+                      onPressed: () => Booking(room_type_id.text, reference_number.text.toString()),
                       child: const Text('Confirm Booking')
                   ),
                 ),
