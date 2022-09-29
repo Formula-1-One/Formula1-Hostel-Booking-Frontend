@@ -25,6 +25,7 @@ class _FeedState extends State<Feed> {
               fontWeight: FontWeight.bold,
             ),),
           centerTitle: true,
+          automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
