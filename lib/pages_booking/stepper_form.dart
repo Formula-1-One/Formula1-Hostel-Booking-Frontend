@@ -35,13 +35,16 @@ class _StepperFormState extends State<StepperForm> {
       print(data);
       print(response.statusCode);
       print("Booking successful, you have maximum of 3 days from now to make payment ");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Booking successful, you have maximum of 3 days from now to make payment ",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.blueAccent,));
     }
     else {
       print(response.statusCode);
       print("You have already booked. Go and make payment");
       await ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("You have already booked. Go and make payment",style: TextStyle(fontSize: 25),),
-            backgroundColor: Colors.redAccent,));
+            backgroundColor: Colors.blueAccent,));
     }
   }
 
