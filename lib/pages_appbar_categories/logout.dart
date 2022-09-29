@@ -42,8 +42,6 @@ class _LogOUtState extends State<LogOUt> {
             ),
           ),
           bottom: TabBar(
-            indicatorColor: Colors.white,
-            indicatorWeight: 5,
             // isScrollable: true,
             tabs: [
               InkWell(

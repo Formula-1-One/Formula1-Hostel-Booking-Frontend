@@ -83,8 +83,6 @@ class _FeedState extends State<Feed> {
             ),
           ),
           bottom: TabBar(
-            indicatorColor: Colors.white,
-            indicatorWeight: 5,
             // isScrollable: true,
             tabs: [
               InkWell(

@@ -38,8 +38,8 @@ class _OneInOneState extends State<OneInOne> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Click on the card to switch between gender",
-              style: TextStyle(fontSize: 22),),
+            const Text("Click card to select gender",
+              style: TextStyle(fontSize: 25),),
             const SizedBox(height: 20,),
             FlipCard(
               front: Container(
