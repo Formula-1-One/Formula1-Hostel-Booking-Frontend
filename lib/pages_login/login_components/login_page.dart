@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage>{
     httpClient.close();
 
     if(response.statusCode == 200){
-      print(data["data"]["student_profile"]);
+      print(data["data"]["student_profile"]["reference_number"]);
       print(response.statusCode);
       print("Login successful");
       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreenMain()));
