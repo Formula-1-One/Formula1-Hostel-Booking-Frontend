@@ -1,10 +1,11 @@
-// ignore_for_file: unnecessary_import, prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: unnecessary_import, prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_import
 
 
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/tabView.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
@@ -52,7 +53,7 @@ class _LoginPageState extends State<LoginPage>{
       print(data["data"]["student_profile"]);
       print(response.statusCode);
       print("Login successful");
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreenMain()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Tabs()));
     }
     else{
       print(response.statusCode);
