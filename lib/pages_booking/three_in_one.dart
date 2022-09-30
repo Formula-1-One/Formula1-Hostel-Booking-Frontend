@@ -96,7 +96,7 @@ class _ThreeInOneState extends State<ThreeInOne> {
                               fontSize: 30,
                             ),),
                           SizedBox(width: 50,),
-                          Text('4800 cedis',
+                          Text('GHS 4800',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -162,7 +162,7 @@ class _ThreeInOneState extends State<ThreeInOne> {
                             fontSize: 30,
                           ),),
                         SizedBox(width: 50,),
-                        Text('4800 cedis',
+                        Text('GHS 4800',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,

@@ -38,6 +38,13 @@ class _StepperFormState extends State<StepperForm> {
       await ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Booking successful, you have maximum of 3 days from now to make payment ",style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.blueAccent,));
+
+      Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => PrintPage(
+              firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
+              programme: programme.text, phoneNumber: phoneNumber.text
+              ,guardianName: guardianName.text, guardianPhoneNumber: guardianPhoneNumber.text,
+              hostel: hostel.text, roomType: roomType.text)));
     }
     else {
       print(response.statusCode);
@@ -277,20 +284,20 @@ class _StepperFormState extends State<StepperForm> {
                       child: const Text('Confirm Booking')
                   ),
                 ),
-                const SizedBox(width: 30,),
-                if(currentStep != 0 && currentStep != 1)
-                Expanded(
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => PrintPage(
-                                firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
-                                programme: programme.text, phoneNumber: phoneNumber.text, reference_number: reference_number.text,
-                                room_type_id: room_type_id.text,guardianName: guardianName.text, guardianPhoneNumber: guardianPhoneNumber.text,
-                                hostel: hostel.text, roomType: roomType.text))); },
-                      child: const Text('PRINT')
-                  ),
-                ),
+                //const SizedBox(width: 30,),
+                //if(currentStep != 0 && currentStep != 1)
+                //Expanded(
+                  //child: ElevatedButton(
+                     // onPressed: () {
+                       // Navigator.of(context).push(
+                           // MaterialPageRoute(builder: (context) => PrintPage(
+                               // firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
+                               // programme: programme.text, phoneNumber: phoneNumber.text, reference_number: reference_number.text,
+                               // room_type_id: room_type_id.text,guardianName: guardianName.text, guardianPhoneNumber: guardianPhoneNumber.text,
+                                //hostel: hostel.text, roomType: roomType.text))); },
+                      //child: const Text('PRINT')
+                  //),
+                //),
               ],
             );
           },

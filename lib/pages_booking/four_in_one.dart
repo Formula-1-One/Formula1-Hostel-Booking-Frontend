@@ -103,7 +103,7 @@ class _FourInOneState extends State<FourInOne> {
                             fontSize: 30,
                           ),),
                         SizedBox(width: 50,),
-                        Text('4000 cedis',
+                        Text('GHS 4000 ',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -169,7 +169,7 @@ class _FourInOneState extends State<FourInOne> {
                             fontSize: 30,
                           ),),
                         SizedBox(width: 50,),
-                        Text('4000 cedis',
+                        Text('GHS 4000 ',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,

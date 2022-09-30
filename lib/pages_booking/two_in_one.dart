@@ -96,7 +96,7 @@ class _TwoInOneState extends State<TwoInOne> {
                               fontSize: 30,
                             ),),
                           SizedBox(width: 50,),
-                          Text('5400 cedis',
+                          Text('GHS 5400',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -162,7 +162,7 @@ class _TwoInOneState extends State<TwoInOne> {
                             fontSize: 30,
                           ),),
                         SizedBox(width: 50,),
-                        Text('5400 cedis',
+                        Text('GHS 5400',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,

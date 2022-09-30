@@ -99,7 +99,7 @@ class _OneInOneState extends State<OneInOne> {
                               fontSize: 30,
                             ),),
                           SizedBox(width: 50,),
-                          Text('8000 cedis',
+                          Text('GHS 8000',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 30,
@@ -165,7 +165,7 @@ class _OneInOneState extends State<OneInOne> {
                             fontSize: 30,
                           ),),
                         SizedBox(width: 50,),
-                        Text('8000 cedis',
+                        Text('GHS 8000',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
