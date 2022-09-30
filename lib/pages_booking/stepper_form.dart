@@ -31,27 +31,49 @@ class _StepperFormState extends State<StepperForm> {
     var data = json.decode(reply);
     httpClient.close();
 
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       print(data);
       print(response.statusCode);
-      print("Booking successful, you have maximum of 3 days from now to make payment ");
+      print(
+          "Booking successful, you have maximum of 3 days from now to make payment ");
       await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Booking successful, you have maximum of 3 days from now to make payment ",style: TextStyle(fontSize: 25),),
+          SnackBar(content: Text(
+            "Booking successful, you have maximum of 3 days from now to make payment ",
+            style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.blueAccent,));
 
       Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => PrintPage(
-              firstName: firstName.text, lastName: lastName.text, gender: gender.text,email: email.text,
-              programme: programme.text, phoneNumber: phoneNumber.text
-              ,guardianName: guardianName.text, guardianPhoneNumber: guardianPhoneNumber.text,
-              hostel: hostel.text, roomType: roomType.text)));
+          MaterialPageRoute(builder: (context) =>
+              PrintPage(
+                  firstName: firstName.text,
+                  lastName: lastName.text,
+                  gender: gender.text,
+                  email: email.text,
+                  programme: programme.text,
+                  phoneNumber: phoneNumber.text
+                  ,
+                  guardianName: guardianName.text,
+                  guardianPhoneNumber: guardianPhoneNumber.text,
+                  hostel: hostel.text,
+                  roomType: roomType.text)));
     }
-    else {
+    else if (response.statusCode == 400) {
       print(response.statusCode);
       print("You have already booked. Kindly go and make payment");
       await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("You have already booked. Kindly go and make payment",style: TextStyle(fontSize: 25),),
+          SnackBar(content: Text(
+            "You have already booked. Kindly go and make payment",
+            style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.blueAccent,));
+    }
+    else {
+      print(response.statusCode);
+      print("Student with the reference number provided does not exist");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(
+            "Student with the reference number provided does not exist",
+            style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.redAccent,));
     }
   }
 
