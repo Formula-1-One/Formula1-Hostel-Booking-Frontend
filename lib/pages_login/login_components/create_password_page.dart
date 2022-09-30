@@ -155,13 +155,13 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
      'password': _password.text,
    };
 
-   print("Json Data: ${mappedData}");
+   print("Json JsonData: ${mappedData}");
 
    http.Response response = await http.post(Uri.parse(apiUrl), body: mappedData);
 
    var data = jsonDecode(response.body);
 
-   print("Data: ${data}");
+   print("JsonData: ${data}");
 
    if(response.statusCode == 200){
      await ScaffoldMessenger.of(context).showSnackBar(

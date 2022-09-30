@@ -135,7 +135,7 @@ class _FeedState extends State<Feed> {
               ),
               Text(
                   'This is the Formula 1 hostel booking app. This app was designed to help students find hostels for accommodation.'
-                      'A university is in charge of hostels that provide accommodation to students.'
+                       'The university is in charge of hostels that provide accommodation to students.'
                       'Some problems have been identified and the university decides to award Formula 1 group a contract '
                       'to develop a software solution to solve the identified problem.\n'
                       'The app was created by 11 members of the COE 3 class as a project in their Software Engineering course.',
