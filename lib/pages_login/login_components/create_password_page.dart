@@ -1,13 +1,13 @@
 // ignore_for_file: unnecessary_import
 
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import '../common_for_login/theme_helper.dart';
 import '../widget/header_widget.dart';
-import 'package:http/http.dart' as http;
 
 class CreatePasswordPage extends StatefulWidget {
   const CreatePasswordPage({Key? key}) : super(key: key);
@@ -20,9 +20,44 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
   final double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _password = TextEditingController();
+  final TextEditingController new_passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController _confirmPassword = TextEditingController();
 
+  void UpdatePassword(String username, new_password) async {
+    var body =
+    {
+      "username": username,
+      "new_password": new_password,
+    };
+
+    HttpClient httpClient = new HttpClient();
+    HttpClientRequest request = await httpClient.postUrl(
+        Uri.parse("http://hostelhub.herokuapp.com/user/password/change"));
+    request.headers.set('Content-type', 'application/json');
+    request.add(utf8.encode(json.encode(body)));
+    HttpClientResponse response = await request.close();
+    String reply = await response.transform(utf8.decoder).join();
+    var data = json.decode(reply);
+    httpClient.close();
+
+    if(response.statusCode == 200){
+      print(data);
+      print(response.statusCode);
+      print(" Password updated successfully");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Password updated successfully",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.blueAccent,));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+    }
+    else{
+      print(response.statusCode);
+      print("Failed");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Password update unsuccessful ",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.redAccent,));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +101,26 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       TextFormField(
-                       controller: _password,
+                        controller: usernameController,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(25)
+                          ),
+                          prefixIcon: Icon(Icons.remove_red_eye_outlined),
+                          hintText: 'Enter your username',
+                          labelText: 'User name',
+                        ),
+                        validator: (val){
+                          if(val!.isEmpty){
+                            return "Username can't be empty";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 30,),
+                      TextFormField(
+                       controller: new_passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -104,7 +158,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                           if(val!.isEmpty){
                             return "can't be empty";
                           }
-                          if(_password.text != _confirmPassword.text){
+                          if(new_passwordController.text != _confirmPassword.text){
                             return "password do not match";
                           }
                           return null;
@@ -124,14 +178,15 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                               ),
                             ),
                           ),
-                          onPressed: () => newUserCredentials() //{
-                            //if(_formKey.currentState!.validate()) {
+                          onPressed: () {
+                            UpdatePassword(usernameController.text.toString(), new_passwordController.text.toString()); //{
+                            if(_formKey.currentState!.validate()) {
                               //Navigator.pushReplacement(
                                 //  context, MaterialPageRoute(
                                   //builder: (context) =>
                                   //const LoginPage()));
-                            //}
-                          //},
+                            }
+                          },
                         ),
                       )
                     ],
@@ -144,35 +199,4 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
       ),
     );
   }
- Future<void> newUserCredentials() async{
-
-   if(_formKey.currentState!.validate()){
-
-   }
-
-   var apiUrl = "";
-   Map mappedData = {
-     'password': _password.text,
-   };
-
-   print("Json JsonData: ${mappedData}");
-
-   http.Response response = await http.post(Uri.parse(apiUrl), body: mappedData);
-
-   var data = jsonDecode(response.body);
-
-   print("JsonData: ${data}");
-
-   if(response.statusCode == 200){
-     await ScaffoldMessenger.of(context).showSnackBar(
-         SnackBar(content: Text("Password created successfully",style: TextStyle(fontSize: 25)),
-           backgroundColor: Colors.blue,));
-
-       Navigator.push(
-           context, MaterialPageRoute(
-           builder: (context) =>
-           const LoginPage()));
-   }
-
- }
 }

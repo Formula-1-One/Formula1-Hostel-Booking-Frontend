@@ -303,7 +303,7 @@ class _StepperFormState extends State<StepperForm> {
                 Expanded(
                   child: ElevatedButton(
                       onPressed: () => Booking(room_type_id.text, reference_number.text.toString()),
-                      child: const Text('Confirm Booking')
+                      child: const Text('CONFIRM BOOKING')
                   ),
                 ),
                 //const SizedBox(width: 30,),
