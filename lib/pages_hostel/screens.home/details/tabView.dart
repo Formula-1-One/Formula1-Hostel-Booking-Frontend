@@ -4,7 +4,8 @@ import 'package:hostel_booking_app_ui_f1/pages_appbar_categories/logout.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_main.dart';
 
 class Tabs extends StatefulWidget {
-  const Tabs({Key? key}) : super(key: key);
+  var data;
+  Tabs({Key? key, this.data}) : super(key: key);
 
   @override
   State<Tabs> createState() => _TabsState();
@@ -55,7 +56,7 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin{
       body: TabBarView(
         controller: tabController,
         children: [
-          HomeScreenMain(),
+          HomeScreenMain(data: widget.data),
           Feed(),
           LogOUt(),
         ],

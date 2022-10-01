@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class CarouselImages extends StatefulWidget {
 
-  final List<String> imagesListUrl;
+  final List<dynamic> imagesListUrl;
 
   CarouselImages(this.imagesListUrl);
 
@@ -18,24 +18,16 @@ class _CarouselImagesState extends State<CarouselImages> {
   Widget build(BuildContext context) {
 
     Size size = MediaQuery.of(context).size;
-// this is a  container
+
+
+    // this is a  container
     return Container(
       height: size.height * 0.35,
       child: Carousel(
         dotSize: 5,
         dotBgColor: Colors.transparent,
         autoplay: true,
-        images: [
-          AssetImage(widget.imagesListUrl[0],),
-          AssetImage(widget.imagesListUrl[1],),
-          AssetImage(widget.imagesListUrl[2],),
-          AssetImage(widget.imagesListUrl[3],),
-          AssetImage(widget.imagesListUrl[4],),
-          AssetImage(widget.imagesListUrl[5],),
-          AssetImage(widget.imagesListUrl[6],),
-          AssetImage(widget.imagesListUrl[7],),
-          AssetImage(widget.imagesListUrl[8],),
-        ],
+        images: widget.imagesListUrl.map((imageUrl) => NetworkImage(imageUrl)).toList(),
       ),
     );
   }

@@ -11,6 +11,9 @@ import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_pas
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
 
+import '../../pages_hostel/screens.home/components/houses.dart';
+import '../../pages_hostel/screens.home/second_screen.dart';
+
 
 void main() => runApp(MaterialApp(
   home: LoginPage(),
@@ -27,6 +30,7 @@ class LoginPage extends StatefulWidget{
 class _LoginPageState extends State<LoginPage>{
   final double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
+  var data;
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -46,14 +50,14 @@ class _LoginPageState extends State<LoginPage>{
     request.add(utf8.encode(json.encode(body)));
     HttpClientResponse response = await request.close();
     String reply = await response.transform(utf8.decoder).join();
-    var data = json.decode(reply);
+    data = json.decode(reply);
     httpClient.close();
 
     if(response.statusCode == 200){
-      print(data["data"]["student_profile"]["reference_number"]);
+      print(data);
       print(response.statusCode);
       print("Login successful");
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Tabs()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Tabs(data: data)));
     }
     else{
       print(response.statusCode);
@@ -64,6 +68,7 @@ class _LoginPageState extends State<LoginPage>{
     }
   }
 
+  
   @override
   Widget build(BuildContext context) {
 

@@ -1,4 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hostel_booking_app_ui_f1/JsonData/login_data.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/constants/constants.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/data/data.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/data/data_home.dart';
@@ -7,7 +11,8 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/detai
 import 'package:like_button/like_button.dart';
 
 class Houses extends StatefulWidget {
-  const Houses({Key? key}) : super(key: key);
+  var data;
+  Houses({Key? key, this.data}) : super(key: key);
 
 
   @override
@@ -15,25 +20,50 @@ class Houses extends StatefulWidget {
 }
 
 class _HousesState extends State<Houses> {
+  List<Hostel> hostelList = [];
+  var hostelDetailsResponse;
 
-  DataHome object = DataHome();
+  void getHostelDetails(String id) async {
 
-  Widget _buildHouse(BuildContext context, int index) {
+    HttpClient httpClient = new HttpClient();
+    HttpClientRequest request = await httpClient.getUrl(
+        Uri.parse("http://hostelhub.herokuapp.com/hostels/${id}"));
+    HttpClientResponse response = await request.close();
+    String reply = await response.transform(utf8.decoder).join();
+    hostelDetailsResponse = json.decode(reply);
+    httpClient.close();
+
+    if(response.statusCode == 200){
+      print(hostelDetailsResponse);
+      print(response.statusCode);
+      print("Got Hostel Details successfully");
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => DetailsScreen(data: hostelDetailsResponse, key:UniqueKey()),
+        ),
+      );
+    }
+    else{
+      print(response.statusCode);
+      print("hostel details request failed");
+    }
+  }
+
+
+
+  Widget _buildHostel(BuildContext context, int index) {
     Size size = MediaQuery.of(context).size;
-    House house = houseList[index];
+    Hostel hostel = hostelList[index];
+    print(hostelList.length);
 
     return GestureDetector(
       onTap: (){
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => DetailsScreen(house: house, key:UniqueKey()),
-          ),
-        );
+        getHostelDetails("${hostel.hostelId}");
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: appPadding, vertical: appPadding / 2),
+            horizontal: appPadding, vertical: appPadding / 2),
         child: SizedBox(
           height: 250,
           child: Column(
@@ -44,22 +74,22 @@ class _HousesState extends State<Houses> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image(
-                      height: 180,
-                      width: size.width,
-                      fit: BoxFit.cover,
-                      image: AssetImage(house.imageUrl)),
+                        height: 180,
+                        width: size.width,
+                        fit: BoxFit.cover,
+                        image: NetworkImage('${hostel.image}')),
                   ),
                   Positioned(
                     right: appPadding / 2,
                     top: appPadding / 2,
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(15)
-                      ),
-                      child: LikeButton(
-                        size: 40,
-                      )
+                        decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(15)
+                        ),
+                        child: LikeButton(
+                          size: 40,
+                        )
                     ),
                   ),
                 ],
@@ -71,7 +101,8 @@ class _HousesState extends State<Houses> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      object.getData[index].name,
+                      // object.getData[index].name,
+                      '${hostel.name}',
                       style: const TextStyle(
                           fontSize: 20,
                           color: Colors.black,
@@ -86,7 +117,8 @@ class _HousesState extends State<Houses> {
                           color: Colors.black,
                         ),
                         Text(
-                          object.getData[index].location,
+                          // object.getData[index].location,
+                          '${hostel.location}',
                           style: const TextStyle(
                               fontSize: 20, color: Colors.black),
                         )
@@ -97,20 +129,25 @@ class _HousesState extends State<Houses> {
               )
             ],),
         ),
-        ),
+      ),
     );
 
   }
-  
+
   @override
   Widget build(BuildContext context) {
+    hostelList = [];
+    widget.data["data"]["hostels"].forEach((v) {
+      hostelList.add(new Hostel.fromJson(v));
+    });
+
     return Expanded(
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: houseList.length,
-        itemBuilder: (context, index) {
-          return _buildHouse(context, index);
-        }),
+          physics: const BouncingScrollPhysics(),
+          itemCount: hostelList.length,
+          itemBuilder: (context, index) {
+            return _buildHostel(context, index);
+          }),
     );
   }
 }

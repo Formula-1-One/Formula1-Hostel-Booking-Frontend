@@ -3,27 +3,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_booking/stepper_form.dart';
-import 'package:hostel_booking_app_ui_f1/pages_booking/three_in_one.dart';
-import 'package:hostel_booking_app_ui_f1/pages_booking/two_in_one.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/constants/constants.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/model/house.dart';
 
-import '../../../../pages_booking/four_in_one.dart';
-import '../../../../pages_booking/one_in_one.dart';
+import '../../../../pages_booking/room_type.dart';
 
 class HouseDetails extends StatefulWidget {
 
-  final House house;
+  var data;
 
-  HouseDetails(this.house);
+  HouseDetails(this.data);
 
   @override
   _HouseDetailsState createState() => _HouseDetailsState();
 }
 
 class _HouseDetailsState extends State<HouseDetails> {
+
   @override
   Widget build(BuildContext context) {
+    var hostelCarouselImages = widget.data["data"]["hostel_carousel_images"];
+    var hostelDetails = widget.data["data"]["hostel_details"];
+    var hostelFacilities = widget.data["data"]["hostel_facilities"];
+    var hostelManager = widget.data["data"]["hostel_manager"];
+    var hostelRoomTypes = widget.data["data"]["hostel_room_types"];
 
     Size size = MediaQuery.of(context).size;
 
@@ -45,7 +48,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                          children: const [
+                          children: [
                          Text(
                           'Ratings',
                           style: TextStyle(
@@ -54,27 +57,16 @@ class _HouseDetailsState extends State<HouseDetails> {
                           ),
                         ),
                         SizedBox(width: 15,),
-                           Icon(Icons.star,
-                             color: Colors.deepOrangeAccent,
-                             size: 30,
-                           ),
-                            Icon(Icons.star,
-                              color: Colors.deepOrangeAccent,
-                              size: 30,
-                            ),
-                            Icon(Icons.star,
-                              color: Colors.deepOrangeAccent,
-                              size: 30,
-                            ),
-                            Icon(Icons.star,
-                              color: Colors.deepOrangeAccent,
-                              size: 30,
-                            )
+                           for (int i=0; i<hostelDetails["ratings"]; i++ )
+                             Icon(Icons.star,
+                               color: Colors.deepOrangeAccent,
+                               size: 30,
+                             )
                         ]
                       ),
                      const  SizedBox(height: 5,),
                       Text(
-                        widget.house.address,
+                        hostelDetails["name"],
                         style: TextStyle(
                           fontSize: 15,
                           color: black.withOpacity(0.4),
@@ -103,138 +95,41 @@ class _HouseDetailsState extends State<HouseDetails> {
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: appPadding,
-                      bottom: appPadding,
-                    ),
-                    child: Container(
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                            color: black.withOpacity(0.4)
+                  for (int i=0; i<hostelRoomTypes.length;i++)
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: appPadding,
+                        bottom: appPadding,
+                      ),
+                      child: Container(
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: white,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                              color: black.withOpacity(0.4)
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: (){Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => RoomType(data: hostelRoomTypes[i])));},
+                              child: Text(
+                                '${hostelRoomTypes[i]["type"]} in 1',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const FourInOne()));},
-                            child: const Text(
-                              '4 in 1',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: appPadding,
-                      bottom: appPadding,
-                    ),
-                    child: Container(
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                            color: black.withOpacity(0.4)
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: ((context) => const ThreeInOne())));},
-                            child: const Text(
-                              '3 in 1',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.blue
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: appPadding,
-                      bottom: appPadding,
-                    ),
-                    child: Container(
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                            color: black.withOpacity(0.4)
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const TwoInOne()));},
-                            child: const Text(
-                              '2 in 1',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: appPadding,
-                      bottom: appPadding,
-                    ),
-                    child: Container(
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                            color: black.withOpacity(0.4)
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: (){Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => const OneInOne()));},
-                            child: const Text(
-                              '1 in 1',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+
                 ],
               ),
             ),
@@ -281,20 +176,6 @@ class _HouseDetailsState extends State<HouseDetails> {
                     child: const Icon(Icons.car_rental, size: 40),
                   ),
                 ],
-              ),
-            ),
-            Padding(
-                padding: const EdgeInsets.only(
-                  left: appPadding,
-                  right: appPadding,
-                  bottom: appPadding * 4,
-                ),
-              child: Text(
-                widget.house.description,
-                style: TextStyle(
-                  color: black.withOpacity(0.4),
-                  height: 1.5,
-                ),
               ),
             ),
           ],

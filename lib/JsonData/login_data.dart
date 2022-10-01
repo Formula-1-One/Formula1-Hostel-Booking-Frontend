@@ -1,10 +1,13 @@
-class booking_data {
+import 'dart:convert';
+import 'dart:io';
+
+class login_data {
   Data? data;
   String? errorMessage;
 
-  booking_data({this.data, this.errorMessage});
+  login_data({this.data, this.errorMessage});
 
-  booking_data.fromJson(Map<String, dynamic> json) {
+  login_data.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     errorMessage = json['error_message'];
   }
@@ -21,7 +24,7 @@ class booking_data {
 
 class Data {
   String? authToken;
-  List<Hostels>? hostels;
+  List<Hostel>? hostels;
   StudentProfile? studentProfile;
 
   Data({this.authToken, this.hostels, this.studentProfile});
@@ -29,9 +32,9 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     authToken = json['auth-token'];
     if (json['hostels'] != null) {
-      hostels = <Hostels>[];
+      hostels = <Hostel>[];
       json['hostels'].forEach((v) {
-        hostels!.add(new Hostels.fromJson(v));
+        hostels!.add(new Hostel.fromJson(v));
       });
     }
     studentProfile = json['student_profile'] != null
@@ -52,27 +55,27 @@ class Data {
   }
 }
 
-class Hostels {
+class Hostel {
   int? hostelId;
+  String? image;
   String? location;
   String? name;
-  int? ratings;
 
-  Hostels({this.hostelId, this.location, this.name, this.ratings});
+  Hostel({this.hostelId, this.image, this.location, this.name});
 
-  Hostels.fromJson(Map<String, dynamic> json) {
+  Hostel.fromJson(Map<String, dynamic> json) {
     hostelId = json['hostel_id'];
+    image = json['image'];
     location = json['location'];
     name = json['name'];
-    ratings = json['ratings'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['hostel_id'] = this.hostelId;
+    data['image'] = this.image;
     data['location'] = this.location;
     data['name'] = this.name;
-    data['ratings'] = this.ratings;
     return data;
   }
 }
