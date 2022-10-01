@@ -11,8 +11,9 @@ import '../../../../pages_booking/room_type.dart';
 class HouseDetails extends StatefulWidget {
 
   var data;
+  var referenceNumber;
 
-  HouseDetails(this.data);
+  HouseDetails({Key? Key,this.referenceNumber ,this.data});
 
   @override
   _HouseDetailsState createState() => _HouseDetailsState();
@@ -115,7 +116,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                           children: [
                             InkWell(
                               onTap: (){Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => RoomType(data: hostelRoomTypes[i])));},
+                                  MaterialPageRoute(builder: (context) => RoomType(referenceNumber: widget.referenceNumber, data: hostelRoomTypes[i])));},
                               child: Text(
                                 '${hostelRoomTypes[i]["type"]} in 1',
                                 style: TextStyle(
@@ -139,41 +140,53 @@ class _HouseDetailsState extends State<HouseDetails> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 145, 233, 148),
-                      borderRadius: BorderRadius.circular(12),
+                  Visibility(
+                    visible: hostelFacilities.contains("wi_fi") ? true : false,
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 145, 233, 148),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(Icons.wifi, size: 40),
                     ),
-                    child: const Icon(Icons.wifi, size: 40),
                   ),
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 158, 228, 221),
-                      borderRadius: BorderRadius.circular(12),
+                  Visibility(
+                    visible: hostelFacilities.contains("air_conditioner") ? true : false,
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 158, 228, 221),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(Icons.ac_unit_rounded, size: 40),
                     ),
-                    child: const Icon(Icons.ac_unit_rounded, size: 40),
                   ),
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 245, 214, 167),
-                      borderRadius: BorderRadius.circular(12),
+                  Visibility(
+                    visible: hostelFacilities.contains("canteen") ? true : false,
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 245, 214, 167),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(Icons.restaurant, size: 40),
                     ),
-                    child: const Icon(Icons.restaurant, size: 40),
                   ),
-                  Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 145, 233, 148),
-                      borderRadius: BorderRadius.circular(12),
+                  Visibility(
+                    visible: hostelFacilities.contains("parking_lot") ? true : false,
+                    child: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 145, 233, 148),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(Icons.car_rental, size: 40),
                     ),
-                    child: const Icon(Icons.car_rental, size: 40),
                   ),
                 ],
               ),
