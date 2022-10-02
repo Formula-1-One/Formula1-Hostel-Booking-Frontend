@@ -21,7 +21,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final double _headerHeight = 250;
   final _formKey = GlobalKey<FormState>();
 
-  EmailAuth emailAuth = EmailAuth(sessionName: "Enter this verification code");
+  EmailAuth emailAuth = EmailAuth(sessionName: "F1 Hostel Booking");
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _otpController = TextEditingController();

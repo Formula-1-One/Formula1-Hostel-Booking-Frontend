@@ -19,6 +19,7 @@ class _HousesState extends State<Houses> {
   List<Hostel> hostelList = [];
   var hostelDetailsResponse;
 
+
   void getHostelDetails(String id) async {
 
     HttpClient httpClient = new HttpClient();
@@ -33,12 +34,13 @@ class _HousesState extends State<Houses> {
       print(hostelDetailsResponse);
       print(response.statusCode);
       print("Got Hostel Details successfully");
+      // add reference number to data to be passed to details screen
+      hostelDetailsResponse["data"]["reference_number"] = widget.data["data"]["student_profile"]["reference_number"];
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: (_) => DetailsScreen(
               data: hostelDetailsResponse,
-              referenceNumber: widget.data["data"]["student_profile"]["reference_number"],
               key:UniqueKey()
           ),
         ),

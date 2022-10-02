@@ -11,8 +11,7 @@ import '../pages_login/common_for_login/theme_helper.dart';
 
 class RoomType extends StatefulWidget {
   var data;
-  var referenceNumber;
-  RoomType({Key? key, this.referenceNumber,this.data}) : super(key: key);
+  RoomType({Key? key,this.data}) : super(key: key);
 
   @override
   State<RoomType> createState() => _RoomTypeState();
@@ -244,7 +243,7 @@ class _RoomTypeState extends State<RoomType> {
                   ),
                 ),
                 onPressed: () {
-                  sendBookingDetails('${widget.referenceNumber}', '${widget.data["id"]}');
+                  sendBookingDetails('${widget.data["reference_number"]}', '${widget.data["id"]}');
                   }
               ),
             ),

@@ -13,9 +13,9 @@ import '../pages_login/common_for_login/theme_helper.dart';
 
 class PrintPage extends StatelessWidget {
 
- var  studentProfile;
+ var  studentProfile, bookingId;
 
-  PrintPage ({required this.studentProfile,});
+  PrintPage ({required this.studentProfile, required this.bookingId});
 
    Future<void> _createPdf() async {
     final doc = pw.Document();
@@ -41,6 +41,16 @@ class PrintPage extends StatelessWidget {
                     pw.Text('Phone Number:  ${studentProfile["phone_number"]}', style:   pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
                     pw.Text('Programme of study : ${studentProfile["program_of_study"]}', style:  pw.TextStyle( fontSize: 20)),
+                    pw.SizedBox(height: 15,),
+                    pw.Text('Booking id : ${bookingId}', style:  pw.TextStyle( fontSize: 20)),
+                    pw.SizedBox(height: 15,),
+                    pw.Text('Make payment at ANY BRANCH OF ECOBANK OR GHANA COMMERCIAL BANK\n'
+                            'with the booking id on this printout on or before \n'
+                            'and show your pay-in-slip at the Porters Lodge \n'
+                            'to access your room when school resumes ',
+                        style:  pw.TextStyle( fontSize: 20, fontWeight: pw.FontWeight.bold)),
+
+
                   ]
               ),
             );
@@ -50,7 +60,7 @@ class PrintPage extends StatelessWidget {
 
 
     await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => doc.save());
-    await Printing.sharePdf(bytes: await doc.save());
+    await Printing.sharePdf(bytes: await doc.save(), filename: "Booking");
   }
 
 
@@ -96,6 +106,8 @@ class PrintPage extends StatelessWidget {
                     Text('Phone Number:  ${studentProfile["phone_number"]}', style: const TextStyle( fontSize: 20)),
                     const SizedBox(height: 15,),
                     Text('Programme of study: ${studentProfile["program_of_study"]}', style: const TextStyle( fontSize: 20)),
+                    const SizedBox(height: 15,),
+                    Text('Booking id: ${bookingId}', style: const TextStyle( fontSize: 20)),
                     const SizedBox(height: 80,),
                     Center(
                       child: Container(

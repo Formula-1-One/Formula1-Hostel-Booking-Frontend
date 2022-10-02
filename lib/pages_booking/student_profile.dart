@@ -15,10 +15,11 @@ class _StudentProfileState extends State<StudentProfile> {
   @override
   Widget build(BuildContext context) {
     var studentProfile = widget.data["data"]["student_profile"];
+    var bookingId = widget.data["data"]["booking_id"];
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Student Profile"),
+        title: Text("Student Details"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -38,6 +39,8 @@ class _StudentProfileState extends State<StudentProfile> {
               Text('Phone Number:  ${studentProfile["phone_number"]}', style: const TextStyle( fontSize: 20)),
               const SizedBox(height: 15,),
               Text('Programme of study: ${studentProfile["program_of_study"]}', style: const TextStyle( fontSize: 20)),
+              const SizedBox(height: 15,),
+              Text('Booking id:  ${bookingId}', style: const TextStyle( fontSize: 20)),
               const SizedBox(height: 80,),
               Center(
                 child: Container(
@@ -58,6 +61,7 @@ class _StudentProfileState extends State<StudentProfile> {
                             MaterialPageRoute(builder: (context) =>
                                 PrintPage(
                                   studentProfile: studentProfile,
+                                  bookingId: bookingId,
                                     )));
                       }
                   ),

@@ -49,7 +49,6 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin{
             Tab(child: Text('HOME')),
             Tab(child: Text('ABOUT'),),
             Tab(child: Text('LOG OUT'),),
-
           ],
         ),
       ),

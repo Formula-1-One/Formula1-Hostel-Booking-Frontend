@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unused_import
 
 import 'package:flutter/material.dart';
+import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/login_page.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -128,29 +129,26 @@ class MainScreen extends StatelessWidget {
                           )
                       )
                   ),
-                  SizedBox(height: 60.0,),
+                  SizedBox(height: 20.0,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ElevatedButton(
-                        style: TextButton.styleFrom(
-                            backgroundColor: Colors.blueAccent,
-                            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 55),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))
-                        ),
-
-                        onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-                        },
-
-                        child:Text('get started'.toUpperCase(),
-                            style:GoogleFonts.poppins(
-                              textStyle:
-                              TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.grey[200]
-                              ),)
+                      Container(
+                        decoration: ThemeHelper().buttonBoxDecoration(context),
+                        child: ElevatedButton(
+                            style: ThemeHelper().buttonStyle(),
+                            child: const Padding(
+                              padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                              child: Text('Get started',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+                            }
                         ),
                       ),
                     ],

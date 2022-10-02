@@ -11,9 +11,8 @@ import '../../../../pages_booking/room_type.dart';
 class HouseDetails extends StatefulWidget {
 
   var data;
-  var referenceNumber;
 
-  HouseDetails({Key? Key,this.referenceNumber ,this.data});
+  HouseDetails({Key? Key,this.data});
 
   @override
   _HouseDetailsState createState() => _HouseDetailsState();
@@ -28,6 +27,7 @@ class _HouseDetailsState extends State<HouseDetails> {
     var hostelFacilities = widget.data["data"]["hostel_facilities"];
     var hostelManager = widget.data["data"]["hostel_manager"];
     var hostelRoomTypes = widget.data["data"]["hostel_room_types"];
+    var referenceNumber = widget.data["data"]["reference_number"];
 
     Size size = MediaQuery.of(context).size;
 
@@ -98,8 +98,10 @@ class _HouseDetailsState extends State<HouseDetails> {
                 children: [
                   for (int i=0; i<hostelRoomTypes.length;i++)
                     InkWell(
-                      onTap: (){Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => RoomType(referenceNumber: widget.referenceNumber, data: hostelRoomTypes[i])));},
+                      onTap: (){
+                        hostelRoomTypes[i]["reference_number"] = referenceNumber;
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => RoomType(data: hostelRoomTypes[i])));},
                       child: Padding(
                         padding: const EdgeInsets.only(
                           left: appPadding,
@@ -118,8 +120,10 @@ class _HouseDetailsState extends State<HouseDetails> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               InkWell(
-                                onTap: (){Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) => RoomType(referenceNumber: widget.referenceNumber, data: hostelRoomTypes[i])));},
+                                onTap: (){
+                                  hostelRoomTypes[i]["reference_number"] = referenceNumber;
+                                  Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => RoomType(data: hostelRoomTypes[i])));},
                                 child: Text(
                                   '${hostelRoomTypes[i]["type"]} in 1',
                                   style: TextStyle(
