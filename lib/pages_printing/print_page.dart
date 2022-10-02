@@ -133,8 +133,6 @@ class PrintPage extends StatelessWidget {
                     const SizedBox( height: 20,),
                     Text('Type of room: ${roomType}', style: const TextStyle( fontSize: 20)),
                     const SizedBox(height: 20,),
-                    //Text('Room id: ${room_type_id}', style: const TextStyle( fontSize: 20)),
-                    //const SizedBox(height: 40,),
                     Padding(
                       padding: const EdgeInsets.only(left: 120),
                       child: ElevatedButton(

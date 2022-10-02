@@ -37,9 +37,19 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
         children: [
           Column(
             children: [
-              const SizedBox(
-                height: 20,
-              ),
+               Padding(
+                 padding: const EdgeInsets.only(left: 100),
+                 child: Row(
+                   children: [
+                     Text("Welcome",
+                       style: TextStyle(fontSize: 30,fontWeight:  FontWeight.bold ),),
+                     SizedBox(width: 10,),
+                     Text("${widget.data["data"]["student_profile"]["first_name"]}"
+                         " ${widget.data["data"]["student_profile"]["last_name"]}",
+                     style:  TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)
+                   ],
+                 ),
+               ),
                Houses(data: widget.data),
             ],
             ),
