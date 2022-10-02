@@ -107,7 +107,6 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(25)
                           ),
-                          prefixIcon: Icon(Icons.remove_red_eye_outlined),
                           hintText: 'Enter your username',
                           labelText: 'User name',
                         ),

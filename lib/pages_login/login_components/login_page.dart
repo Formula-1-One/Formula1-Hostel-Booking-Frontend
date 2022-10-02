@@ -10,9 +10,7 @@ import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/home_screen_m
 import 'package:hostel_booking_app_ui_f1/pages_login/login_components/forgot_password_page.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/widget/header_widget.dart';
 import 'package:hostel_booking_app_ui_f1/pages_login/common_for_login/theme_helper.dart';
-
 import '../../pages_hostel/screens.home/components/houses.dart';
-import '../../pages_hostel/screens.home/second_screen.dart';
 
 
 void main() => runApp(MaterialApp(

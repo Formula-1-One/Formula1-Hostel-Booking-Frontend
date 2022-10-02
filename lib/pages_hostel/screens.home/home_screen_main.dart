@@ -40,9 +40,6 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
               const SizedBox(
                 height: 20,
               ),
-              const SizedBox(
-                height: 15,
-              ),
                Houses(data: widget.data),
             ],
             ),

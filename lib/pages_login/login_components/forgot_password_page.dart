@@ -30,9 +30,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     var res = await emailAuth.sendOtp(recipientMail: _emailController.text);
     if(res){
       print("OTP sent");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Verification code sent",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.blueAccent,));
     }
     else{
       print("we could not send OTP");
+      await ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("could not send verification code",style: TextStyle(fontSize: 25),),
+            backgroundColor: Colors.redAccent,));
     }
   }
 

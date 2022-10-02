@@ -91,42 +91,46 @@ class _HouseDetailsState extends State<HouseDetails> {
               ),
             ),
             SizedBox(
-              height: 130,
+              height: 150,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
                 children: [
                   for (int i=0; i<hostelRoomTypes.length;i++)
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: appPadding,
-                        bottom: appPadding,
-                      ),
-                      child: Container(
-                        width: 100,
-                        decoration: BoxDecoration(
-                          color: white,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                              color: black.withOpacity(0.4)
-                          ),
+                    InkWell(
+                      onTap: (){Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => RoomType(referenceNumber: widget.referenceNumber, data: hostelRoomTypes[i])));},
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          left: appPadding,
+                          bottom: appPadding,
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              onTap: (){Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => RoomType(referenceNumber: widget.referenceNumber, data: hostelRoomTypes[i])));},
-                              child: Text(
-                                '${hostelRoomTypes[i]["type"]} in 1',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.blue,
+                        child: Container(
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                                color: black.withOpacity(0.4)
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: (){Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => RoomType(referenceNumber: widget.referenceNumber, data: hostelRoomTypes[i])));},
+                                child: Text(
+                                  '${hostelRoomTypes[i]["type"]} in 1',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.blue,
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -134,6 +138,7 @@ class _HouseDetailsState extends State<HouseDetails> {
                 ],
               ),
             ),
+            SizedBox(height: 20,),
             Padding(
               padding:
               const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),

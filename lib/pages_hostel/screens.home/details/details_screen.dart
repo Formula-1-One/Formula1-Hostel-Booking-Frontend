@@ -11,8 +11,9 @@ import '../../../JsonData/login_data.dart';
 class DetailsScreen extends StatefulWidget {
 
   var data;
+  var referenceNumber;
 
-  DetailsScreen({required Key key, required this.data}) : super(key: key);
+  DetailsScreen({required Key key, this.referenceNumber, required this.data}) : super(key: key);
 
   @override
   _DetailsScreenState createState() => _DetailsScreenState();
@@ -35,7 +36,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   CustomAppBar(),
                 ],
               ),
-              HouseDetails(widget.data),
+              HouseDetails(referenceNumber: widget.referenceNumber, data: widget.data),
             ],
           ),
           BottomButtons(),

@@ -4,11 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/JsonData/login_data.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/constants/constants.dart';
-import 'package:hostel_booking_app_ui_f1/pages_hostel/data/data.dart';
-import 'package:hostel_booking_app_ui_f1/pages_hostel/data/data_home.dart';
-import 'package:hostel_booking_app_ui_f1/pages_hostel/model/house.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/details_screen.dart';
-import 'package:like_button/like_button.dart';
 
 class Houses extends StatefulWidget {
   var data;
@@ -40,7 +36,11 @@ class _HousesState extends State<Houses> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => DetailsScreen(data: hostelDetailsResponse, key:UniqueKey()),
+          builder: (_) => DetailsScreen(
+              data: hostelDetailsResponse,
+              referenceNumber: widget.data["data"]["student_profile"]["reference_number"],
+              key:UniqueKey()
+          ),
         ),
       );
     }
@@ -87,9 +87,6 @@ class _HousesState extends State<Houses> {
                             color: white,
                             borderRadius: BorderRadius.circular(15)
                         ),
-                        child: LikeButton(
-                          size: 40,
-                        )
                     ),
                   ),
                 ],
