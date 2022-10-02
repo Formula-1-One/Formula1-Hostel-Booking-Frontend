@@ -134,9 +134,9 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                           if(val!.isEmpty){
                             return "can't be empty";
                           }
-                          if(!RegExp(r"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$").hasMatch(val)){
-                            return "weak password";
-                          }
+                          // if(!RegExp(r"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$").hasMatch(val)){
+                          //   return "weak password";
+                          // }
                           return null;
                         },
                       ),
