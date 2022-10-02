@@ -93,12 +93,14 @@ class _RoomTypeState extends State<RoomType> {
                 ),
                 padding: const EdgeInsets.only(
                     top: 20,
-                    left: 90,
+                    left: 50,
                 ),
               alignment: Alignment.center,
               width: 400,
               height: 400,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Center(
                     heightFactor: 4,
@@ -109,7 +111,7 @@ class _RoomTypeState extends State<RoomType> {
                             color: Colors.white,
                             fontSize: 30,
                           ),),
-                        SizedBox(width: 50,),
+                        SizedBox(width: 90,),
                         Text('Males',
                           style: TextStyle(
                             color: Colors.white,
@@ -118,14 +120,14 @@ class _RoomTypeState extends State<RoomType> {
                       ],
                     ),
                   ),
-                  Row(crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
                       Text('Available',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
                         ),),
-                      SizedBox(width: 50,),
+                      SizedBox(width: 35,),
                       Text('${widget.data["available_male_bed_spaces"]}',
                         style: TextStyle(
                           color: Colors.white,
@@ -142,7 +144,7 @@ class _RoomTypeState extends State<RoomType> {
                             color: Colors.white,
                             fontSize: 30,
                           ),),
-                        SizedBox(width: 50,),
+                        SizedBox(width: 90,),
                         Text('GHS ${widget.data["price"]}',
                           style: TextStyle(
                             color: Colors.white,
@@ -156,7 +158,7 @@ class _RoomTypeState extends State<RoomType> {
             ), back: Container(
               padding: const EdgeInsets.only(
               top: 20,
-              left: 90
+              left: 50
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
@@ -178,7 +180,7 @@ class _RoomTypeState extends State<RoomType> {
                               fontSize: 30,
                             ),),
                         ),
-                        SizedBox(width: 50,),
+                        SizedBox(width: 90,),
                         Text('Female',
                           style: TextStyle(
                             color: Colors.white,
@@ -194,7 +196,7 @@ class _RoomTypeState extends State<RoomType> {
                           color: Colors.white,
                           fontSize: 30,
                         ),),
-                      SizedBox(width: 50,),
+                      SizedBox(width: 35,),
                       Text('${widget.data["available_female_bed_spaces"]}',
                         style: TextStyle(
                           color: Colors.white,
@@ -214,7 +216,7 @@ class _RoomTypeState extends State<RoomType> {
                               fontSize: 30,
                             ),),
                         ),
-                        SizedBox(width: 50,),
+                        SizedBox(width: 75,),
                         Text('GHS ${widget.data["price"]}',
                           style: TextStyle(
                             color: Colors.white,
