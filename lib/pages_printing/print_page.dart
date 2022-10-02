@@ -7,17 +7,15 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
+import '../pages_login/common_for_login/theme_helper.dart';
+
 
 
 class PrintPage extends StatelessWidget {
 
-  late String firstName,lastName,gender,email, programme, phoneNumber, guardianName,
-      guardianPhoneNumber, hostel, roomType;
+ var  studentProfile;
 
-  PrintPage ({required this.firstName, required this.lastName,required this.gender,
-    required this.email, required this.programme, required this.phoneNumber,
-    required this.guardianName,required this.guardianPhoneNumber,
-    required this.hostel, required this.roomType,});
+  PrintPage ({required this.studentProfile,});
 
    Future<void> _createPdf() async {
     final doc = pw.Document();
@@ -33,36 +31,16 @@ class PrintPage extends StatelessWidget {
                   children: [
                     pw.SizedBox(height: 30,),
                     pw.Text('Kindly come along with this\nform to the hostel',
-                      style:  pw.TextStyle(fontSize: 25, fontWeight:  pw.FontWeight.bold),),
+                      style:  pw.TextStyle(fontSize: 35, fontWeight:  pw.FontWeight.bold),),
+                    pw.SizedBox(height: 30,),
+                    pw.Text('Name : ${studentProfile["first_name"]} ${studentProfile["last_name"]} ',
+                      style:  pw.TextStyle( fontSize: 20),),
                     pw.SizedBox(height: 15,),
-                    pw.Text('First Name : ${firstName} ', style:  pw.TextStyle( fontSize: 20),),
+                    pw.Text('Reference Number: ${studentProfile["reference_number"]}', style:   pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
-                    pw.Text('Last Name(s) : ${lastName}', style:   pw.TextStyle( fontSize: 20)),
+                    pw.Text('Phone Number:  ${studentProfile["phone_number"]}', style:   pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
-                    pw.Text('Last Name(s) : ${gender}', style:   pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox(height: 15,),
-                    pw.Text('Email : ${email}', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox(height: 15,),
-                    pw.Text('Email : ${programme}', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox(height: 15,),
-                    pw.Text('Phone Number :  ${phoneNumber} ', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox(height: 15,),
-                   // pw.Text('Phone Number :  ${reference_number} ', style:  pw.TextStyle( fontSize: 20)),
-                    //pw.SizedBox(height: 15,),
-                    pw.Text('Guardian Name : ${guardianName}', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox(height: 15,),
-                    pw.Text('Guardian Phone Number : ${guardianPhoneNumber} ', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox(height: 15,),
-                    pw.Text('Selected Hostel : ${hostel}', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox( height: 15,),
-                    pw.Text('Type of room : ${roomType}', style:  pw.TextStyle( fontSize: 20)),
-                    //pw.SizedBox( height: 15,),
-                    //pw.Text('Room id : ${room_type_id}', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox( height: 30,),
-                    pw.Text('Make payment at ANY BRANCH OF GHANA COMMERCIAL BANK\n'
-                            ' into this bank account (40100112309748).    ',
-                      style:  pw.TextStyle(fontSize: 30, fontWeight:  pw.FontWeight.bold),),
-
+                    pw.Text('Programme of study : ${studentProfile["program_of_study"]}', style:  pw.TextStyle( fontSize: 20)),
                   ]
               ),
             );
@@ -72,7 +50,7 @@ class PrintPage extends StatelessWidget {
 
 
     await Printing.layoutPdf(onLayout: (PdfPageFormat format) async => doc.save());
-    await Printing.sharePdf(bytes: await doc.save(), filename: 'my_document.pdf');
+    await Printing.sharePdf(bytes: await doc.save());
   }
 
 
@@ -108,36 +86,33 @@ class PrintPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 30,),
-                    const Text('Kindly come along with this\nform to the hostel',
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                    Text("Kindly come along with this details printed out",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),
                     const SizedBox(height: 20,),
-                    Text('First Name: ${firstName}', style: const TextStyle( fontSize: 20),),
-                    const SizedBox(height: 20,),
-                    Text('Last Name(s): ${lastName}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    Text('Last Name(s): ${gender}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    Text('Email: ${email}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    Text('Programme: ${programme}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    Text('Phone Number: ${phoneNumber}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    //Text('Phone Number: ${reference_number}', style: const TextStyle( fontSize: 20)),
-                    //const SizedBox(height: 20,),
-                    Text('Guardian Name: ${guardianName}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    Text('Guardian Phone Number: ${guardianPhoneNumber}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    Text('Selected Hostel: ${hostel}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox( height: 20,),
-                    Text('Type of room: ${roomType}', style: const TextStyle( fontSize: 20)),
-                    const SizedBox(height: 20,),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 120),
-                      child: ElevatedButton(
-                        onPressed: () => _createPdf(),
-                        child: const Text('CREATE & PRINT PDF'),
+                    Text('Name: ${studentProfile["first_name"]} ${studentProfile["last_name"]}', style: const TextStyle( fontSize: 20),),
+                    const SizedBox(height: 15,),
+                    Text('Reference Number: ${studentProfile["reference_number"]}', style: const TextStyle( fontSize: 20)),
+                    const SizedBox(height: 15,),
+                    Text('Phone Number:  ${studentProfile["phone_number"]}', style: const TextStyle( fontSize: 20)),
+                    const SizedBox(height: 15,),
+                    Text('Programme of study: ${studentProfile["program_of_study"]}', style: const TextStyle( fontSize: 20)),
+                    const SizedBox(height: 80,),
+                    Center(
+                      child: Container(
+                        decoration: ThemeHelper().buttonBoxDecoration(context),
+                        child: ElevatedButton(
+                            style: ThemeHelper().buttonStyle(),
+                            child: const Padding(
+                              padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                              child: Text('Print',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                          onPressed: () => _createPdf(),
+                        ),
                       ),
                     ),
                   ],

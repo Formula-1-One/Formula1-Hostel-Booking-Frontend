@@ -139,12 +139,17 @@ class _HousesState extends State<Houses> {
     });
 
     return Expanded(
-      child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemCount: hostelList.length,
-          itemBuilder: (context, index) {
-            return _buildHostel(context, index);
-          }),
+      child: RefreshIndicator(
+        onRefresh: () async {
+          //
+        },
+        child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: hostelList.length,
+            itemBuilder: (context, index) {
+              return _buildHostel(context, index);
+            }),
+      ),
     );
   }
 }

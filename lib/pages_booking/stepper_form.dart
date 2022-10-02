@@ -1,9 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hostel_booking_app_ui_f1/pages_printing/print_page.dart';
 
 class StepperForm extends StatefulWidget {
   const StepperForm({Key? key}) : super(key: key);
@@ -13,75 +9,6 @@ class StepperForm extends StatefulWidget {
 }
 
 class _StepperFormState extends State<StepperForm> {
-
-  void Booking(String room_type_id, reference_number) async {
-    var body =
-    {
-      "room_type_id": room_type_id,
-      "reference_number": reference_number,
-    };
-
-    HttpClient httpClient = new HttpClient();
-    HttpClientRequest request = await httpClient.postUrl(
-        Uri.parse("http://hostelhub.herokuapp.com/booking"));
-    request.headers.set('Content-type', 'application/json');
-    request.add(utf8.encode(json.encode(body)));
-    HttpClientResponse response = await request.close();
-    String reply = await response.transform(utf8.decoder).join();
-    var data = json.decode(reply);
-    httpClient.close();
-
-    if (response.statusCode == 200) {
-      print(data);
-      print(response.statusCode);
-      print(
-          "Booking successful, you have maximum of 3 days from now to make payment ");
-      await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(
-            "Booking successful, you have maximum of 3 days from now to make payment ",
-            style: TextStyle(fontSize: 25),),
-            backgroundColor: Colors.blueAccent,));
-
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) =>
-              PrintPage(
-                  firstName: firstName.text,
-                  lastName: lastName.text,
-                  gender: gender.text,
-                  email: email.text,
-                  programme: programme.text,
-                  phoneNumber: phoneNumber.text
-                  ,
-                  guardianName: guardianName.text,
-                  guardianPhoneNumber: guardianPhoneNumber.text,
-                  hostel: hostel.text,
-                  roomType: roomType.text)));
-    }
-    else if (response.statusCode == 400) {
-      print(response.statusCode);
-      print("You have already booked. Kindly go and make payment");
-      await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(
-            "You have already booked. Kindly go and make payment",
-            style: TextStyle(fontSize: 25),),
-            backgroundColor: Colors.blueAccent,));
-    }
-    else {
-      print(response.statusCode);
-      print("Student with the reference number provided does not exist");
-      await ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(
-            "Student with the reference number provided does not exist",
-            style: TextStyle(fontSize: 25),),
-            backgroundColor: Colors.redAccent,));
-    }
-  }
-
-  _StepperFormState(){
-    _selectedVal = items[0];
-  }
-
-
 
   final firstName = TextEditingController();
   final lastName = TextEditingController();
@@ -302,7 +229,9 @@ class _StepperFormState extends State<StepperForm> {
                 if(currentStep != 0 && currentStep != 1)
                 Expanded(
                   child: ElevatedButton(
-                      onPressed: () => Booking(room_type_id.text, reference_number.text.toString()),
+                      onPressed: () {
+
+                      },
                       child: const Text('CONFIRM BOOKING')
                   ),
                 ),

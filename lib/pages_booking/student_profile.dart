@@ -20,7 +20,6 @@ class _StudentProfileState extends State<StudentProfile> {
       appBar: AppBar(
         title: Text("Student Profile"),
         centerTitle: true,
-        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: Padding(
@@ -55,11 +54,11 @@ class _StudentProfileState extends State<StudentProfile> {
                         ),
                       ),
                       onPressed: () {
-                        // Navigator.of(context).push(
-                        //     MaterialPageRoute(builder: (context) =>
-                        //         PrintPage(
-                        //
-                        //             )));
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) =>
+                                PrintPage(
+                                  studentProfile: studentProfile,
+                                    )));
                       }
                   ),
                 ),
