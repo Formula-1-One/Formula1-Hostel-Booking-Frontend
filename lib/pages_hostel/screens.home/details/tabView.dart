@@ -26,13 +26,13 @@ class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin{
         setState(() {
           switch(tabController.index){
             case 0:
-              fabIcon = Icons.add_circle_rounded;
+              fabIcon = Icons.home;
               break;
             case 1:
-              fabIcon = Icons.chat;
+              fabIcon = Icons.info;
               break;
             case 2:
-              fabIcon = Icons.camera_alt_outlined;
+              fabIcon = Icons.logout;
               break;
           }
         });

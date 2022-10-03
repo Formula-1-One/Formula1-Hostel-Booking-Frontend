@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/model/house.dart';
 import 'package:hostel_booking_app_ui_f1/pages_hostel/screens.home/details/components/bottom_buttons.dart';

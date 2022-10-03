@@ -129,14 +129,19 @@ class MainScreen extends StatelessWidget {
                           )
                       )
                   ),
-                  SizedBox(height: 35.0,),
+                  SizedBox(height: 40.0,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                         decoration: ThemeHelper().buttonBoxDecoration(context),
                         child: ElevatedButton(
-                            style: ThemeHelper().buttonStyle(),
+                          style:TextButton.styleFrom(
+                            backgroundColor: Colors.blueAccent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                          ) ,
                             child: const Padding(
                               padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
                               child: Text('Get started',

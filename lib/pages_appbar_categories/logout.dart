@@ -43,8 +43,8 @@ class _LogOUtState extends State<LogOUt> {
                   final action = await AlertDialogs.yesCancelDialog(context, 'Logout', 'are you sure ? ');
                 },
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.blueAccent,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),
                   child:Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text("Log out",
