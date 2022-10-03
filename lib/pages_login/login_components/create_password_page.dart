@@ -155,10 +155,10 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                         ),
                         validator: (val){
                           if(val!.isEmpty){
-                            return "can't be empty";
+                            return "Can't be empty";
                           }
                           if(new_passwordController.text != _confirmPassword.text){
-                            return "password do not match";
+                            return "Password do not match";
                           }
                           return null;
                         },
