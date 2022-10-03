@@ -38,7 +38,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
           Column(
             children: [
                Padding(
-                 padding: const EdgeInsets.only(left: 80),
+                 padding: const EdgeInsets.only(left: 40),
                  child: Row(
                    children: [
                      Center(

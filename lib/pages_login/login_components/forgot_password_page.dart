@@ -35,7 +35,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             backgroundColor: Colors.blueAccent,));
     }
     else{
-      print("we could not send OTP");
+      print("we could not send OTP, check email");
       await ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("could not send verification code",style: TextStyle(fontSize: 25),),
             backgroundColor: Colors.redAccent,));

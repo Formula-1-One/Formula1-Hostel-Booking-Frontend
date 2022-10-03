@@ -178,13 +178,14 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                             ),
                           ),
                           onPressed: () {
-                            UpdatePassword(usernameController.text.toString(), new_passwordController.text.toString()); //{
                             if(_formKey.currentState!.validate()) {
+
                               //Navigator.pushReplacement(
-                                //  context, MaterialPageRoute(
-                                  //builder: (context) =>
-                                  //const LoginPage()));
+                              //  context, MaterialPageRoute(
+                              //builder: (context) =>
+                              //const LoginPage()));
                             }
+                            UpdatePassword(usernameController.text.toString(), new_passwordController.text.toString()); //{
                           },
                         ),
                       )
