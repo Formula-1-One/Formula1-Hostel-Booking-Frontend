@@ -112,7 +112,7 @@ class _RoomTypeState extends State<RoomType> {
                             fontSize: 30,
                           ),),
                         SizedBox(width: 90,),
-                        Text('Males',
+                        Text('Male',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
