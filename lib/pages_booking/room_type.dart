@@ -96,8 +96,8 @@ class _RoomTypeState extends State<RoomType> {
                     left: 50,
                 ),
               alignment: Alignment.center,
-              width: 400,
-              height: 400,
+              width: 420,
+              height: 420,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -144,7 +144,7 @@ class _RoomTypeState extends State<RoomType> {
                             color: Colors.white,
                             fontSize: 30,
                           ),),
-                        SizedBox(width: 40,),
+                        SizedBox(width: 80,),
                         Text('GHS ${widget.data["price"]}',
                           style: TextStyle(
                             color: Colors.white,
@@ -164,8 +164,8 @@ class _RoomTypeState extends State<RoomType> {
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.blue,
               ),
-              width: 400,
-              height: 400,
+              width: 420,
+              height: 420,
               child: Column(
                 children: [
                   Center(
@@ -216,7 +216,7 @@ class _RoomTypeState extends State<RoomType> {
                               fontSize: 30,
                             ),),
                         ),
-                        SizedBox(width:40,),
+                        SizedBox(width:75,),
                         Text('GHS ${widget.data["price"]}',
                           style: TextStyle(
                             color: Colors.white,

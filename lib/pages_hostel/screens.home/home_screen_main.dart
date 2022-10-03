@@ -49,7 +49,7 @@ class _HomeScreenMainState extends State<HomeScreenMain> {
                      Center(
                        child: Text("${widget.data["data"]["student_profile"]["first_name"]}"
                            " ${widget.data["data"]["student_profile"]["last_name"]}",
-                       style:  TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+                       style:  TextStyle(fontSize: 25,),),
                      )
                    ],
                  ),

@@ -129,7 +129,7 @@ class MainScreen extends StatelessWidget {
                           )
                       )
                   ),
-                  SizedBox(height: 40.0,),
+                  SizedBox(height: 25.0,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
