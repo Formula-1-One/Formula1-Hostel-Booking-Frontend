@@ -134,9 +134,9 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                           if(val!.isEmpty){
                             return "can't be empty";
                           }
-                          // if(!RegExp(r"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$").hasMatch(val)){
-                          //   return "weak password";
-                          // }
+                          if(!RegExp(r"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$").hasMatch(val)){
+                            return "weak password";
+                          }
                           return null;
                         },
                       ),
@@ -179,13 +179,8 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
                           ),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              //Navigator.pushReplacement(
-                              //  context, MaterialPageRoute(
-                              //builder: (context) =>
-                              //const LoginPage()));
-                            } else {
                               UpdatePassword(usernameController.text.toString(),
-                                  new_passwordController.text.toString()); //{
+                                  new_passwordController.text.toString());
                             }
                           },
                         ),
