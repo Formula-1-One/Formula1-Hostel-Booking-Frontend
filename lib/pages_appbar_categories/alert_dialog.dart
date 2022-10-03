@@ -15,7 +15,7 @@ class AlertDialogs{
         barrierDismissible: false,
         builder: (BuildContext context){
       return AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           content:Text("Are you sure you want to log out? ", style:GoogleFonts.poppins(
           textStyle:
           TextStyle(

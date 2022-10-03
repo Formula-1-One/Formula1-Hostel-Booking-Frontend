@@ -3,6 +3,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -20,6 +21,12 @@ class PrintPage extends StatelessWidget {
    Future<void> _createPdf() async {
     final doc = pw.Document();
 
+    var dueDate = new DateTime.utc(
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+    ).add(Duration(days: 3));
+    String dueDateString = new DateFormat('yyyy-MM-dd').format(dueDate);
 
     doc.addPage(
       pw.Page(
@@ -43,10 +50,10 @@ class PrintPage extends StatelessWidget {
                     pw.Text('Programme of study : ${studentProfile["program_of_study"]}', style:  pw.TextStyle( fontSize: 20)),
                     pw.SizedBox(height: 15,),
                     pw.Text('Booking id : ${bookingId}', style:  pw.TextStyle( fontSize: 20)),
-                    pw.SizedBox(height: 15,),
-                    pw.Text('Make payment at ANY BRANCH OF ECOBANK OR GHANA COMMERCIAL BANK\n'
-                            'with the booking id on this printout on or before \n'
-                            'and show your pay-in-slip at the Porters Lodge \n'
+                    pw.SizedBox(height: 80,),
+                    pw.Text('Make payment at ANY BRANCH OF ECOBANK OR GHANA COMMERCIAL BANK'
+                            'with the booking id on this printout on or before ${dueDateString} '
+                            'and show your pay-in-slip at the Porters Lodge '
                             'to access your room when school resumes ',
                         style:  pw.TextStyle( fontSize: 20, fontWeight: pw.FontWeight.bold)),
 
